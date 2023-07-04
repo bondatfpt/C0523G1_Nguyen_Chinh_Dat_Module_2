@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class dienTichHcn {
     public static void main(String[] args) {
-        float height;
-        float width ;
+        double height;
+        double width ;
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập vào chiều dài hình chữ nhật");
-        height = sc.nextFloat();
+        height = sc.nextDouble();
         System.out.println("Nhập vào chiều rộng hình chữ nhật");
-        width = sc.nextFloat();
-        float area = height * width;
+        width = sc.nextDouble();
+        double area = height * width;
         System.out.println("Diện tích hình chữ nhật là: " + area);
     }
 }

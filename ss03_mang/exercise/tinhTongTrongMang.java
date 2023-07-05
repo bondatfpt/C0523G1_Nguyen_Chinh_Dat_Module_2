@@ -6,9 +6,9 @@ public class tinhTongTrongMang {
     public static void main(String[] args) {
         // Khởi tạo mảng 2 chiều;
         Scanner input = new Scanner(System.in);
-        System.out.println("Nhap vao do dai hang cua mang");
+        System.out.println("Nhap vao chieu cao cua mang");
         int row = input.nextInt();
-        System.out.println("Nhap vao do dai cot cua mang");
+        System.out.println("Nhap vao chieu rong cua mang");
         int col = input.nextInt();
         int array2D[][] = new int[row][col];
         for (int i = 0; i < row; i++) {

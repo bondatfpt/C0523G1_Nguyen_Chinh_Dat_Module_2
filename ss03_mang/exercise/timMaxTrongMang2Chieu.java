@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class timMaxTrongMang2Chieu {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Nhap vao do dai hang cua mang");
+        System.out.println("Nhap vao chieu cao cua mang");
         // Cho phép người dùng nhập số hàng từ bàn phím;
         int row = input.nextInt();
-        System.out.println("Nhap vao do dai cot cua mang");
+        System.out.println("Nhap vao chieu rong cua mang");
         // Cho phép người dùng nhập số cột từ bàn phím;
         int col =input.nextInt();
         // Khởi tạo mảng 2 chiều có độ dài hàng và cột do người dùng nhập từ bàn phím;

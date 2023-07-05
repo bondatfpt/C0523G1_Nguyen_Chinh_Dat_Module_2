@@ -1,2 +1,7 @@
-package ss02_vonglap.exercise;public class hienThi20SoNguyenTo {
+package ss02_vonglap.exercise;
+
+import java.util.Scanner;
+
+public class hienThi20SoNguyenTo {
+
 }

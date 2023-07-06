@@ -1,4 +1,4 @@
-package ss03_mang.practice;
+package ss03_mang_va_phuong_thuc.practice;
 
 
 public class timMin {

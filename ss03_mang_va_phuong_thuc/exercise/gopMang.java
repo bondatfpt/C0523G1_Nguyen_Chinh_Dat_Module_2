@@ -1,4 +1,4 @@
-package ss03_mang.exercise;
+package ss03_mang_va_phuong_thuc.exercise;
 
 public class gopMang {
     public static void main(String[] args) {

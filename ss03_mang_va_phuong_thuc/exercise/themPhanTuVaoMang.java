@@ -1,4 +1,4 @@
-package ss03_mang.exercise;
+package ss03_mang_va_phuong_thuc.exercise;
 
 import java.util.Scanner;
 
@@ -21,6 +21,7 @@ public class themPhanTuVaoMang {
         }
         // gán giá trị được thêm vào vị trí do người dùng nhập;
         mangSoNguyenMoi[viTriphanTuDuocThem] = giaTriphanTuDuocThem;
+        //in mảng ra màn hình;
         for (int value:mangSoNguyenMoi) {
             System.out.println(value);
         }

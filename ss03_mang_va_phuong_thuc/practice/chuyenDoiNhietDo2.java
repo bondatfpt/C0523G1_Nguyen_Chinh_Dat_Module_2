@@ -16,6 +16,7 @@ public class chuyenDoiNhietDo2 {
         int choice ;
         do {
             System.out.println("Menu: " + "\n" + " 1.Chuyen sang do F." + "\n" + " 2.Chuyen sang do C." + "\n" + " 3.Ket thuc chuong trinh");
+            System.out.println("Lua chon cua ban la: ");
             choice = input.nextInt();
             switch (choice){
                 case 1:

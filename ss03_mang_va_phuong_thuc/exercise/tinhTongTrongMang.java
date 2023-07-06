@@ -28,11 +28,11 @@ public class tinhTongTrongMang {
         // Cho phép người dùng nhập cột muốn tính tổng trong mảng;
         int index = input.nextInt();
         int sum = 0;
-        // Vòng lặp ngoài duyệt cột, vòng lặp trong duyệt hàng; vì cột đứng yên, hàng tăng dần;
-        for (int i = 0; i < col; i++) {
-            for (int j = 0; j < row; j++) {
-                if (i == index -1){         // index = col - 1 vì indexcol chạy từ 0;
-                    sum += array2D[j][i];
+        // 2 vòng lặp lồng nhau duyệt mảng 2 chiều, nếu chạy đến cột bằng với vị trí cột do người dùng nhập trừ 1 thì cộng dồn các phần tử lại;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (j == index -1){         // index = col - 1 vì indexcol chạy từ 0 mà người dùng nhập từ 1;
+                    sum += array2D[i][j];
                 }
             }
         }

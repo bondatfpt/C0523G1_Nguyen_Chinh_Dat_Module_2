@@ -1,6 +1,6 @@
-package giai_thuat;
+package algorithm;
 
-public class GiaiThuat1 {
+public class AlgorithmOne {
     public static void main(String[] args) {
         int row = 9;
         int col = 10;

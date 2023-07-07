@@ -10,9 +10,9 @@ public class StaticProperty {
     public static class Car {
         private String name;
         private int id;
-        public static int numberOfCars;
+        static int numberOfCars;
 
-        public  Car (String name, int id){
+        public Car(String name, int id){
             this.name = name;
             this.id = id;
             numberOfCars++;

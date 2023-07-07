@@ -27,6 +27,9 @@ public class StopWatch {
         return arr;
     }
     public static void main(String[] args) {
+//        public void notReturn(){
+//            System.out.println("ok");
+//        }
         // Khởi tạo đối tượng stopWatch thuộc lớp StopWatch;
         StopWatch stopWatch = new StopWatch();
         Scanner input = new Scanner(System.in);

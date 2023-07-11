@@ -1,8 +1,8 @@
 package ss06_inheritance.exercise.circle_class_and_cylinder_class;
 
 public class Circle {
-    private double radius = 1.0;          // 2 thuộc tính có access modifier private;
-    private String color = "Red";         // Có giá trị mặc định: radius = 1.0; color: "Red";
+     double radius = 1.0;          // 2 thuộc tính có access modifier default;
+     String color = "Red";         // Có giá trị mặc định: radius = 1.0; color: "Red";
 
     public Circle (){}          // constructor mặc định;
     public Circle (double radius, String color){        // constructor 2 tham số;
@@ -13,15 +13,12 @@ public class Circle {
     public double getRadius() {
         return radius;
     }
-
     public double setRadius(double radius) {
        return this.radius = radius;
     }
-
     public String getColor() {
         return color;
     }
-
     public String setColor(String color) {
        return this.color = color;
     }

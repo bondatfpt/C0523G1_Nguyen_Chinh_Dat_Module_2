@@ -1,8 +1,8 @@
 package ss06_inheritance.exercise.point_class_and_moveable_class;
 
 public class Point {
-    private float X = 0.0F;
-    private float Y = 0.0F;
+     float X = 0.0F;
+    float Y = 0.0F;
     public Point(){};
     public Point(float X, float Y){
         this.X = X;

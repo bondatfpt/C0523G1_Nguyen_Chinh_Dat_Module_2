@@ -24,14 +24,14 @@ public class Point3D extends Point2D{   // kế thừa class Point2D;
     }
     public float[]getXYZ(){         // Phương thức trả về 1 mảng chứa các giá trị của X,Y,Z;
         float[]getXYZ = new float[3];
-        getXYZ[0] = super.getX();
-        getXYZ[1] = super.getY();
+        getXYZ[0] = getX();
+        getXYZ[1] = getY();
         getXYZ[2] = this.Z;
         return getXYZ;
     }
     // Ghi đè phương thức toString của Point2D;
     @Override
     public String toString(){
-        return "Point3D:" + "\n" + "X: " + super.getX() + "\n" + "Y: " + super.getY() + "\n" + "Z: " + this.Z + "\n" + "Which is subclass of " + super.toString();
+        return "Point3D:" + "\n" + "X: " + getX() + "\n" + "Y: " + getY() + "\n" + "Z: " + this.Z + "\n" + "Which is subclass of " + super.toString();
     }
 }

@@ -1,9 +1,11 @@
 package ss05_access_modifier_static_property_static_method.exercise;
 
-import java.util.Scanner;
+
+import java.awt.*;
 
 public class Circle {
     public static void main(String[] args) {
+
         Circle circle = new Circle();  // Đối tượng được tạo bởi constructor mặc định;
         circle.setRadius(10);
         Circle circle1 = new Circle(8); // Đối tượng được tạo bởi constructor có 1 tham số radius;

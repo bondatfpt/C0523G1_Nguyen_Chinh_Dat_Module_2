@@ -23,11 +23,11 @@ public class Cylinder extends Circle {    // class Cylinder kế thừa class Ci
     }
     // Phương thức trả về thể tích;
     public double getVolume() {
-        return Math.PI * Math.pow(super.getRadius(), 2) * this.height;
+        return Math.PI * Math.pow(getRadius(), 2) * this.height;
     }
     // Ghi đè phương thức toString của lớp Circle(cùng kiểu trả về, cùng tên, nhưng trả về mô tả hình trụ => tính đa hình);
     @Override
     public String toString() {
-        return "A Cylinder with height: " + this.height + " and radius: " + super.getRadius() + " which is a subclass of " + super.toString();
+        return "A Cylinder with height: " + this.height + " and radius: " +getRadius() + " which is a subclass of " + super.toString();
     }
 }

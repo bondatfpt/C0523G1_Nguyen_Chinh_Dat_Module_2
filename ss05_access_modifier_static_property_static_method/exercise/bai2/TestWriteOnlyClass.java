@@ -1,5 +1,4 @@
-package ss05_access_modifier_static_property_static_method.exercise;
-
+package ss05_access_modifier_static_property_static_method.exercise.bai2;
 public class TestWriteOnlyClass {
     public static void main(String[] args) {
         WriteOnlyClass writeOnlyClass = new WriteOnlyClass();

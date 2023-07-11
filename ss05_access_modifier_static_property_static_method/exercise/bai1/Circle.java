@@ -1,8 +1,4 @@
-package ss05_access_modifier_static_property_static_method.exercise;
-
-
-import java.awt.*;
-
+package ss05_access_modifier_static_property_static_method.exercise.bai1;
 public class Circle {
      double radius = 1.0;
      String color = "red";

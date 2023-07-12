@@ -3,10 +3,11 @@ package ss06_inheritance.exercise.point2D_class_and_point3D_class;
 import java.util.Arrays;
 
 public class Point2D {
-    float X = 1.0F;             // 2 thuộc tính có access modifier default;
-    float Y = 1.0F;             // có giá trị mặc định là X = 1.0; Y = 1.0;
+    private float X = 1.0F;             // 2 thuộc tính có access modifier default;
+    private float Y = 1.0F;             // có giá trị mặc định là X = 1.0; Y = 1.0;
 
-    public Point2D() {}          // constructor mặc định có giá trị mặc định;
+    public Point2D() {
+    }          // constructor mặc định có giá trị mặc định;
 
     public Point2D(float X, float Y) {      // constructor 2 tham số;
         this.X = X;

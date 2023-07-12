@@ -18,15 +18,15 @@ public class Point3D extends Point2D{   // kế thừa class Point2D;
         this.Z = Z;
     }
     public void setXYZ(float X, float Y, float Z){      // Phương thức sửa 1 lần 3 thuộc tính;
-        setX(X);
-        setY(Y);
-        this.Z = Z;
+        this.setX(X);
+        this.setY(Y);
+        this.setZ(Z);
     }
     public float[]getXYZ(){         // Phương thức trả về 1 mảng chứa các giá trị của X,Y,Z;
         float[]getXYZ = new float[3];
         getXYZ[0] = getX();
         getXYZ[1] = getY();
-        getXYZ[2] = this.Z;
+        getXYZ[2] = getZ();
         return getXYZ;
     }
     // Ghi đè phương thức toString của Point2D;

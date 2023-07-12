@@ -43,9 +43,10 @@ public class Movable extends Point {
         array[1] = YSpeed;
         return array;
     }
-    public void move(){
-        this.X += this.XSpeed;
-        this.Y += this.YSpeed;
+    public Movable move(){
+        setX(getX()+this.XSpeed);
+        setY(getY()+this.YSpeed);
+        return this;
     }
     public String toString(){
         return "MovablePoint: " + "\n" + "X: " + getX() + "\n" + "Y: " + getY() + "\n" + "Speed: " + "\n" + "XSpeed: " + getSpeed()[0] +"\n" + "YSpeed: "+ getSpeed()[1]+ "\n";

@@ -60,6 +60,6 @@ public class Triangle extends Shape {
 
     @Override
     public String toString() {
-        return "Side 1: " + this.side1 + "\n" + "Side 2: " + this.side2 + "\n" + "Side 3: " + this.side3 + "\n" + "Height: " + this.height + "\n" + "Color: " + this.color + "\n" + "Area: " + this.getArea()+" m²"+"\n" + "Perimeter: " + this.getPerimeter() + " m";
+        return "Side 1: " + this.side1 + "\n" + "Side 2: " + this.side2 + "\n" + "Side 3: " + this.side3 + "\n" + "Height: " + this.height + "\n" + "Color: " + this.getColor() + "\n" + "Area: " + this.getArea()+" m²"+"\n" + "Perimeter: " + this.getPerimeter() + " m";
     }
 }

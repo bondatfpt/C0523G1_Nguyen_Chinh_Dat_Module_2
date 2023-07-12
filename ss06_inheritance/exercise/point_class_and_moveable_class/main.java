@@ -5,6 +5,5 @@ public class main {
         Movable movable = new Movable();
         movable.setSpeed(5,5);
         movable.move();
-        System.out.println(movable);
     }
 }

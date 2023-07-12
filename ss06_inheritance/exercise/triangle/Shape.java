@@ -1,7 +1,8 @@
 package ss06_inheritance.exercise.triangle;
+
 public class Shape {
-    String color;      // Access modifier là default vì Shape là class cha, các class con phải lấy được 2 thuộc tính này;
-    boolean filled;
+    private String color;
+    private boolean filled;
 
     public Shape() {                    // constructor không tham số, có 2 thuộc tính mặc định mang giá trị green và true;
         this("green", true);

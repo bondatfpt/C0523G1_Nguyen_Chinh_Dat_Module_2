@@ -1,10 +1,9 @@
-package ss07_abstract_class_and_interface.exercise.exe1;
+package ss07_abstract_class_and_interface.exercise.exe2;
 
 public class Rectangle extends Shape {
     private double height = 10;
     private double width = 5;
-    public Rectangle() {
-    }
+    public Rectangle() {}
     public Rectangle(double width, double height) {
         this.height = height;
         this.width = width;
@@ -27,17 +26,11 @@ public class Rectangle extends Shape {
         this.width = width;
     }
     @Override
-    public void resize(double percent) {
-        this.height += this.height * percent / 100;
-        this.width += this.width * percent / 100;
-    } // Hiện thức hóa phương thức resize bằng cách ghi đè phương thức;
-    @Override
     public double getArea() {
         return this.height * this.width;
     }
-    // Hiện thức hóa phương thức getArea bằng cách ghi đè phương thức;
     @Override
     public String toString() {
         return "A rectangle with height: " + this.height + " and width:" + this.width + " and area is: " + this.getArea() + " m²";
-    } // Hiện thức hóa phương thức toString bằng cách ghi đè phương thức;
+    }
 }

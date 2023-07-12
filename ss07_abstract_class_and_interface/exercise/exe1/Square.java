@@ -20,12 +20,14 @@ public class Square extends Shape {
     public void resize(double percent) {
         this.side += this.side * percent / 100;
     }
+    // Hiện thức hóa phương thức resize bằng cách ghi đè phương thức;
     @Override
     public double getArea() {
         return this.side * this.side;
     }
+    // Hiện thức hóa phương thức getArea bằng cách ghi đè phương thức;
     @Override
     public String toString(){
         return "A square with side: " + this.side + " and area is: " + this.getArea() + " m²";
-    }
+    }  // Hiện thức hóa phương thức toString bằng cách ghi đè phương thức;
 }

@@ -1,4 +1,4 @@
-package model_view_controller.model;
+package model_view_controller.counter_application.model;
 
 public class CounterModel {
     private int value;

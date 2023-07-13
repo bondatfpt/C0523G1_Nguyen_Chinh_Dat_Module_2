@@ -1,8 +1,7 @@
-package model_view_controller.controller;
+package model_view_controller.counter_application.controller;
 
-import model_view_controller.view.CounterView;
+import model_view_controller.counter_application.view.CounterView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,12 +14,14 @@ public class CounterListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         String src = e.getActionCommand();
-        System.out.println("Add" + src);
         if(src.equals("UP")){
             this.counterView.increment();
         }
         else if(src.equals("DOWN")){
             this.counterView.decrement();
+        }
+        else {
+            this.counterView.reset();
         }
     }
 }

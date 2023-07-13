@@ -3,7 +3,7 @@ package ss08_clean_code_and_refactoring.exercise;
 public class TennisGame {
     public static String getScore(String player1Name, String player2Name, int scorePlayer1, int scorePlayer2) {
         String score = "";
-        int tempScore = 0;
+        int tempScore;
         if (scorePlayer1 == scorePlayer2) {
             switch (scorePlayer1) {
                 case 0:

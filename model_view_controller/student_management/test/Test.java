@@ -13,8 +13,5 @@ public class Test {
         students[3] = new StudentModel(9,"Heo");
         students[4] = new StudentModel(0,"Beo");
         System.out.println(Arrays.toString(students));
-        Arrays.sort(students);
-        System.out.println(Arrays.toString(students));
-
     }
 }

@@ -1,13 +1,18 @@
-package ss10_dsa_list.practice.simple_list;
+package ss10_dsa_list.exercise.exe1;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class MyList<E>{
     private int size;
-    private static final int DEFAULT_CAPACITY = 10;
+    public static final int DEFAULT_CAPACITY = 10;
     private Object elements[];
 
+    public MyList(int size){
+        this.size = size;
+    }
     public MyList(){
+        System.out.println("OK");
         elements = new Object[DEFAULT_CAPACITY];
     }
     public void ensureCapacity(){

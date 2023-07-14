@@ -1,6 +1,6 @@
 package model_view_controller.student_management.model;
 
-public class StudentModel {
+public class StudentModel implements Comparable {
     private int id ;
     private String name = "Nguyễn Chính Đạt";
 
@@ -32,5 +32,10 @@ public class StudentModel {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+    @Override
+    public int compareTo(Object o) {
+        StudentModel studentModelOther = (StudentModel) o;
+        return -this.name.compareTo(studentModelOther.name);
     }
 }

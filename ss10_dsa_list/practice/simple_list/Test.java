@@ -18,5 +18,6 @@ public class Test {
         System.out.println(listInteger.get(8));
         System.out.println(listInteger.get(6));
         listInteger.ensureCapacity();
+        System.out.println(listInteger.toString());
     }
 }

@@ -5,7 +5,10 @@ public class MyListTest {
         MyList<Double> myList = new MyList();
         myList.add(5d);
         System.out.println(myList.get(0));
-//        myList.ensureCapacity();
+        System.out.println(myList.toString());
+        myList.add(6d,2);
+        System.out.println(myList.toString());
+        myList.remove(2);
         System.out.println(myList.toString());
     }
 }

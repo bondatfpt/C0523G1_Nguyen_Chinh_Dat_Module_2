@@ -46,10 +46,6 @@ public class StudentList {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getName().contains(name)) {
                 System.out.println(list.get(i));
-                break;
-            } else {
-                System.out.println("Không có sinh viên này");
-                break;
             }
         }
     }

@@ -20,17 +20,14 @@ public class CustomerRepo implements ICustomerRepo {
         customerArrayList.add(4,customer5);
         size = 5;
     }
-
     @Override
     public ArrayList<Customer> displayAll() {
         return customerArrayList;
     }
-
     @Override
     public void add(Customer e) {
         customerArrayList.add(e);
     }
-
     @Override
     public void remove(int id) {
         for (int i = 0; i < customerArrayList.size(); i++) {
@@ -40,7 +37,6 @@ public class CustomerRepo implements ICustomerRepo {
          }
         }
     }
-
     @Override
     public void indexOf(String name) {
         for (int i = 0; i < customerArrayList.size(); i++) {

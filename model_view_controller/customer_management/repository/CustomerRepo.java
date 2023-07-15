@@ -42,6 +42,11 @@ public class CustomerRepo implements ICustomerRepo {
         for (int i = 0; i < customerArrayList.size(); i++) {
             if(customerArrayList.get(i).getName().contains(name)){
                 System.out.println(customerArrayList.get(i));
+                break;
+            }
+            else {
+                System.out.println("Không có khách hàng này");
+                break;
             }
         }
     }

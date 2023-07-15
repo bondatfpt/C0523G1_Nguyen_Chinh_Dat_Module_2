@@ -2,10 +2,10 @@ package ss10_dsa_list.exercise.arrayList;
 
 
 public class Student {
-    private int id = 1;
-    private String name = "Dat";
-    private int date = 1999;
-    private float mediumScore = 10;
+    private int id;
+    private String name ;
+    private int date ;
+    private float mediumScore ;
     public Student(int id){
         this.id = id;
     }
@@ -16,38 +16,30 @@ public class Student {
         this.date = date;
         this.mediumScore = mediumScore;
     }
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getName() {
-        return name;
+        return this.name;
     }
     public void setName(String name) {
         this.name = name;
     }
-
     public int getDate() {
-        return date;
+        return this.date;
     }
-
     public void setDate(int date) {
         this.date = date;
     }
-
     public float getMediumScore() {
-        return mediumScore;
+        return this.mediumScore;
     }
-
     public void setMediumScore(float mediumScore) {
         this.mediumScore = mediumScore;
     }
-
     @Override
     public String toString() {
         return "Student{" +

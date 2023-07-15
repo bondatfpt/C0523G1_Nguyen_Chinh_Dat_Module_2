@@ -3,6 +3,7 @@ package ss10_dsa_list.exercise.arrayList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
 public class StudentList {
     private ArrayList<Student> list;
     public StudentList() {
@@ -36,7 +37,7 @@ public class StudentList {
     // 6. Xóa 1 sinh viên ra khỏi danh sách;
     public void remove(int id) {
         for (int i = 0; i < list.size(); i++) {
-            if(list.get(i).getId() == id ){
+            if (list.get(i).getId() == id) {
                 list.remove(i);
             }
         }
@@ -49,18 +50,5 @@ public class StudentList {
             }
         }
     }
-    //8. In ra màn hình sinh viên có điểm từ cao đến thấp;
-    public void sortScore() {
-        Collections.sort(this.list, new Comparator<Student>() {
-            @Override
-            public int compare(Student s1, Student s2) {
-                if (s1.getMediumScore() < s2.getMediumScore()) {
-                    return -1;
-                } else if (s1.getMediumScore() > s2.getMediumScore()) {
-                    return 1;
-                } else
-                    return 0;
-            }
-        });
-    }
 }
+

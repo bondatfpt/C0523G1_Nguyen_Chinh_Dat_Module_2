@@ -13,14 +13,13 @@ public class Test {
             System.out.println("Menu-------------------");
             System.out.println("Vui lòng chọn chức năng: ");
             System.out.println(
-                    "1.Thêm sinh viên" + "\n" +
+                            "1.Thêm sinh viên" + "\n" +
                             "2.In danh sách sinh viên ra màn hình" + "\n" +
                             "3.Kiểm tra danh sách sinh viên có rỗng hay không" + "\n" +
                             "4.Lấy ra số lượng sinh viên trong danh sách" + "\n" +
                             "5.Làm rỗng danh sách sinh viên" + "\n" +
                             "6.Xóa sinh viên theo id" + "\n" +
                             "7.Tìm sinh viên theo tên" + "\n" +
-                            "8.Xuất ra danh sách sinh viên có điểm từ cao đến thấp" + "\n" +
                             "0.Kết thúc");
             choice = sc.nextInt();
 
@@ -57,8 +56,8 @@ public class Test {
             }
             if (choice == 7) {
                 System.out.println("Nhập tên sinh viên");
-                String name = sc.nextLine();
                 sc.nextLine();
+                String name = sc.nextLine();
                 studentList.findStudent(name);
             }
         }

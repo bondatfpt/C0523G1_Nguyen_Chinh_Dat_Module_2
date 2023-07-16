@@ -12,19 +12,16 @@ public class CustomerService implements ICustomerService {
     public ArrayList<Customer> displayAll() {
         return repository.displayAll();
     }
-
     @Override
     public void add(Customer e) {
         repository.add(e);
     }
-
     @Override
     public void remove(int id) {
         repository.remove(id);
     }
-
     @Override
-    public void indexOf(String name) {
-        repository.indexOf(name);
+    public void findCustomer(String name) {
+        repository.findCustomer(name);
     }
 }

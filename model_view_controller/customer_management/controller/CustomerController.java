@@ -45,8 +45,8 @@ public class CustomerController {
                     break;
                 case 4:
                     System.out.println("Enter name:");
-                    String searchname = scanner.next();
-                    service.indexOf(searchname);
+                    String findName = scanner.next();
+                    service.findCustomer(findName);
                     break;
                 case 5:
                     System.exit(0);

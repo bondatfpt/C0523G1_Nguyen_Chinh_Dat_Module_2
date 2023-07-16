@@ -7,5 +7,5 @@ public interface ICustomerRepo {
     ArrayList<Customer> displayAll();
     void add(Customer e);
     void remove(int id);
-    void indexOf(String name);
+    void findCustomer(String name);
 }

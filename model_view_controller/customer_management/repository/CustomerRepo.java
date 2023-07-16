@@ -38,7 +38,7 @@ public class CustomerRepo implements ICustomerRepo {
         }
     }
     @Override
-    public void indexOf(String name) {
+    public void findCustomer(String name) {
         for (int i = 0; i < customerArrayList.size(); i++) {
             if (customerArrayList.get(i).getName().contains(name)) {
                 System.out.println(customerArrayList.get(i));

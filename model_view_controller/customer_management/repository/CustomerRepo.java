@@ -1,8 +1,6 @@
 package model_view_controller.customer_management.repository;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import model_view_controller.customer_management.model.Customer;
 
 public class CustomerRepo implements ICustomerRepo {
@@ -22,17 +20,14 @@ public class CustomerRepo implements ICustomerRepo {
         customerArrayList.add(4, customer5);
         size = 5;
     }
-
     @Override
     public ArrayList<Customer> displayAll() {
         return customerArrayList;
     }
-
     @Override
     public void add(Customer e) {
         customerArrayList.add(e);
     }
-
     @Override
     public void remove(int id) {
         for (int i = 0; i < customerArrayList.size(); i++) {

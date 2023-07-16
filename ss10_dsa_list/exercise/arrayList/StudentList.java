@@ -13,31 +13,34 @@ public class StudentList {
         this.list = list;
     }
     //1. Thêm sinh viên vào danh sách;
-    public void add(int index, Student student) {
-        this.list.add(index, student);
+    public void add (int index, Student student){
+        this.list.add(index,student);
     }
+
     // 2. In danh sách sinh viên ra màn hình;
-    public void printStudentList() {
-        for (Student student : list) {
+    public void printStudentList(){
+        for (Student student:list) {
             System.out.println(student);
         }
     }
     // 3.Kiểm tra danh sách rỗng hay không?
-    public boolean isEmpty() {
+    public boolean isEmpty(){
         return this.list.isEmpty();
     }
+
     // 4.Lấy ra số lượng sinh viên trong danh sách;
-    public int getAmount() {
+    public int getAmount(){
         return this.list.size();
     }
+
     //5. Làm rỗng danh sách sinh viên;
-    public void makeListEmpty() {
+    public void makeListEmpty(){
         this.list.removeAll(list);
     }
     // 6. Xóa 1 sinh viên ra khỏi danh sách;
-    public void remove(int id) {
+    public void remove(int id){
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
+            if(list.get(i).getId() == id){
                 list.remove(i);
             }
         }

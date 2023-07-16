@@ -1,17 +1,13 @@
 package model_view_controller.customer_management.controller;
-
 import model_view_controller.customer_management.model.Customer;
 import model_view_controller.customer_management.service.ICustomerService;
 import model_view_controller.customer_management.service.CustomerService;
-
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CustomerController {
     private static ICustomerService service = new CustomerService();
     private static int number = 0;
-
     public static void main(String[] args) {
         do {
             System.out.println("CUSTOMER LIST");

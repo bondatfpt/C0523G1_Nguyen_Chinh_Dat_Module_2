@@ -15,7 +15,7 @@ public class ConvertDecimalToBinary {
         Stack myStack = new Stack();
 
         while (decimal != 0){
-            int surplus = Math.abs(decimal % 2);
+            int surplus =(decimal % 2);
             myStack.push(surplus);
             decimal = decimal/2;
         }

@@ -1,6 +1,5 @@
 package model_view_controller.customer_management.service;
 import java.util.ArrayList;
-import java.util.Arrays;
 import model_view_controller.customer_management.repository.CustomerRepo;
 import model_view_controller.customer_management.repository.ICustomerRepo;
 import model_view_controller.customer_management.model.Customer;

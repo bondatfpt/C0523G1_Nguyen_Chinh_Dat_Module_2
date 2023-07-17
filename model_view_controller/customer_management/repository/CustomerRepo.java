@@ -1,11 +1,9 @@
 package model_view_controller.customer_management.repository;
 import java.util.ArrayList;
-import java.util.Arrays;
 import model_view_controller.customer_management.model.Customer;
 
 public class CustomerRepo implements ICustomerRepo {
     private static ArrayList<Customer> customerArrayList = new ArrayList<>(10);
-    private static int size;
 
     static {
         Customer customer1 = new Customer(1, "Mark", 24, "VIP");
@@ -18,7 +16,6 @@ public class CustomerRepo implements ICustomerRepo {
         customerArrayList.add(2, customer3);
         customerArrayList.add(3, customer4);
         customerArrayList.add(4, customer5);
-        size = 5;
     }
     @Override
     public ArrayList<Customer> displayAll() {

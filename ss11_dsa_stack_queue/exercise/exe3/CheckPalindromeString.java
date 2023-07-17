@@ -13,11 +13,11 @@ public class CheckPalindromeString {
         String stringToLowerCase = string.toLowerCase();
         for (int i = 0; i < stringToLowerCase.length(); i++) {
                 if(stringToLowerCase.charAt(i) == stringToLowerCase.charAt(stringToLowerCase.length()-i-1)){
-                    System.out.println(stringToLowerCase +" is palindrome string");
+                    System.out.println(string +" is palindrome string");
                     break;
                 }
                 else {
-                    System.out.println(stringToLowerCase +" is not palindrome string");
+                    System.out.println(string +" is not palindrome string");
                     break;
                 }
         }

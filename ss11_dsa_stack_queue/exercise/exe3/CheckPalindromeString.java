@@ -19,13 +19,13 @@ public class CheckPalindromeString {
             myStack.push(arrString[i]);
             myQueue.offer(arrString[i]);
         }
-        int count = 0;
+        boolean check = true;
         for (int i = 0; i < arrString.length; i++) {
             if(!myStack.pop().equals(myQueue.poll())){
-                count++;
+                check = false;
             }
         }
-        if(count == 0){
+        if(check){
             System.out.println(string + " is palindrome String");
         }
         else {

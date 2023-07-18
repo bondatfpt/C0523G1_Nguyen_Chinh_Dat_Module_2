@@ -15,18 +15,19 @@ public class TestMap {
         hashMap.put("Phom",20);
         hashMap.put("Heo",20);
         hashMap.put("Ba",20);
-        System.out.println("Display entry in HashMap");
-        System.out.println(hashMap + "\n");
+//        System.out.println("Display entry in HashMap");
+//        System.out.println(hashMap + "\n");
+        System.out.println(hashMap.size());
         //TreeMap;
-        Map<String,Integer>treeMap = new TreeMap<>(hashMap);
-        System.out.println("Display entry in TreeMap");
-        System.out.println(treeMap);
-        //LinkedHashMap;
-        Map<String, Integer> linkedHashMap = new LinkedHashMap<>(16, 0.75f, true);
-        linkedHashMap.put("Smith", 30);
-        linkedHashMap.put("Anderson", 31);
-        linkedHashMap.put("Lewis", 29);
-        linkedHashMap.put("Cook", 29);
-        System.out.println("\nThe age for " + "Lewis is " + linkedHashMap.get("Lewis"));
+//        Map<String,Integer>treeMap = new TreeMap<>(hashMap);
+//        System.out.println("Display entry in TreeMap");
+//        System.out.println(treeMap);
+//        //LinkedHashMap;
+//        Map<String, Integer> linkedHashMap = new LinkedHashMap<>(16, 0.75f, true);
+//        linkedHashMap.put("Smith", 30);
+//        linkedHashMap.put("Anderson", 31);
+//        linkedHashMap.put("Lewis", 29);
+//        linkedHashMap.put("Cook", 29);
+//        System.out.println("\nThe age for " + "Lewis is " + linkedHashMap.get("Lewis"));
     }
 }

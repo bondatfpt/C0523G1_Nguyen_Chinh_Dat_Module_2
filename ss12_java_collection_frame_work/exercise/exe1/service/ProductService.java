@@ -17,7 +17,6 @@ public class ProductService implements IProductService {
             System.out.println(product);
         }
     }
-
     @Override
     public void add() {
         Scanner input = new Scanner(System.in);
@@ -35,14 +34,11 @@ public class ProductService implements IProductService {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter an id of product you want to update");
         int idSet = Integer.parseInt(input.nextLine());
-        System.out.println("Enter an new id");
-        int newId = Integer.parseInt(input.nextLine());
         System.out.println("Enter a new name");
         String newName = input.nextLine();
         System.out.println("Enter a new price");
         double newPrice = input.nextDouble();
-        Product product = new Product(newId,newName,newPrice);
-        productRepository.setProduct(idSet,product);
+        productRepository.setProduct(idSet);
     }
 
     @Override
@@ -55,6 +51,25 @@ public class ProductService implements IProductService {
 
     @Override
     public void findProduct() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter a name");
+        String nameSearch = input.nextLine();
+        productRepository.findProduct(nameSearch);
+    }
 
+    @Override
+    public void sortByPriceAscending() {
+        List<Product> productList =productRepository.sortByPriceAscending();
+        for (Product p: productList) {
+            System.out.println(p);
+        }
+    }
+
+    @Override
+    public void sortByPriceDescending() {
+        List<Product> productList = productRepository.sortByPriceDescending();
+        for (Product p: productList){
+            System.out.println(p);
+        }
     }
 }

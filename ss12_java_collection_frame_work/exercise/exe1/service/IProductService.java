@@ -7,5 +7,7 @@ public interface IProductService {
     void setProduct();
     void removeProduct();
     void findProduct();
+    void sortByPriceAscending();
+    void sortByPriceDescending();
 }
 

@@ -7,36 +7,48 @@ import java.util.Scanner;
 
 public class ProductController {
 
-    public static void showMenu(){
+    public static void showMenu() {
         IProductService productService = new ProductService();
         Scanner input = new Scanner(System.in);
         int choice = 0;
-        do{
+        do {
             System.out.println("----- Product Manager ------");
             System.out.println("1. List");
             System.out.println("2. Create");
             System.out.println("3. Delete");
             System.out.println("4. Update");
+            System.out.println("5. Find product by name");
+            System.out.println("6. Sort product by Price Ascending");
+            System.out.println("7. Sort product by Price Descending");
             System.out.println("0. Exit");
             System.out.println("Enter your choice");
-        choice = input.nextInt();
-        switch (choice){
-            case 1:
-                productService.disPlayAll();
-                break;
-            case 2:
-                productService.add();
-                break;
-            case 3:
-                productService.removeProduct();
-                break;
-            case 4:
-                productService.setProduct();
-                break;
-            case 0:
-                System.exit(0);
-                break;
-        }
-        }while (choice != 0);
+            choice = input.nextInt();
+            switch (choice) {
+                case 1:
+                    productService.disPlayAll();
+                    break;
+                case 2:
+                    productService.add();
+                    break;
+                case 3:
+                    productService.removeProduct();
+                    break;
+                case 4:
+                    productService.setProduct();
+                    break;
+                case 5:
+                    productService.findProduct();
+                    break;
+                case 6:
+                    productService.sortByPriceAscending();
+                    break;
+                case 7:
+                    productService.sortByPriceDescending();
+                    break;
+                case 0:
+                    System.exit(0);
+                    break;
+            }
+        } while (choice != 0);
     }
 }

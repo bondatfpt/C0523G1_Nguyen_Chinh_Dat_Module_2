@@ -8,7 +8,7 @@ import java.util.List;
 public interface IProductRepository {
     List<Product> getAllProduct();
     void add(Product product);
-    void setProduct(int id);
+    Product setProduct(int id,Product product);
     void removeProduct(int id);
     void findProduct(String name);
     List<Product> sortByPriceAscending();

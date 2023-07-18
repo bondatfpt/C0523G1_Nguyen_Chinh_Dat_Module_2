@@ -38,7 +38,8 @@ public class ProductService implements IProductService {
         String newName = input.nextLine();
         System.out.println("Enter a new price");
         double newPrice = input.nextDouble();
-        productRepository.setProduct(idSet);
+        Product product =new Product(idSet,newName,newPrice);
+        productRepository.setProduct(idSet,product);
     }
 
     @Override

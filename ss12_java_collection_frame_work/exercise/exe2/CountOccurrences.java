@@ -13,8 +13,8 @@ public class CountOccurrences {
     }
     public static Map countOccurrences(String string){
         Map<String,Integer> myMap = new HashMap<>();
-        String arrString[] = string.toLowerCase().split(" ");
-        
+        String arrString [] = string.toLowerCase().split(" ");
+
         for (String word: arrString){
             if(myMap.containsKey(word)){
                 Integer value = myMap.get(word);

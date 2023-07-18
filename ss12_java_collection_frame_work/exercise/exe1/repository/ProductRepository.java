@@ -31,13 +31,14 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public void setProduct(int id) {
+    public Product setProduct(int id, Product product) {
         for (int i = 0; i < productArrayList.size(); i++) {
             if(productArrayList.get(i).getId()== id){
-                productArrayList.get(i).setName(productArrayList.get(i).getName());
-                productArrayList.get(i).setPrice(productArrayList.get(i).getPrice());
+               productArrayList.set(i,product).setName(productArrayList.get(i).getName());
+               productArrayList.set(i,product).setPrice(productArrayList.get(i).getPrice());
             }
         }
+        return product;
     }
 
     @Override

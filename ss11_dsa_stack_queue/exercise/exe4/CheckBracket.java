@@ -5,29 +5,31 @@ import java.util.Stack;
 
 public class CheckBracket {
     public static void main(String[] args) {
-        char leftBrackets = '(';
-        char rightBrackets = ')';
-        int countRightBrackets = 0;
-        Stack bracketStack = new Stack<>();
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter your expression");
-        String expression = input.nextLine();
+        String string = "{}()[)]";
+        String string1 = "{}()[()]";
+        System.out.println(checkBrackets(string));
+        System.out.println(checkBrackets(string1));
+    }
+    public static boolean checkBrackets(String expression){
+        Stack <Character>bracketStack = new Stack();
         for (int i = 0; i < expression.length(); i++) {
-            if(leftBrackets == expression.charAt(i)){
-                bracketStack.push(expression.charAt(i));
+            char bracket = expression.charAt(i);
+            if(bracket == '('|| bracket == '{' || bracket == '['){
+                bracketStack.push(bracket);
+            }else if(bracket == ')'){
+                if(bracketStack.isEmpty() || bracketStack.pop() != '('){
+                    return false;
+                }
+            } else if (bracket == '}') {
+                if(bracketStack.isEmpty() || bracketStack.pop() != '{'){
+                    return false;
+                }
+            } else if (bracket == ']') {
+                if(bracketStack.isEmpty() || bracketStack.pop() != '['){
+                    return false;
+                }
             }
         }
-        for (int i = 0; i < expression.length(); i++) {
-            if(rightBrackets == expression.charAt(i)){
-                countRightBrackets++;
-            }
-        }
-        if(countRightBrackets == bracketStack.size()){
-            System.out.println("Your expression is true");
-        }
-        else {
-            System.out.println("Your expression is false");
-
-        }
+        return bracketStack.isEmpty();
     }
 }

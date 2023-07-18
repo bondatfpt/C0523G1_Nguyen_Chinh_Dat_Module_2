@@ -9,7 +9,7 @@ public class CountOccurrences {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter a text");
         String text = input.nextLine();
-        System.out.println(countOccurrences(text).toString());
+        System.out.println(countOccurrences(text));
     }
     public static Map countOccurrences(String string){
         Map<String,Integer> myMap = new HashMap<>();

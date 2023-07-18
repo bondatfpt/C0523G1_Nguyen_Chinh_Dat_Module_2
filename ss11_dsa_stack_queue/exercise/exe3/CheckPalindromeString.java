@@ -10,16 +10,26 @@ public class CheckPalindromeString {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a string: ");
         string = scanner.nextLine();
-        String stringToLowerCase = string.toLowerCase();
-        for (int i = 0; i < stringToLowerCase.length(); i++) {
-                if(stringToLowerCase.charAt(i) == stringToLowerCase.charAt(stringToLowerCase.length()-i-1)){
-                    System.out.println(string +" is palindrome string");
-                    break;
-                }
-                else {
-                    System.out.println(string +" is not palindrome string");
-                    break;
-                }
+        String [] arrString = string.trim().toLowerCase().split("");
+
+        Stack myStack = new Stack<>();
+        Queue myQueue = new LinkedList();
+
+        for (int i = 0; i < arrString.length; i++) {
+            myStack.push(arrString[i]);
+            myQueue.offer(arrString[i]);
+        }
+        int count = 0;
+        for (int i = 0; i < arrString.length; i++) {
+            if(!myStack.pop().equals(myQueue.poll())){
+                count++;
+            }
+        }
+        if(count == 0){
+            System.out.println(string + " is palindrome String");
+        }
+        else {
+            System.out.println(string + " is not palindrome String");
         }
 
     }

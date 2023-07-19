@@ -7,6 +7,7 @@ import ss12_java_collection_frame_work.exercise.exe1.model.Product;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class ProductRepository implements IProductRepository {
     private static List<Product> productArrayList = new ArrayList<Product>();
@@ -19,28 +20,23 @@ public class ProductRepository implements IProductRepository {
         productArrayList.add(product2);
         productArrayList.add(product3);
     }
-
     @Override
     public List<Product> getAllProduct() {
         return productArrayList;
     }
-
     @Override
     public void add(Product product) {
         productArrayList.add(product);
     }
-
-    @Override
     public Product setProduct(int id, Product product) {
         for (int i = 0; i < productArrayList.size(); i++) {
-            if(productArrayList.get(i).getId()== id){
-               productArrayList.set(i,product).setName(productArrayList.get(i).getName());
-               productArrayList.set(i,product).setPrice(productArrayList.get(i).getPrice());
+             if (productArrayList.get(i).getId() == id) {
+                productArrayList.set(i,product).setName(productArrayList.get(i).getName());
+                productArrayList.set(i, product).setPrice(productArrayList.get(i).getPrice());
             }
         }
         return product;
     }
-
     @Override
     public void removeProduct(int id) {
         for (int i = 0; i < productArrayList.size(); i++) {
@@ -49,7 +45,6 @@ public class ProductRepository implements IProductRepository {
             }
         }
     }
-
     @Override
     public void findProduct(String name) {
         for (int i = 0; i < productArrayList.size(); i++) {
@@ -61,14 +56,13 @@ public class ProductRepository implements IProductRepository {
     @Override
     public List<Product> sortByPriceAscending() {
         SortByPriceAscending sortByPriceAscending = new SortByPriceAscending();
-        Collections.sort(productArrayList,sortByPriceAscending);
+        Collections.sort(productArrayList, sortByPriceAscending);
         return productArrayList;
     }
-
     @Override
     public List<Product> sortByPriceDescending() {
-        SortByPriceDescending sortByPriceDescending =new SortByPriceDescending();
-        Collections.sort(productArrayList,sortByPriceDescending);
+        SortByPriceDescending sortByPriceDescending = new SortByPriceDescending();
+        Collections.sort(productArrayList, sortByPriceDescending);
         return productArrayList;
     }
 }

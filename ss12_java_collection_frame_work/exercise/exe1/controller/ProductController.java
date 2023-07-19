@@ -49,6 +49,6 @@ public class ProductController {
                     System.exit(0);
                     break;
             }
-        } while (choice != 0);
+        } while (true);
     }
 }

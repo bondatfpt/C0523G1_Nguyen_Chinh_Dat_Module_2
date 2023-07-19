@@ -20,18 +20,21 @@ public class ProductRepository implements IProductRepository {
         productArrayList.add(product2);
         productArrayList.add(product3);
     }
+
     @Override
     public List<Product> getAllProduct() {
         return productArrayList;
     }
+
     @Override
     public void add(Product product) {
         productArrayList.add(product);
     }
+
     public Product setProduct(int id, Product product) {
         for (int i = 0; i < productArrayList.size(); i++) {
-             if (productArrayList.get(i).getId() == id) {
-                productArrayList.set(i,product).setName(productArrayList.get(i).getName());
+            if (productArrayList.get(i).getId() == id) {
+                productArrayList.set(i, product).setName(productArrayList.get(i).getName());
                 productArrayList.set(i, product).setPrice(productArrayList.get(i).getPrice());
             }
         }
@@ -53,12 +56,14 @@ public class ProductRepository implements IProductRepository {
             }
         }
     }
+
     @Override
     public List<Product> sortByPriceAscending() {
         SortByPriceAscending sortByPriceAscending = new SortByPriceAscending();
         Collections.sort(productArrayList, sortByPriceAscending);
         return productArrayList;
     }
+
     @Override
     public List<Product> sortByPriceDescending() {
         SortByPriceDescending sortByPriceDescending = new SortByPriceDescending();

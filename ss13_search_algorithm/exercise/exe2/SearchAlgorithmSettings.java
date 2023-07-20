@@ -29,9 +29,10 @@ public class SearchAlgorithmSettings {
             }
         }
         System.out.println(Arrays.toString(arrInteger));
-        System.out.println(binarySearch(arrInteger, 0, arrInteger.length - 1, 100));
+        System.out.println("Enter a value you want to search");
+        int valueSearch = Integer.parseInt(input.nextLine());
+        System.out.println(binarySearch(arrInteger, 0, arrInteger.length - 1, valueSearch));
     }
-
     public static int binarySearch(int[] array, int left, int right, int value) {
         int middle = (left + right) / 2;
         if (array[middle] == value) {

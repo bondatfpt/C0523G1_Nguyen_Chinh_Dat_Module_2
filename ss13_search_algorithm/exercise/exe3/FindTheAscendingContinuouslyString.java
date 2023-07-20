@@ -6,25 +6,30 @@ import java.util.List;
 
 public class FindTheAscendingContinuouslyString {
     public static void main(String[] args) {
-        String string = "Chinh Dat";
+        String string = "abcdefghkabcdklabcdefgasdkk";
         System.out.println(findTheAscendingContinuouslyString(string));
-    }
 
+    }
     public static List findTheAscendingContinuouslyString(String string) {
-        List<Character> myList = new LinkedList();
-        List<Character> maxList = new LinkedList();
+        LinkedList<Character> maxList = new LinkedList();
         for (int i = 0; i < string.length(); i++) {
-            if (myList.size() > 1 && string.charAt(i) <= myList.get(myList.size() - 1) && myList.contains(string.charAt(i))) {
-                    myList.clear();
-            }
+            LinkedList<Character> myList = new LinkedList();
             myList.add(string.charAt(i));
+            for (int j = i + 1; j < string.length(); j++) {
+                if (string.charAt(j) > myList.getLast()) {
+                        myList.add(string.charAt(j));
+                }
+                else {
+                    break;
+                }
+            }
             if(myList.size() > maxList.size()){
                 maxList.clear();
                 maxList.addAll(myList);
             }
         }
-            return maxList;
-        }
-
+        return maxList;
     }
+
+}
 

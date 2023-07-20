@@ -1,4 +1,4 @@
-package ss13_search_algorithm.exercise;
+package ss13_search_algorithm.exercise.exe3;
 
 import java.util.LinkedList;
 import java.util.List;

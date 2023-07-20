@@ -1,13 +1,12 @@
 package ss12_java_collection_frame_work.exercise.exe1.repository;
 
-import ss12_java_collection_frame_work.exercise.exe1.Common.SortByPriceAscending;
-import ss12_java_collection_frame_work.exercise.exe1.Common.SortByPriceDescending;
+import ss12_java_collection_frame_work.exercise.exe1.common.SortByPriceAscending;
+import ss12_java_collection_frame_work.exercise.exe1.common.SortByPriceDescending;
 import ss12_java_collection_frame_work.exercise.exe1.model.Product;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class ProductRepository implements IProductRepository {
     private static List<Product> productArrayList = new ArrayList<Product>();

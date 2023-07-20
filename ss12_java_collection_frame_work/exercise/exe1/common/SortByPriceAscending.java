@@ -1,4 +1,4 @@
-package ss12_java_collection_frame_work.exercise.exe1.Common;
+package ss12_java_collection_frame_work.exercise.exe1.common;
 import java.util.Comparator;
 import ss12_java_collection_frame_work.exercise.exe1.model.Product;
 

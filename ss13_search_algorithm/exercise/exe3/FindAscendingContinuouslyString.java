@@ -4,13 +4,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class FindTheAscendingContinuouslyString {
+public class FindAscendingContinuouslyString {
     public static void main(String[] args) {
         String string = "abcdefghkabcdklabcdefgasdkk";
-        System.out.println(findTheAscendingContinuouslyString(string));
-
+        for (Object item:findAscendingContinuouslyString(string)) {
+            System.out.print(item);
+        }
     }
-    public static List findTheAscendingContinuouslyString(String string) {
+    public static List findAscendingContinuouslyString(String string) {
         LinkedList<Character> maxList = new LinkedList();
         for (int i = 0; i < string.length(); i++) {
             LinkedList<Character> myList = new LinkedList();
@@ -30,6 +31,5 @@ public class FindTheAscendingContinuouslyString {
         }
         return maxList;
     }
-
 }
 

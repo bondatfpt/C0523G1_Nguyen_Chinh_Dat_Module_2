@@ -7,6 +7,6 @@ public class Test {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter a string");
         String string  = input.nextLine();
-        System.out.println("The ascending substring is: " + FindTheAscendingString.findTheAscendingString(string));
+        System.out.println("The ascending substring is: " + FindAscendingString.findTheAscendingString(string));
     }
 }

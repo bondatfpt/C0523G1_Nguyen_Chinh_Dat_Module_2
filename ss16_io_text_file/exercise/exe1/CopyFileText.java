@@ -12,7 +12,8 @@ public class CopyFileText {
         BufferedReader bufferedReader = null;
         List <String> listContentOfFile = new ArrayList<>();
         try {
-            FileReader fileReader = new FileReader(filePathRead);
+            File file = new File(filePathRead);
+            FileReader fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
             String line ="";
             int count = 0;

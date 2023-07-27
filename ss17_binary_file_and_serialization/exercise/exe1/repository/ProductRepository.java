@@ -25,13 +25,15 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public void searchByName(String name) {
+    public Product searchByName(String name) {
         List<Product> productList = getAll();
+        Product product = null;
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getName().contains(name)) {
-                System.out.println(productList.get(i));
+               product = productList.get(i);
             }
         }
+        return product;
     }
     @Override
     public void remove(int id) {

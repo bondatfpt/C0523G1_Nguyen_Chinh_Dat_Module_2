@@ -7,6 +7,6 @@ import java.util.List;
 public interface IProductRepository {
      List <Product> getAll();
      void add(Product product);
-     void searchByName(String name);
+     Product  searchByName (String name);
       void remove(int id);
 }

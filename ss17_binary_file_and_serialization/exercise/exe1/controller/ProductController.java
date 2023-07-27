@@ -14,6 +14,7 @@ public class ProductController {
         System.out.println("2.Add");
         System.out.println("3.Find");
         System.out.println("4.Delete");
+        System.out.println("0.Exit");
         int select;
         do {
             System.out.println("Enter your choice");

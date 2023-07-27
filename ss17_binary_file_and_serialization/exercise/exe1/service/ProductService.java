@@ -38,7 +38,9 @@ public class ProductService implements IProductService{
         Scanner input = new Scanner(System.in);
         System.out.println("Enter a name of product you want to search.");
         String name = input.nextLine();
-        productRepository.searchByName(name);
+        Product product = null;
+        product = productRepository.searchByName(name);
+        System.out.println(product);
     }
 
     @Override

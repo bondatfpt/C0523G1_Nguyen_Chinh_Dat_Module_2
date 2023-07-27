@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 public class CrawlNews {
     private static final String REGEX_NEWS_LIST = "<h3.*?</h3>";
     public static void main(String[] args) throws IOException {
-        //Lấy data HTML từ https://dantri.com.vn/the-gioi.htm
         URL link = new URL("https://dantri.com.vn/the-gioi.htm");
         URLConnection connection = link.openConnection();
         BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -22,7 +21,6 @@ public class CrawlNews {
         while ((line = reader.readLine()) != null) {
             dataLine.append(line);
         }
-        //Gộp những chuỗi theo regex "<h .* <h/3>"
         Pattern pattern = Pattern.compile(REGEX_NEWS_LIST);
         Matcher matcher = pattern.matcher(dataLine);
         ArrayList<String> newsList = new ArrayList<>();

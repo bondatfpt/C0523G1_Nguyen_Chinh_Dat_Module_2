@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class ValidatePhoneNumber {
     private final static String REGEX_PHONE_NUMBER = "^[(]\\d{2}[)]-[(]0\\d{9}[)]$";
-
     public static void main(String[] args) {
         List<String> listPhoneNumber = new ArrayList<>();
         listPhoneNumber.add("(84)-(0978489648)");
@@ -21,6 +20,5 @@ public class ValidatePhoneNumber {
                 System.out.println("Invalid phone number: " +phoneNumber);
             }
         }
-
     }
 }

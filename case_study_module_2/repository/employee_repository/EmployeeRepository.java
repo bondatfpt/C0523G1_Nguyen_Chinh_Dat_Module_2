@@ -34,7 +34,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     public void delete(String id) {
         List<Employee> employeeList = getAllEmployee();
         for (int i = 0; i < employeeList.size(); i++) {
-            if(employeeList.get(i).getId() == id){
+            if(employeeList.get(i).getId().equals(id)){
                 employeeList.remove(i);
             }
         }
@@ -61,7 +61,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     public void updateEmployee(String id, Employee employee) {
         List <Employee> employeeList = getAllEmployee();
         for (int i = 0; i < employeeList.size(); i++) {
-            if(employeeList.get(i).getId() == id){
+            if(employeeList.get(i).getId().equals(id)){
                employeeList.set(i,employee).setName(employeeList.get(i).getName());
                employeeList.set(i,employee).setDate(employeeList.get(i).getDate());
                employeeList.set(i,employee).setGender(employeeList.get(i).getGender());

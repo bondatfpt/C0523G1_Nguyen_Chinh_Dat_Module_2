@@ -1,5 +1,6 @@
 package case_study_module_2.service.employee_service;
 
+import case_study_module_2.common.validate.ValidateAddNewEmployee;
 import case_study_module_2.model.person.Employee;
 import case_study_module_2.repository.employee_repository.IEmployeeRepository;
 import case_study_module_2.repository.employee_repository.EmployeeRepository;
@@ -8,14 +9,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
-    private final static String REGEX_DATE = "^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$";
     private IEmployeeRepository employeeRepository = new EmployeeRepository();
     Scanner input = new Scanner(System.in);
 
     @Override
     public void add() {
-        System.out.println("Enter a id");
-        String id = input.nextLine();
+        String id;
+        do {
+            System.out.println("Enter an id");
+            id = input.nextLine();
+            if (!id.matches(ValidateAddNewEmployee.REGEX_ID_EMPLOYEE)) {
+                System.out.println("Illegal id !");
+            }
+        } while (!id.matches(ValidateAddNewEmployee.REGEX_ID_EMPLOYEE));
         System.out.println("Enter a name");
         String name = input.nextLine();
         System.out.println("Enter a date");
@@ -40,16 +46,31 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void display() {
-        List<Employee> employeeList = employeeRepository.getAllEmployee();
-        for (Employee employee : employeeList) {
-            System.out.println(employee.getInforToCsv());
+        List <Employee> employeeList;
+        try {
+            employeeList = employeeRepository.getAllEmployee();
+            if (employeeList.isEmpty()) {
+                throw new RuntimeException();
+            }else {
+                for (Employee employee : employeeList) {
+                    System.out.println(employee.getInforToCsv());
+                }
+            }
+        } catch (RuntimeException e) {
+            System.out.println("File is empty !");
         }
     }
 
     @Override
     public void delete() {
-        System.out.println("Enter a id of employee you want to delete.");
-        String id = input.nextLine();
+        String id;
+        do {
+            System.out.println("Enter an id of employee you want to delete");
+            id = input.nextLine();
+            if (!id.matches(ValidateAddNewEmployee.REGEX_ID_EMPLOYEE)) {
+                System.out.println("Illegal id !");
+            }
+        } while (!id.matches(ValidateAddNewEmployee.REGEX_ID_EMPLOYEE));
         employeeRepository.delete(id);
     }
 
@@ -69,8 +90,14 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void update() {
-        System.out.println("Enter an id you want to update");
-        String id = input.nextLine();
+        String id;
+        do {
+            System.out.println("Enter an id of employee you want to update");
+            id = input.nextLine();
+            if (!id.matches(ValidateAddNewEmployee.REGEX_ID_EMPLOYEE)) {
+                System.out.println("Illegal id !");
+            }
+        } while (!id.matches(ValidateAddNewEmployee.REGEX_ID_EMPLOYEE));
         System.out.println("Enter a new name");
         String name = input.nextLine();
         System.out.println("Enter a new date");
@@ -89,7 +116,7 @@ public class EmployeeService implements IEmployeeService {
         String position = input.nextLine();
         System.out.println("Enter a new salary");
         double salary = Double.parseDouble(input.nextLine());
-        Employee employee = new Employee(id,name,date,gender,phoneNumber,identityNumber,email,level,position,salary);
-        employeeRepository.updateEmployee(id,employee);
+        Employee employee = new Employee(id, name, date, gender, phoneNumber, identityNumber, email, level, position, salary);
+        employeeRepository.updateEmployee(id, employee);
     }
 }

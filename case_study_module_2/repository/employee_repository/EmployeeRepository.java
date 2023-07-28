@@ -1,0 +1,71 @@
+package case_study_module_2.repository.employee_repository;
+
+import case_study_module_2.utils.ReadAndWriteData;
+import case_study_module_2.model.person.Employee;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmployeeRepository implements IEmployeeRepository {
+    private final String FILE_PATH_EMPLOYEE = "D:\\C0523G1_Nguyen_Chinh_Dat_Module_2\\case_study_module_2\\data\\employee.csv";
+
+    @Override
+    public void add(Employee employee) {
+        List<String> employeeList = new ArrayList<>();
+        employeeList.add(employee.getInforToCsv());
+        ReadAndWriteData.writeToCsv(FILE_PATH_EMPLOYEE, employeeList, true);
+    }
+
+    @Override
+    public List<Employee> getAllEmployee() {
+        List<Employee> employeeList = new ArrayList<>();
+        List<String> stringList = ReadAndWriteData.readFromCSV(FILE_PATH_EMPLOYEE);
+        String[] array = null;
+        for (String string : stringList) {
+            array = string.split(",");
+            Employee employee = new Employee(Integer.parseInt(array[0]), array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], Double.parseDouble(array[9]));
+            employeeList.add(employee);
+        }
+        return employeeList;
+    }
+
+    @Override
+    public void delete(int id) {
+        List<Employee> employeeList = getAllEmployee();
+        for (int i = 0; i < employeeList.size(); i++) {
+            if(employeeList.get(i).getId() == id){
+                employeeList.remove(i);
+            }
+        }
+        List <String> stringList = new ArrayList<>();
+        for (Employee employee:employeeList) {
+            stringList.add(employee.getInforToCsv());
+        }
+        ReadAndWriteData.writeToCsv(FILE_PATH_EMPLOYEE,stringList,false);
+    }
+
+    @Override
+    public List <Employee> searchByName(String name) {
+        List <Employee> employeeList = getAllEmployee();
+        List <Employee> employees = new ArrayList<>();
+        for (int i = 0; i < employeeList.size(); i++) {
+            if(employeeList.get(i).getName().contains(name)){
+                employees.add(employeeList.get(i));
+            }
+        }
+        return employeeList;
+    }
+
+    @Override
+    public void updateEmployee(int id) {
+        List <Employee> employeeList = getAllEmployee();
+        for (int i = 0; i < employeeList.size(); i++) {
+            if(employeeList.get(i).getId() == id){
+               
+            }
+        }
+    }
+}
+
+

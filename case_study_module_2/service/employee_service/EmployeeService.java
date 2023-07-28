@@ -71,6 +71,25 @@ public class EmployeeService implements IEmployeeService {
     public void update() {
         System.out.println("Enter an id you want to update");
         int id = Integer.parseInt(input.nextLine());
-        employeeRepository.updateEmployee(id);
+        System.out.println("Enter a new name");
+        String name = input.nextLine();
+        System.out.println("Enter a new date");
+        String date = input.nextLine();
+        System.out.println("Enter a new gender");
+        String gender = input.nextLine();
+        System.out.println("Enter a new phone number");
+        String phoneNumber = input.nextLine();
+        System.out.println("Enter a new identity number");
+        String identityNumber = input.nextLine();
+        System.out.println("Enter a new email");
+        String email = input.nextLine();
+        System.out.println("Enter a new level");
+        String level = input.nextLine();
+        System.out.println("Enter a new position");
+        String position = input.nextLine();
+        System.out.println("Enter a new salary");
+        double salary = Double.parseDouble(input.nextLine());
+        Employee employee = new Employee(id,name,date,gender,phoneNumber,identityNumber,email,level,position,salary);
+        employeeRepository.updateEmployee(id,employee);
     }
 }

@@ -8,6 +8,7 @@ public class Employee extends Person {
     private String level;
     private String position;
     private double salary;
+
     public Employee(int id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
         super(id, name, date, gender, phoneNumber, identityNumber, email);
     }

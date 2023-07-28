@@ -58,13 +58,26 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public void updateEmployee(int id) {
+    public void updateEmployee(int id, Employee employee) {
         List <Employee> employeeList = getAllEmployee();
         for (int i = 0; i < employeeList.size(); i++) {
             if(employeeList.get(i).getId() == id){
-               
+               employeeList.set(i,employee).setName(employeeList.get(i).getName());
+               employeeList.set(i,employee).setDate(employeeList.get(i).getDate());
+               employeeList.set(i,employee).setGender(employeeList.get(i).getGender());
+               employeeList.set(i,employee).setPhoneNumber(employeeList.get(i).getPhoneNumber());
+               employeeList.set(i,employee).setIdentityNumber(employeeList.get(i).getIdentityNumber());
+               employeeList.set(i,employee).setEmail(employeeList.get(i).getEmail());
+               employeeList.set(i,employee).setLevel(employeeList.get(i).getLevel());
+               employeeList.set(i,employee).setPosition(employeeList.get(i).getPosition());
+               employeeList.set(i,employee).setLevel(employeeList.get(i).getLevel());
             }
         }
+        List <String> stringList = new ArrayList<>();
+        for (Employee employee1: employeeList) {
+            stringList.add(employee1.getInforToCsv());
+        }
+        ReadAndWriteData.writeToCsv(FILE_PATH_EMPLOYEE,stringList,false);
     }
 }
 

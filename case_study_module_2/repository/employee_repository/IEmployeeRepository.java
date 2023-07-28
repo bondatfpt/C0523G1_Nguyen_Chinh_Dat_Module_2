@@ -10,5 +10,5 @@ public interface IEmployeeRepository extends IRepository {
     List <Employee> getAllEmployee();
     void delete(int id);
     List<Employee> searchByName(String name);
-    void updateEmployee(int id);
+    void updateEmployee(int id,Employee employee);
 }

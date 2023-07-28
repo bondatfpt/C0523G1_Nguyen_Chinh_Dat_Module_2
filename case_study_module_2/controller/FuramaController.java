@@ -1,9 +1,13 @@
 package case_study_module_2.controller;
 
+import case_study_module_2.service.IEmployeeService;
+import case_study_module_2.service.impl.EmployeeService;
+
 import java.util.Scanner;
 
 public class FuramaController {
-    public static void main(String[] args) {
+    private static  IEmployeeService employeeService = new EmployeeService();
+    public static void showMenu() {
         int select;
         Scanner input = new Scanner(System.in);
         do {
@@ -29,8 +33,10 @@ public class FuramaController {
                     choiceEmployee = Integer.parseInt(input.nextLine());
                     switch (choiceEmployee){
                         case 1:
+                            employeeService.display();
                             break;
                         case 2:
+                            employeeService.add();
                             break;
                         case 3:
                             break;

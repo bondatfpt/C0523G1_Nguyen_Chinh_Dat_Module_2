@@ -7,11 +7,11 @@ import java.util.Date;
 public class Customer extends Person {
     private String type;
     private String address;
-    public Customer(int id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
+    public Customer(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
         super(id, name, date, gender, phoneNumber, identityNumber, email);
     }
 
-    public Customer(int id, String name, String date, String gender, String phoneNumber, String identityNumber, String email, String type, String address) {
+    public Customer(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email, String type, String address) {
         super(id, name, date, gender, phoneNumber, identityNumber, email);
         this.type = type;
         this.address = address;

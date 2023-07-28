@@ -24,14 +24,14 @@ public class EmployeeRepository implements IEmployeeRepository {
         String[] array = null;
         for (String string : stringList) {
             array = string.split(",");
-            Employee employee = new Employee(Integer.parseInt(array[0]), array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], Double.parseDouble(array[9]));
+            Employee employee = new Employee(array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], Double.parseDouble(array[9]));
             employeeList.add(employee);
         }
         return employeeList;
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         List<Employee> employeeList = getAllEmployee();
         for (int i = 0; i < employeeList.size(); i++) {
             if(employeeList.get(i).getId() == id){
@@ -58,7 +58,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public void updateEmployee(int id, Employee employee) {
+    public void updateEmployee(String id, Employee employee) {
         List <Employee> employeeList = getAllEmployee();
         for (int i = 0; i < employeeList.size(); i++) {
             if(employeeList.get(i).getId() == id){

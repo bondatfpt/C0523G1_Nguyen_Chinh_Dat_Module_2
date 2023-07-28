@@ -15,7 +15,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void add() {
         System.out.println("Enter a id");
-        int id = Integer.parseInt(input.nextLine());
+        String id = input.nextLine();
         System.out.println("Enter a name");
         String name = input.nextLine();
         System.out.println("Enter a date");
@@ -49,7 +49,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void delete() {
         System.out.println("Enter a id of employee you want to delete.");
-        int id = Integer.parseInt(input.nextLine());
+        String id = input.nextLine();
         employeeRepository.delete(id);
     }
 
@@ -70,7 +70,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void update() {
         System.out.println("Enter an id you want to update");
-        int id = Integer.parseInt(input.nextLine());
+        String id = input.nextLine();
         System.out.println("Enter a new name");
         String name = input.nextLine();
         System.out.println("Enter a new date");

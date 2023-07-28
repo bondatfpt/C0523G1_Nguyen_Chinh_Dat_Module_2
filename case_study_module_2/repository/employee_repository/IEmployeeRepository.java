@@ -8,7 +8,7 @@ import java.util.List;
 public interface IEmployeeRepository extends IRepository {
     void add(Employee employee);
     List <Employee> getAllEmployee();
-    void delete(int id);
+    void delete(String id);
     List<Employee> searchByName(String name);
-    void updateEmployee(int id,Employee employee);
+    void updateEmployee(String id,Employee employee);
 }

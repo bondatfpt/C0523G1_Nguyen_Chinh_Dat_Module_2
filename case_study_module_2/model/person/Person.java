@@ -3,7 +3,7 @@ package case_study_module_2.model.person;
 import java.util.Date;
 
 public abstract class Person {
-    private int id;
+    private String id;
     private String name;
     private String date;
     private String gender;
@@ -11,7 +11,7 @@ public abstract class Person {
     private String identityNumber;
     private String email;
 
-    public Person(int id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
+    public Person(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -21,11 +21,11 @@ public abstract class Person {
         this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

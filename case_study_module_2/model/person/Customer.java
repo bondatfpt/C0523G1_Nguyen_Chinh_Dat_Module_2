@@ -34,6 +34,9 @@ public class Customer extends Person {
         this.address = address;
     }
 
+    public String getInforToCsv(){
+        return this.getId() + "," + this.getName() +"," + this.getDate() +"," + this.getGender() + "," + this.getPhoneNumber()+"," + this.getIdentityNumber() + "," + this.getEmail() + "," + this.getType() +","+ this.getAddress();
+    }
     @Override
     public String toString() {
         return super.toString()+"Customer{" +

@@ -1,5 +1,7 @@
 package case_study_module_2.controller;
 
+import case_study_module_2.service.customer_service.CustomerService;
+import case_study_module_2.service.customer_service.ICustomerService;
 import case_study_module_2.service.employee_service.IEmployeeService;
 import case_study_module_2.service.employee_service.EmployeeService;
 
@@ -7,6 +9,7 @@ import java.util.Scanner;
 
 public class FuramaController {
     private static IEmployeeService employeeService = new EmployeeService();
+    private static ICustomerService customerService = new CustomerService();
 
     public static void showMenu() {
         int select;
@@ -67,14 +70,19 @@ public class FuramaController {
                         choiceCustomer = Integer.parseInt(input.nextLine());
                         switch (choiceCustomer) {
                             case 1:
+                                customerService.display();
                                 break;
                             case 2:
+                                customerService.add();
                                 break;
                             case 3:
+                                customerService.update();
                                 break;
                             case 4:
+                                customerService.delete();
                                 break;
                             case 5:
+                                customerService.searchByName();
                                 break;
                             case 6:
                                 break;

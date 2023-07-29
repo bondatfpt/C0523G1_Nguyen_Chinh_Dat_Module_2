@@ -1,4 +1,4 @@
-package case_study_module_2.utils;
+package case_study_module_2.common;
 
 import java.io.*;
 import java.util.ArrayList;

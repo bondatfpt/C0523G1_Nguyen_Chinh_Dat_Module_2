@@ -1,5 +1,6 @@
 package case_study_module_2.model.person;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public abstract class Person {

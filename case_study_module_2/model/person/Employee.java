@@ -2,6 +2,7 @@ package case_study_module_2.model.person;
 
 import case_study_module_2.model.person.Person;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Employee extends Person {

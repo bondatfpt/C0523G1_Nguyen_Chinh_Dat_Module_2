@@ -1,9 +1,9 @@
 package case_study_module_2.repository.employee_repository;
 
-import case_study_module_2.utils.ReadAndWriteData;
+import case_study_module_2.common.ReadAndWriteData;
 import case_study_module_2.model.person.Employee;
 
-import java.io.File;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +78,17 @@ public class EmployeeRepository implements IEmployeeRepository {
             stringList.add(employee1.getInforToCsv());
         }
         ReadAndWriteData.writeToCsv(FILE_PATH_EMPLOYEE,stringList,false);
+    }
+
+    @Override
+    public Employee getEmployeeById(String id) {
+        List <Employee> employeeList = getAllEmployee();
+        for (Employee employee:employeeList) {
+            if(employee.getId().equals(id)){
+                return employee;
+            }
+        }
+        return null;
     }
 }
 

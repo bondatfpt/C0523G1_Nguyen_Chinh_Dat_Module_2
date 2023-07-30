@@ -54,7 +54,7 @@ public class EmployeeRepository implements IEmployeeRepository {
                 employees.add(employeeList.get(i));
             }
         }
-        return employeeList;
+        return employees;
     }
 
     @Override

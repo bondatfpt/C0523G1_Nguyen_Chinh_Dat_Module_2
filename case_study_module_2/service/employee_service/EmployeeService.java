@@ -137,6 +137,8 @@ public class EmployeeService implements IEmployeeService {
         } while (salary <= 0);
 
         employeeRepository.add(new Employee(id, name, date, gender, phoneNumber, identityNumber, email, level, position, salary));
+        System.out.println("Successfully added employee");
+        this.display();
     }
     @Override
     public void display() {
@@ -159,10 +161,12 @@ public class EmployeeService implements IEmployeeService {
         System.out.println("Enter an id of employee you want to delete.");
         String id = ValidateInputEmployee.validateIdEmployeeToDeleteOrUpdate();
         employeeRepository.delete(id);
+        System.out.println("Successfully deleted employee");
+        this.display();
     }
     @Override
     public void searchByName() {
-        System.out.println("Enter a name you want to search");
+        System.out.println("Enter a name of employee you want to search");
         String nameSearch = input.nextLine();
         try {
             List<Employee> employeeList = employeeRepository.searchByName(nameSearch);
@@ -297,5 +301,7 @@ public class EmployeeService implements IEmployeeService {
         } while (salary <= 0);
         Employee employee = new Employee(id, name, date, gender, phoneNumber, identityNumber, email, level, position, salary);
         employeeRepository.updateEmployee(id, employee);
+        System.out.println("Successfully updated employee");
+        this.display();
     }
 }

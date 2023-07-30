@@ -90,6 +90,39 @@ public class EmployeeRepository implements IEmployeeRepository {
         }
         return null;
     }
+
+    @Override
+    public Employee getEmployeeByEmail(String email) {
+        List<Employee>employeeList = getAllEmployee();
+        for (Employee employee: employeeList) {
+            if(employee.getEmail().equals(email)){
+                return employee;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Employee getEmployeeByPhoneNumber(String phoneNumber) {
+        List<Employee>employeeList = getAllEmployee();
+        for (Employee employee:employeeList) {
+            if(employee.getPhoneNumber().equals(phoneNumber)){
+                return employee;
+            }
+        }
+         return null;
+    }
+
+    @Override
+    public Employee getEmployeeByIdentityNumber(String identityNumber) {
+        List<Employee>employeeList = getAllEmployee();
+        for (Employee employee:employeeList) {
+            if(employee.getIdentityNumber().equals(identityNumber)){
+                return employee;
+            }
+        }
+        return null;
+    }
 }
 
 

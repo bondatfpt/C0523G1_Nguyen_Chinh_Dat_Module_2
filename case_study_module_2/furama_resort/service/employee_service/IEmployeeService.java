@@ -8,4 +8,5 @@ public interface IEmployeeService extends IService {
     void delete();
     void searchByName();
     void update();
+
 }

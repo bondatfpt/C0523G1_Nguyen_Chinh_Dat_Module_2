@@ -39,6 +39,15 @@ public class CustomerRepository implements ICustomerRepository {
         }
         return null;
     }
+    public Customer getCustomerByEmail(String email){
+        List <Customer> customers = getAllCustomer();
+        for (Customer customer:customers) {
+            if(customer.getEmail().equals(email)){
+                return customer;
+            }
+        }
+        return null;
+    }
 
     @Override
     public void delete(String id) {
@@ -87,5 +96,27 @@ public class CustomerRepository implements ICustomerRepository {
             }
         }
         return customerSearch;
+    }
+
+    @Override
+    public Customer getCustomerByPhoneNumber(String phoneNumber) {
+        List <Customer> customers = getAllCustomer();
+        for (Customer customer:customers) {
+            if(customer.getPhoneNumber().equals(phoneNumber)){
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Customer getCustomerByIdentityNumber(String identityNumber) {
+        List <Customer> customers = getAllCustomer();
+        for (Customer customer:customers) {
+            if(customer.getIdentityNumber().equals(identityNumber)){
+                return customer;
+            }
+        }
+        return null;
     }
 }

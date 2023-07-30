@@ -12,4 +12,7 @@ public interface IEmployeeRepository extends IRepository {
     List<Employee> searchByName(String name);
     void updateEmployee(String id,Employee employee);
     Employee getEmployeeById(String id);
+    Employee getEmployeeByEmail(String email);
+    Employee getEmployeeByPhoneNumber(String phoneNumber);
+    Employee getEmployeeByIdentityNumber(String identityNumber);
 }

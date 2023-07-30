@@ -4,7 +4,7 @@ import case_study_module_2.furama_resort.model.person.Employee;
 import case_study_module_2.furama_resort.repository.employee_repository.IEmployeeRepository;
 import case_study_module_2.furama_resort.repository.employee_repository.EmployeeRepository;
 import case_study_module_2.furama_resort.utils.validate.validate_input_person.ValidateInputPerson;
-import case_study_module_2.furama_resort.utils.validate.validate_id_employee.ValidateIdEmployee;
+import case_study_module_2.furama_resort.utils.validate.validate_input_employee.ValidateInputEmployee;
 
 import java.util.List;
 import java.util.Scanner;
@@ -15,8 +15,10 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void add() {
+        System.out.println("Fill in the following information to add a new employee");
+
         System.out.println("Enter an id");
-        String id = ValidateIdEmployee.validateIdEmployeeToAdd();
+        String id = ValidateInputEmployee.validateIdEmployeeToAdd();
 
         System.out.println("Enter a name");
         String name = ValidateInputPerson.validateName();
@@ -50,13 +52,13 @@ public class EmployeeService implements IEmployeeService {
         } while (gender.equals(""));
 
         System.out.println("Enter a phone number");
-        String phoneNumber = ValidateInputPerson.validatePhoneNumber();
+        String phoneNumber = ValidateInputEmployee.validatePhoneNumberEmployee();
 
         System.out.println("Enter an identity number");
         String identityNumber = ValidateInputPerson.validateIdentityNumber();
 
         System.out.println("Enter an email");
-        String email = ValidateInputPerson.validateEmail();
+        String email = ValidateInputEmployee.validateEmailEmployee();
 
         String level = "";
         int choiceLevel = 0;
@@ -161,7 +163,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void delete() {
         System.out.println("Enter an id of employee you want to delete.");
-        String id = ValidateIdEmployee.validateIdEmployeeToDeleteOrUpdate();
+        String id = ValidateInputEmployee.validateIdEmployeeToDeleteOrUpdate();
         employeeRepository.delete(id);
         System.out.println("Successfully deleted employee have id " + id);
         this.display();
@@ -187,7 +189,8 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void update() {
         System.out.println("Enter an id of employee you want to update");
-        String id = ValidateIdEmployee.validateIdEmployeeToDeleteOrUpdate();
+        String id = ValidateInputEmployee.validateIdEmployeeToDeleteOrUpdate();
+        System.out.println("Fill in the following information to update a new employee");
         System.out.println("Enter a name");
         String name = ValidateInputPerson.validateName();
 
@@ -220,13 +223,13 @@ public class EmployeeService implements IEmployeeService {
         } while (gender.equals(""));
 
         System.out.println("Enter a phone number");
-        String phoneNumber = ValidateInputPerson.validatePhoneNumber();
+        String phoneNumber = ValidateInputEmployee.validatePhoneNumberEmployee();
 
         System.out.println("Enter an identity number");
         String identityNumber = ValidateInputPerson.validateIdentityNumber();
 
         System.out.println("Enter a email");
-        String email = ValidateInputPerson.validateEmail();
+        String email = ValidateInputEmployee.validateEmailEmployee();
 
         String level = "";
         int choiceLevel = 0;

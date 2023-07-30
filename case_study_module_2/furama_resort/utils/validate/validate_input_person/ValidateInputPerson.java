@@ -6,20 +6,16 @@ import case_study_module_2.furama_resort.repository.customer_repository.Customer
 import case_study_module_2.furama_resort.repository.customer_repository.ICustomerRepository;
 import case_study_module_2.furama_resort.repository.employee_repository.EmployeeRepository;
 import case_study_module_2.furama_resort.repository.employee_repository.IEmployeeRepository;
-import case_study_module_2.furama_resort.utils.exceptions.EmailAlreadyExitsException;
+import case_study_module_2.furama_resort.utils.exceptions.IdentityNumberAlreadyExistException;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Scanner;
 
 public class ValidateInputPerson {
     private static Scanner input = new Scanner(System.in);
     private static final String REGEX_NAME = "^[A-Z][a-z]+\\s[A-Z][a-z]+\\s[A-Z]\\w+$";
     private static final String REGEX_DATE = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$";
-    private static final String REGEX_PHONE_NUMBER = "^0\\d{9}$";
     private static final String REGEX_IDENTITY_NUMBER = "^\\d{9}$|^\\d{12}$";
-    private static final String REGEX_EMAIL = "^[a-zA-Z0-9]\\w{5,31}@[a-z]{1,11}\\.[a-z]{1,11}(\\.[a-z]{1,11})?$";
-
 
     public static String validateName() {
         do {
@@ -64,52 +60,27 @@ public class ValidateInputPerson {
         } while (true);
     }
 
-    public static String validatePhoneNumber() {
-        do {
-            String phoneNumber = input.nextLine();
-            if (phoneNumber.matches(REGEX_PHONE_NUMBER)) {
-                return phoneNumber;
-            } else {
-                System.out.println("Wrong format.Re-enter,please.");
-            }
-        } while (true);
-    }
-
     public static String validateIdentityNumber() {
-        do {
-            String identityNumber = input.nextLine();
-            if (identityNumber.matches(REGEX_IDENTITY_NUMBER)) {
-                return identityNumber;
-            } else {
-                System.out.println("Wrong format. Re-enter,please.");
-            }
-        } while (true);
-    }
-
-    public static String validateEmail() {
         ICustomerRepository customerRepository = new CustomerRepository();
         IEmployeeRepository employeeRepository = new EmployeeRepository();
-        List<Customer> customerList = customerRepository.getAllCustomer();
-        List<Employee> employeeList = employeeRepository.getAllEmployee();
         do {
             try {
-                String email = input.nextLine();
-                if (email.matches(REGEX_EMAIL)) {
-                    customerList = customerRepository.getAllCustomer();
-                    for (Customer customer : customerList) {
-                        if (!customer.getEmail().equals(email)) {
-                            return email;
-                        }
-                        else {
-                            throw new EmailAlreadyExitsException("Email already exits. Re-enter email,please.");
-                        }
+                String identityNumber = input.nextLine();
+                if (identityNumber.matches(REGEX_IDENTITY_NUMBER)) {
+                    Customer customer = customerRepository.getCustomerByIdentityNumber(identityNumber);
+                    Employee employee = employeeRepository.getEmployeeByIdentityNumber(identityNumber);
+                    if (customer == null && employee == null) {
+                        return identityNumber;
+                    }else {
+                        throw new IdentityNumberAlreadyExistException("Identity number already exist. Re-enter identity number,please");
                     }
                 } else {
-                    System.out.println("Wrong format. Re-enter, please.");
+                    System.out.println("Wrong format. Re-enter,please.");
                 }
-            }catch (EmailAlreadyExitsException emailAlreadyExitsException){
-                emailAlreadyExitsException.getMessage();
+            } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
+                System.out.println(identityNumberAlreadyExistException.getMessage());
             }
         } while (true);
     }
+
 }

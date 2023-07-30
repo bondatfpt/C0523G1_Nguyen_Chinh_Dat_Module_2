@@ -109,6 +109,7 @@ public class CustomerService implements ICustomerService {
         Customer customer = new Customer(id, name, date, gender, phoneNumber, identityNumber, email, type, address);
         customerRepository.add(customer);
         System.out.println("Successfully added customer");
+        this.display();
     }
 
     @Override
@@ -117,6 +118,7 @@ public class CustomerService implements ICustomerService {
         String id = ValidateInputCustomer.validateIdCustomerToRemoveOrUpdate();
         customerRepository.delete(id);
         System.out.println("Successfully deleted customer");
+        this.display();
     }
 
     @Override
@@ -196,6 +198,7 @@ public class CustomerService implements ICustomerService {
         Customer customer = new Customer(id, name, date, gender, phoneNumber, identityNumber, email, type, address);
         customerRepository.updateCustomer(id, customer);
         System.out.println("Successfully updated customer");
+        this.display();
     }
 
     @Override

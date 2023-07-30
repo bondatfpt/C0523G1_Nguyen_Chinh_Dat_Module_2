@@ -133,5 +133,4 @@ public class ValidateInputPerson {
         }
         while (true);
     }
-
 }

@@ -4,7 +4,7 @@ import case_study_module_2.furama_resort.model.person.Customer;
 import case_study_module_2.furama_resort.repository.customer_repository.CustomerRepository;
 import case_study_module_2.furama_resort.repository.customer_repository.ICustomerRepository;
 import case_study_module_2.furama_resort.utils.validate.validate_input_person.ValidateInputPerson;
-import case_study_module_2.furama_resort.utils.validate.validate_input_customer.ValidateInputCustomer;
+import case_study_module_2.furama_resort.utils.validate.validate_id_customer.ValidateIdCustomer;
 
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class CustomerService implements ICustomerService {
     public void add() {
         System.out.println("Fill in the following information to add a new employee");
         System.out.println("Enter an id");
-        String id = ValidateInputCustomer.validateIdCustomerToAdd();
+        String id = ValidateIdCustomer.validateIdCustomerToAdd();
 
         System.out.println("Enter a name");
         String name = ValidateInputPerson.validateName();
@@ -69,13 +69,13 @@ public class CustomerService implements ICustomerService {
         } while (gender.equals(""));
 
         System.out.println("Enter phone number");
-        String phoneNumber = ValidateInputCustomer.validatePhoneNumberCustomer();
+        String phoneNumber = ValidateInputPerson.validatePhoneNumber();
 
         System.out.println("Enter identity number");
         String identityNumber = ValidateInputPerson.validateIdentityNumber();
 
         System.out.println("Enter email");
-        String email = ValidateInputCustomer.validateEmailCustomer();
+        String email = ValidateInputPerson.validateEmail();
 
         String type = "";
         int choiceType = 0;
@@ -141,7 +141,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public void delete() {
         System.out.println("Enter an id of customer you want to delete.");
-        String id = ValidateInputCustomer.validateIdCustomerToRemoveOrUpdate();
+        String id = ValidateIdCustomer.validateIdCustomerToRemoveOrUpdate();
         customerRepository.delete(id);
         System.out.println("Successfully deleted customer have id " + id);
         this.display();
@@ -151,7 +151,7 @@ public class CustomerService implements ICustomerService {
     public void update() {
 
         System.out.println("Enter an id of employee you want to update");
-        String id = ValidateInputCustomer.validateIdCustomerToRemoveOrUpdate();
+        String id = ValidateIdCustomer.validateIdCustomerToRemoveOrUpdate();
 
         System.out.println("Fill in the following information to update a new employee");
         System.out.println("Enter a new name");
@@ -186,13 +186,13 @@ public class CustomerService implements ICustomerService {
         } while (gender.equals(""));
 
         System.out.println("Enter new phone number");
-        String phoneNumber = ValidateInputCustomer.validatePhoneNumberCustomer();
+        String phoneNumber = ValidateInputPerson.validatePhoneNumber();
 
         System.out.println("Enter new identity number");
         String identityNumber = ValidateInputPerson.validateIdentityNumber();
 
         System.out.println("Enter new email");
-        String email = ValidateInputCustomer.validateEmailCustomer();
+        String email = ValidateInputPerson.validateEmail();
 
         String type = "";
         int choiceType = 0;

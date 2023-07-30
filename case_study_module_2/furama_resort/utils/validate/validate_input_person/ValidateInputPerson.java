@@ -6,7 +6,9 @@ import case_study_module_2.furama_resort.repository.customer_repository.Customer
 import case_study_module_2.furama_resort.repository.customer_repository.ICustomerRepository;
 import case_study_module_2.furama_resort.repository.employee_repository.EmployeeRepository;
 import case_study_module_2.furama_resort.repository.employee_repository.IEmployeeRepository;
+import case_study_module_2.furama_resort.utils.exceptions.EmailAlreadyExistException;
 import case_study_module_2.furama_resort.utils.exceptions.IdentityNumberAlreadyExistException;
+import case_study_module_2.furama_resort.utils.exceptions.PhoneNumberAlreadyExistException;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -16,6 +18,9 @@ public class ValidateInputPerson {
     private static final String REGEX_NAME = "^[A-Z][a-z]+\\s[A-Z][a-z]+\\s[A-Z]\\w+$";
     private static final String REGEX_DATE = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$";
     private static final String REGEX_IDENTITY_NUMBER = "^\\d{9}$|^\\d{12}$";
+    private static final String REGEX_PHONE_NUMBER = "^0\\d{9}$";
+    private static final String REGEX_EMAIL = "^[a-zA-Z0-9]\\w{5,31}@[a-z]{1,11}\\.[a-z]{1,11}(\\.[a-z]{1,11})?$";
+
 
     public static String validateName() {
         do {
@@ -81,6 +86,52 @@ public class ValidateInputPerson {
                 System.out.println(identityNumberAlreadyExistException.getMessage());
             }
         } while (true);
+    }
+
+    public static String validatePhoneNumber() {
+        ICustomerRepository customerRepository = new CustomerRepository();
+        IEmployeeRepository employeeRepository = new EmployeeRepository();
+        do {
+            try {
+                String phoneNumber = input.nextLine();
+                if (phoneNumber.matches(REGEX_PHONE_NUMBER)) {
+                    Employee employee = employeeRepository.getEmployeeByPhoneNumber(phoneNumber);
+                    Customer customer = customerRepository.getCustomerByPhoneNumber(phoneNumber);
+                    if (employee == null && customer == null) {
+                        return phoneNumber;
+                    } else {
+                        throw new PhoneNumberAlreadyExistException("Phone number already exist. Re-enter phone number,please.");
+                    }
+                } else {
+                    System.out.println("Wrong format.Re-enter,please.");
+                }
+            }catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException){
+                System.out.println(phoneNumberAlreadyExistException.getMessage());
+            }
+        } while (true);
+    }
+    public static String validateEmail() {
+        ICustomerRepository customerRepository = new CustomerRepository();
+        IEmployeeRepository employeeRepository = new EmployeeRepository();
+        do {
+            try {
+                String email = input.nextLine();
+                if (email.matches(REGEX_EMAIL)) {
+                    Employee employee = employeeRepository.getEmployeeByEmail(email);
+                    Customer customer = customerRepository.getCustomerByEmail(email);
+                    if (employee == null && customer == null) {
+                        return email;
+                    } else {
+                        throw new EmailAlreadyExistException("Email already exits. Re-enter email,please.");
+                    }
+                } else {
+                    System.out.println("Wrong format. Re-enter, please.");
+                }
+            } catch (EmailAlreadyExistException emailAlreadyExistException) {
+                System.out.println(emailAlreadyExistException.getMessage());
+            }
+        }
+        while (true);
     }
 
 }

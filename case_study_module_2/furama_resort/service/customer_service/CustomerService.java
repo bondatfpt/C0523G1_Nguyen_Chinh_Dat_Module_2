@@ -4,7 +4,7 @@ import case_study_module_2.furama_resort.model.person.Customer;
 import case_study_module_2.furama_resort.repository.customer_repository.CustomerRepository;
 import case_study_module_2.furama_resort.repository.customer_repository.ICustomerRepository;
 import case_study_module_2.furama_resort.utils.validate.validate_input_person.ValidateInputPerson;
-import case_study_module_2.furama_resort.utils.validate.validate_id_customer.ValidateIdCustomer;
+import case_study_module_2.furama_resort.utils.validate.validate_input_person.ValidateIdCustomer;
 
 
 import java.util.List;

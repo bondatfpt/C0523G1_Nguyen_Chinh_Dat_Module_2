@@ -1,26 +1,25 @@
-package case_study_module_2.furama_resort.utils.validate.validate_id_employee;
+package case_study_module_2.furama_resort.utils.validate.validate_input_person;
 
-import case_study_module_2.furama_resort.model.person.Employee;
-import case_study_module_2.furama_resort.repository.employee_repository.EmployeeRepository;
-import case_study_module_2.furama_resort.repository.employee_repository.IEmployeeRepository;
+import case_study_module_2.furama_resort.model.person.Customer;
+import case_study_module_2.furama_resort.repository.customer_repository.CustomerRepository;
+import case_study_module_2.furama_resort.repository.customer_repository.ICustomerRepository;
 import case_study_module_2.furama_resort.utils.exceptions.IdAlreadyExistsException;
 import case_study_module_2.furama_resort.utils.exceptions.IdNotFoundException;
 
-
 import java.util.Scanner;
 
-public class ValidateIdEmployee {
+public class ValidateIdCustomer {
     private static Scanner input = new Scanner(System.in);
-    private static final String REGEX_ID_EMPLOYEE = "^NV-[0-9]{4}$";
-    private static IEmployeeRepository employeeRepository = new EmployeeRepository();
+    private static final String REGEX_ID_CUSTOMER = "^KH-[0-9]{4}";
+    private static ICustomerRepository customerRepository = new CustomerRepository();
 
-    public static String validateIdEmployeeToAdd() {
+    public static String validateIdCustomerToAdd() {
         do {
             try {
                 String id = input.nextLine();
-                if (id.matches(REGEX_ID_EMPLOYEE)) {
-                    Employee employee = employeeRepository.getEmployeeById(id);
-                    if (employee == null) {
+                if (id.matches(REGEX_ID_CUSTOMER)) {
+                    Customer customer = customerRepository.getCustomerById(id);
+                    if (customer == null) {
                         return id;
                     } else {
                         throw new IdAlreadyExistsException("Id already exist.Re-enter id, please");
@@ -34,13 +33,13 @@ public class ValidateIdEmployee {
         } while (true);
     }
 
-    public static String validateIdEmployeeToDeleteOrUpdate() {
+    public static String validateIdCustomerToRemoveOrUpdate() {
         do {
             try {
                 String id = input.nextLine();
-                if (id.matches(REGEX_ID_EMPLOYEE)) {
-                    Employee employee = employeeRepository.getEmployeeById(id);
-                    if (employee == null) {
+                if (id.matches(REGEX_ID_CUSTOMER)) {
+                    Customer customer = customerRepository.getCustomerById(id);
+                    if (customer == null) {
                         throw new IdNotFoundException("Id not found.Re-enter id, please");
                     } else {
                         return id;

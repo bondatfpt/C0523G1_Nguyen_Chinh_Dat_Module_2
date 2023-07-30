@@ -4,7 +4,7 @@ import case_study_module_2.furama_resort.model.person.Employee;
 import case_study_module_2.furama_resort.repository.employee_repository.IEmployeeRepository;
 import case_study_module_2.furama_resort.repository.employee_repository.EmployeeRepository;
 import case_study_module_2.furama_resort.utils.validate.validate_input_person.ValidateInputPerson;
-import case_study_module_2.furama_resort.utils.validate.validate_id_employee.ValidateIdEmployee;
+import case_study_module_2.furama_resort.utils.validate.validate_input_person.ValidateIdEmployee;
 
 import java.util.List;
 import java.util.Scanner;

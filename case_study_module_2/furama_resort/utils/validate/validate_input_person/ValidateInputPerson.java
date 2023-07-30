@@ -28,7 +28,7 @@ public class ValidateInputPerson {
             if (name.matches(REGEX_NAME)) {
                 return name;
             } else {
-                System.out.println("First letter of last name, middle name, first name must be capitalized. Do not include special characters, numbers. Re-enter,please.");
+                System.out.println("First letter of last name, middle name, first name must be capitalized. Do not include special characters, numbers. Re-enter name,please.");
             }
         } while (true);
     }
@@ -60,7 +60,7 @@ public class ValidateInputPerson {
             } else if (localDate.getYear() - Integer.parseInt(dateArray[0]) > 18) {
                 return date;
             } else {
-                System.out.println("Under 18 years old.Re-enter.please.");
+                System.out.println("Under 18 years old.Re-enter date of birth,please.");
             }
         } while (true);
     }
@@ -80,7 +80,7 @@ public class ValidateInputPerson {
                         throw new IdentityNumberAlreadyExistException("Identity number already exist. Re-enter identity number,please");
                     }
                 } else {
-                    System.out.println("Wrong format. Re-enter,please.");
+                    System.out.println("Wrong format. Re-enter identity number,please.");
                 }
             } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
                 System.out.println(identityNumberAlreadyExistException.getMessage());
@@ -103,7 +103,7 @@ public class ValidateInputPerson {
                         throw new PhoneNumberAlreadyExistException("Phone number already exist. Re-enter phone number,please.");
                     }
                 } else {
-                    System.out.println("Wrong format.Re-enter,please.");
+                    System.out.println("Wrong format.Re-enter phone number,please.");
                 }
             }catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException){
                 System.out.println(phoneNumberAlreadyExistException.getMessage());
@@ -125,7 +125,7 @@ public class ValidateInputPerson {
                         throw new EmailAlreadyExistException("Email already exits. Re-enter email,please.");
                     }
                 } else {
-                    System.out.println("Wrong format. Re-enter, please.");
+                    System.out.println("Wrong format. Re-enter email, please.");
                 }
             } catch (EmailAlreadyExistException emailAlreadyExistException) {
                 System.out.println(emailAlreadyExistException.getMessage());

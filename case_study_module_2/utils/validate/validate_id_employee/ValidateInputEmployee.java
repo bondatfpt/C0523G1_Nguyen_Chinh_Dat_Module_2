@@ -1,25 +1,24 @@
-package case_study_module_2.utils.validate.validate_input_customer;
+package case_study_module_2.utils.validate.validate_id_employee;
 
-import case_study_module_2.model.person.Customer;
-import case_study_module_2.repository.customer_repository.CustomerRepository;
-import case_study_module_2.repository.customer_repository.ICustomerRepository;
+import case_study_module_2.model.person.Employee;
+import case_study_module_2.repository.employee_repository.EmployeeRepository;
+import case_study_module_2.repository.employee_repository.IEmployeeRepository;
 import case_study_module_2.utils.exceptions.IdAlreadyExistsException;
 import case_study_module_2.utils.exceptions.IdNotFoundException;
 
 import java.util.Scanner;
 
-public class ValidateInputCustomer {
+public class ValidateInputEmployee {
     private static Scanner input = new Scanner(System.in);
-    private static final String REGEX_ID_CUSTOMER = "^KH-[0-9]{4}";
-
-    public static String validateIdCustomerToAdd() {
-        ICustomerRepository customerRepository = new CustomerRepository();
+    private static final String REGEX_ID_EMPLOYEE = "^NV-[0-9]{4}$";
+    public static String validateIdEmployeeToAdd() {
+        IEmployeeRepository employeeRepository = new EmployeeRepository();
         do {
             try {
                 String id = input.nextLine();
-                if (id.matches(REGEX_ID_CUSTOMER)) {
-                    Customer customer = customerRepository.getCustomerById(id);
-                    if (customer == null) {
+                if (id.matches(REGEX_ID_EMPLOYEE)) {
+                    Employee employee = employeeRepository.getEmployeeById(id);
+                    if (employee == null) {
                         return id;
                     } else {
                         throw new IdAlreadyExistsException("Id already exist.Re-enter id, please");
@@ -33,15 +32,15 @@ public class ValidateInputCustomer {
         } while (true);
     }
 
-    public static String validateIdCustomerToRemoveOrUpdate() {
-        ICustomerRepository customerRepository = new CustomerRepository();
+    public static String validateIdEmployeeToDeleteOrUpdate() {
+        IEmployeeRepository employeeRepository = new EmployeeRepository();
         do {
             try {
                 String id = input.nextLine();
-                if (id.matches(REGEX_ID_CUSTOMER)) {
-                    Customer customer = customerRepository.getCustomerById(id);
-                    if (customer == null) {
-                        throw new IdNotFoundException("Id not found.Re-enter id, please");
+                if (id.matches(REGEX_ID_EMPLOYEE)) {
+                    Employee employee = employeeRepository.getEmployeeById(id);
+                    if (employee == null) {
+                        throw new IdNotFoundException ("Id not found.Re-enter id, please");
                     } else {
                         return id;
                     }

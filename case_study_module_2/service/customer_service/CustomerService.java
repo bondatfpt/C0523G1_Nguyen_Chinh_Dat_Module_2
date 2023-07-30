@@ -4,9 +4,9 @@ import case_study_module_2.model.person.Customer;
 import case_study_module_2.repository.customer_repository.CustomerRepository;
 import case_study_module_2.repository.customer_repository.ICustomerRepository;
 import case_study_module_2.utils.validate.validate_input.ValidateInput;
-import case_study_module_2.utils.validate.validate_input_customer.ValidateInputCustomer;
+import case_study_module_2.utils.validate.validate_id_customer.ValidateInputCustomer;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 

@@ -4,7 +4,7 @@ import case_study_module_2.model.person.Employee;
 import case_study_module_2.repository.employee_repository.IEmployeeRepository;
 import case_study_module_2.repository.employee_repository.EmployeeRepository;
 import case_study_module_2.utils.validate.validate_input.ValidateInput;
-import case_study_module_2.utils.validate.validate_input_employee.ValidateInputEmployee;
+import case_study_module_2.utils.validate.validate_id_employee.ValidateInputEmployee;
 
 import java.util.List;
 import java.util.Scanner;

@@ -1,27 +1,31 @@
 package case_study_module_2.furama_resort.model.facility;
 
 public abstract class Facility {
-    private int id;
+    private String id;
     private String name;
-    private double area;
+    private double usableArea;
     private double rentalCost;
     private int capacity;
     private String rentalType;
 
-    public Facility(int id, String name, double area, double rentalCost, int capacity, String rentalType) {
+    public Facility(String id){
+        this.id = id;
+    }
+
+    public Facility(String id, String name, double usableArea, double rentalCost, int capacity, String rentalType) {
         this.id = id;
         this.name = name;
-        this.area = area;
+        this.usableArea = usableArea;
         this.rentalCost = rentalCost;
         this.capacity = capacity;
         this.rentalType = rentalType;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -33,12 +37,12 @@ public abstract class Facility {
         this.name = name;
     }
 
-    public double getArea() {
-        return area;
+    public double getUsableArea() {
+        return usableArea;
     }
 
-    public void setArea(double area) {
-        this.area = area;
+    public void setUsableArea (double usableArea) {
+        this.usableArea = usableArea;
     }
 
     public double getRentalCost() {
@@ -70,7 +74,7 @@ public abstract class Facility {
         return "Facility{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", area=" + area +
+                ", usable area =" + usableArea +
                 ", rentalCost=" + rentalCost +
                 ", capacity=" + capacity +
                 ", rentalType='" + rentalType + '\'' +

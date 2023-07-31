@@ -4,18 +4,21 @@ import case_study_module_2.furama_resort.service.customer_service.CustomerServic
 import case_study_module_2.furama_resort.service.customer_service.ICustomerService;
 import case_study_module_2.furama_resort.service.employee_service.IEmployeeService;
 import case_study_module_2.furama_resort.service.employee_service.EmployeeService;
+import case_study_module_2.furama_resort.service.facility_service.FacilityService;
+import case_study_module_2.furama_resort.service.facility_service.IFacilityService;
 
 import java.util.Scanner;
 
-public class FuramaController {
+public class Controller {
     private static IEmployeeService employeeService = new EmployeeService();
     private static ICustomerService customerService = new CustomerService();
+    private static IFacilityService facilityService = new FacilityService();
 
     public static void showMenu() {
         int select = 0;
         Scanner input = new Scanner(System.in);
         do {
-            System.out.println("Menu: ");
+            System.out.println("Menu:");
             System.out.println("1.Employee Management");
             System.out.println("2.Customer Management");
             System.out.println("3.Facility Management");
@@ -111,8 +114,10 @@ public class FuramaController {
                                 choiceFacility = Integer.parseInt(input.nextLine());
                                 switch (choiceFacility) {
                                     case 1:
+                                        facilityService.display();
                                         break;
                                     case 2:
+                                        facilityService.add();
                                         break;
                                     case 3:
                                         break;

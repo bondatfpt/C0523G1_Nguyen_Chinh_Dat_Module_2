@@ -1,9 +1,7 @@
 package case_study_module_2.furama_resort.service.customer_service;
 
 
-import case_study_module_2.furama_resort.service.IService;
-
-public interface ICustomerService extends IService {
+public interface ICustomerService {
     void display();
     void add();
     void delete();

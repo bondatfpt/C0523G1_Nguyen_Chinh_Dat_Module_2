@@ -18,7 +18,6 @@ public abstract class Person {
         this.identityNumber = identityNumber;
         this.email = email;
     }
-
     public String getId() {
         return id;
     }

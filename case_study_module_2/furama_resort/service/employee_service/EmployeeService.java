@@ -3,8 +3,8 @@ package case_study_module_2.furama_resort.service.employee_service;
 import case_study_module_2.furama_resort.model.person.Employee;
 import case_study_module_2.furama_resort.repository.employee_repository.IEmployeeRepository;
 import case_study_module_2.furama_resort.repository.employee_repository.EmployeeRepository;
-import case_study_module_2.furama_resort.utils.validate.validate_input_person.ValidateInputPerson;
-import case_study_module_2.furama_resort.utils.validate.validate_input_person.ValidateIdEmployee;
+import case_study_module_2.furama_resort.common.validate.validate_person.ValidateInputPerson;
+import case_study_module_2.furama_resort.common.validate.validate_person.ValidateIdEmployee;
 
 import java.util.List;
 import java.util.Scanner;
@@ -222,7 +222,7 @@ public class EmployeeService implements IEmployeeService {
         } while (gender.equals(""));
 
         System.out.println("Enter a phone number");
-        String phoneNumber =ValidateInputPerson.validatePhoneNumber();
+        String phoneNumber = ValidateInputPerson.validatePhoneNumber();
 
         System.out.println("Enter an identity number");
         String identityNumber = ValidateInputPerson.validateIdentityNumber();

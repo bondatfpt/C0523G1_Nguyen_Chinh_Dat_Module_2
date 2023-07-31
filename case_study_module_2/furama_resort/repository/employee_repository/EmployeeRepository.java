@@ -1,6 +1,6 @@
 package case_study_module_2.furama_resort.repository.employee_repository;
 
-import case_study_module_2.furama_resort.common.ReadAndWriteData;
+import case_study_module_2.furama_resort.common.read_and_write_data.ReadAndWriteData;
 import case_study_module_2.furama_resort.model.person.Employee;
 
 

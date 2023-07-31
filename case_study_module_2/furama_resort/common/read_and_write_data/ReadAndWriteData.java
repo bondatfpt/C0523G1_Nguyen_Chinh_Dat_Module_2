@@ -1,4 +1,4 @@
-package case_study_module_2.furama_resort.common;
+package case_study_module_2.furama_resort.common.read_and_write_data;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,7 +28,6 @@ public class ReadAndWriteData {
             }
         }
     }
-    // Phương thức đọc dữ liệu từ file CSV;
     public static List<String> readFromCSV(String filePath) {
         List<String> contentList = new ArrayList<>();
         FileReader fileReader = null;

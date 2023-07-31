@@ -1,4 +1,4 @@
-package case_study_module_2.furama_resort.utils.validate.validate_input_person;
+package case_study_module_2.furama_resort.common.validate.validate_person;
 
 import case_study_module_2.furama_resort.model.person.Customer;
 import case_study_module_2.furama_resort.model.person.Employee;
@@ -20,7 +20,8 @@ public class ValidateInputPerson {
     private static final String REGEX_IDENTITY_NUMBER = "^\\d{9}$|^\\d{12}$";
     private static final String REGEX_PHONE_NUMBER = "^0\\d{9}$";
     private static final String REGEX_EMAIL = "^[a-zA-Z0-9]\\w{5,31}@[a-z]{1,11}\\.[a-z]{1,11}(\\.[a-z]{1,11})?$";
-
+   private static ICustomerRepository customerRepository = new CustomerRepository();
+   private static IEmployeeRepository employeeRepository = new EmployeeRepository();
 
     public static String validateName() {
         do {
@@ -66,8 +67,6 @@ public class ValidateInputPerson {
     }
 
     public static String validateIdentityNumber() {
-        ICustomerRepository customerRepository = new CustomerRepository();
-        IEmployeeRepository employeeRepository = new EmployeeRepository();
         do {
             try {
                 String identityNumber = input.nextLine();
@@ -89,8 +88,6 @@ public class ValidateInputPerson {
     }
 
     public static String validatePhoneNumber() {
-        ICustomerRepository customerRepository = new CustomerRepository();
-        IEmployeeRepository employeeRepository = new EmployeeRepository();
         do {
             try {
                 String phoneNumber = input.nextLine();
@@ -111,8 +108,6 @@ public class ValidateInputPerson {
         } while (true);
     }
     public static String validateEmail() {
-        ICustomerRepository customerRepository = new CustomerRepository();
-        IEmployeeRepository employeeRepository = new EmployeeRepository();
         do {
             try {
                 String email = input.nextLine();

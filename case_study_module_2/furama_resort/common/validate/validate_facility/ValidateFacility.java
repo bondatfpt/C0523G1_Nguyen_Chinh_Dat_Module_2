@@ -1,16 +1,14 @@
-package case_study_module_2.furama_resort.utils.validate.validate_input_facility;
+package case_study_module_2.furama_resort.common.validate.validate_facility;
 
 import case_study_module_2.furama_resort.model.facility.Facility;
-import case_study_module_2.furama_resort.model.facility.House;
 import case_study_module_2.furama_resort.model.facility.Villa;
 import case_study_module_2.furama_resort.repository.facility_repository.FacilityRepository;
 import case_study_module_2.furama_resort.repository.facility_repository.IFacilityRepository;
 import case_study_module_2.furama_resort.utils.exceptions.IdAlreadyExistsException;
 
-import java.util.Map;
 import java.util.Scanner;
 
-public class ValidateIdVilla {
+public class ValidateFacility {
     private static final String REGEX_ID_VILLA = "^SVVL-[0-9]{4}$";
     private static final String REGEX_ID_HOUSE = "^SVHO-[0-9]{4}$";
     private static final String REGEX_ID_ROOM = "^SVRO-[0-9]{4}$";

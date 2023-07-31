@@ -22,12 +22,12 @@ public class ValidateFacility {
                 if (id.matches(REGEX_ID_VILLA)) {
                     Facility facility1 = facilityRepository.getFacilityById(id);
                     if (facility1 == null) {
-                        return true;
+                        return false;
                     } else {
                         throw new IdAlreadyExistsException("Id already exits. Re-enter id, please.");
                     }
                 } else {
-                        flag = true;
+                        flag = false;
                 }
             }
         }while (flag);

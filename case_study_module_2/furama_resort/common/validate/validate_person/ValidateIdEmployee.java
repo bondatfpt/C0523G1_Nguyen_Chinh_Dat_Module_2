@@ -14,43 +14,33 @@ public class ValidateIdEmployee {
     private static final String REGEX_ID_EMPLOYEE = "^NV-[0-9]{4}$";
     private static IEmployeeRepository employeeRepository = new EmployeeRepository();
 
-    public static String validateIdEmployeeToAdd() {
-        do {
-            try {
-                String id = input.nextLine();
-                if (id.matches(REGEX_ID_EMPLOYEE)) {
-                    Employee employee = employeeRepository.getEmployeeById(id);
-                    if (employee == null) {
-                        return id;
-                    } else {
-                        throw new IdAlreadyExistsException("Id already exist.Re-enter id, please");
-                    }
-                } else {
-                    System.out.println("Wrong format. Re-enter id,please.");
-                }
-            } catch (IdAlreadyExistsException idAlreadyExistsException) {
-                System.out.println(idAlreadyExistsException.getMessage());
+    public static boolean validateIdEmployeeToAdd(String id) throws IdAlreadyExistsException {
+        if (id.matches(REGEX_ID_EMPLOYEE)) {
+            Employee employee = employeeRepository.getEmployeeById(id);
+            if (employee == null) {
+                return true;
+            } else {
+                throw new IdAlreadyExistsException("Id already exist.Re-enter id, please");
             }
-        } while (true);
+        } else {
+            System.out.println("Wrong format. Re-enter id,please.");
+            return false;
+        }
     }
 
-    public static String validateIdEmployeeToDeleteOrUpdate() {
-        do {
-            try {
-                String id = input.nextLine();
+    public static boolean validateIdEmployeeToDeleteOrUpdate(String id) throws IdNotFoundException {
                 if (id.matches(REGEX_ID_EMPLOYEE)) {
                     Employee employee = employeeRepository.getEmployeeById(id);
                     if (employee == null) {
                         throw new IdNotFoundException("Id not found.Re-enter id, please");
                     } else {
-                        return id;
+                        return true;
                     }
                 } else {
                     System.out.println("Wrong format. Re-enter id,please.");
+                    return false;
                 }
-            } catch (IdNotFoundException idNotFoundException) {
-                System.out.println(idNotFoundException.getMessage());
             }
-        } while (true);
+
     }
-}
+

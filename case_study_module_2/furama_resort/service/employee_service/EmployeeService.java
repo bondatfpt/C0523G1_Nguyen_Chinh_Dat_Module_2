@@ -5,6 +5,7 @@ import case_study_module_2.furama_resort.repository.employee_repository.IEmploye
 import case_study_module_2.furama_resort.repository.employee_repository.EmployeeRepository;
 import case_study_module_2.furama_resort.common.validate.validate_person.ValidateInputPerson;
 import case_study_module_2.furama_resort.common.validate.validate_person.ValidateIdEmployee;
+import case_study_module_2.furama_resort.utils.exceptions.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -17,10 +18,24 @@ public class EmployeeService implements IEmployeeService {
     public void add() {
         System.out.println("Fill in the following information to add a new employee");
         System.out.println("Enter an id");
-        String id = ValidateIdEmployee.validateIdEmployeeToAdd();
+        String id = "";
+        boolean checkIdAdd = false;
+        do {
+            id = input.nextLine();
+            try {
+                checkIdAdd = ValidateIdEmployee.validateIdEmployeeToAdd(id);
+            } catch (IdAlreadyExistsException idAlreadyExistsException) {
+                System.out.println(idAlreadyExistsException.getMessage());
+            }
+        } while (checkIdAdd == false);
 
         System.out.println("Enter a name");
-        String name = ValidateInputPerson.validateName();
+        String nameAdd = "";
+        boolean checkNameAdd = false;
+        do {
+            nameAdd = input.nextLine();
+            checkNameAdd = ValidateInputPerson.validateName(nameAdd);
+        } while (checkNameAdd == false);
 
         System.out.println("Enter date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
@@ -51,13 +66,40 @@ public class EmployeeService implements IEmployeeService {
         } while (gender.equals(""));
 
         System.out.println("Enter a phone number");
-        String phoneNumber = ValidateInputPerson.validatePhoneNumber();
+        String phoneNumber = "";
+        boolean checkPhoneNumber = false;
+        do {
+            phoneNumber = input.nextLine();
+            try {
+                checkPhoneNumber = ValidateInputPerson.validatePhoneNumber(phoneNumber);
+            } catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException) {
+                System.out.println(phoneNumberAlreadyExistException.getMessage());
+            }
+        } while (checkPhoneNumber == false);
 
         System.out.println("Enter an identity number");
-        String identityNumber = ValidateInputPerson.validateIdentityNumber();
+        String identityNumber = "";
+        boolean checkIdentityNumber = false;
+        do {
+            identityNumber = input.nextLine();
+            try {
+                checkIdentityNumber = ValidateInputPerson.validateIdentityNumber(identityNumber);
+            } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
+                System.out.println(identityNumberAlreadyExistException.getMessage());
+            }
+        } while (checkIdentityNumber == false);
 
         System.out.println("Enter an email");
-        String email = ValidateInputPerson.validateEmail();
+        String email = "";
+        boolean checkEmail = false;
+        do {
+            email = input.nextLine();
+            try {
+                checkEmail = ValidateInputPerson.validateEmail(email);
+            } catch (EmailAlreadyExistException emailAlreadyExistException) {
+                System.out.println(emailAlreadyExistException.getMessage());
+            }
+        } while (checkEmail == false);
 
         String level = "";
         int choiceLevel = 0;
@@ -137,7 +179,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (salary <= 0);
 
-        employeeRepository.add(new Employee(id, name, date, gender, phoneNumber, identityNumber, email, level, position, salary));
+        employeeRepository.add(new Employee(id, nameAdd, date, gender, phoneNumber, identityNumber, email, level, position, salary));
         System.out.println("Successfully added employee have id " + id);
         this.display();
     }
@@ -162,7 +204,16 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void delete() {
         System.out.println("Enter an id of employee you want to delete.");
-        String id = ValidateIdEmployee.validateIdEmployeeToDeleteOrUpdate();
+        String id = "";
+        boolean checkIdRemove = false;
+        do {
+            id = input.nextLine();
+            try {
+                checkIdRemove = ValidateIdEmployee.validateIdEmployeeToDeleteOrUpdate(id);
+            } catch (IdNotFoundException idNotFoundException) {
+                System.out.println(idNotFoundException.getMessage());
+            }
+        } while (checkIdRemove == false);
         employeeRepository.delete(id);
         System.out.println("Successfully deleted employee have id " + id);
         this.display();
@@ -188,10 +239,25 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void update() {
         System.out.println("Enter an id of employee you want to update");
-        String id = ValidateIdEmployee.validateIdEmployeeToDeleteOrUpdate();
+        String id = "";
+        boolean checkIdUpdate = false;
+        do {
+            id = input.nextLine();
+            try {
+                checkIdUpdate = ValidateIdEmployee.validateIdEmployeeToDeleteOrUpdate(id);
+            } catch (IdNotFoundException idNotFoundException) {
+                System.out.println(idNotFoundException.getMessage());
+            }
+        } while (checkIdUpdate == false);
+
         System.out.println("Fill in the following information to update a new employee");
         System.out.println("Enter a name");
-        String name = ValidateInputPerson.validateName();
+        String nameUpdate = "";
+        boolean checkNameUpdate = false;
+        do {
+            nameUpdate = input.nextLine();
+            checkNameUpdate = ValidateInputPerson.validateName(nameUpdate);
+        } while (checkNameUpdate == false);
 
         System.out.println("Enter date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
@@ -222,13 +288,40 @@ public class EmployeeService implements IEmployeeService {
         } while (gender.equals(""));
 
         System.out.println("Enter a phone number");
-        String phoneNumber = ValidateInputPerson.validatePhoneNumber();
+        String phoneNumber = "";
+        boolean checkPhoneNumber = false;
+        do {
+            phoneNumber = input.nextLine();
+            try {
+                checkPhoneNumber = ValidateInputPerson.validatePhoneNumber(phoneNumber);
+            } catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException) {
+                System.out.println(phoneNumberAlreadyExistException.getMessage());
+            }
+        } while (checkPhoneNumber == false);
 
         System.out.println("Enter an identity number");
-        String identityNumber = ValidateInputPerson.validateIdentityNumber();
+        String identityNumber = "";
+        boolean checkIdentityNumber = false;
+        do {
+            identityNumber = input.nextLine();
+            try {
+                checkIdentityNumber = ValidateInputPerson.validateIdentityNumber(identityNumber);
+            } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
+                System.out.println(identityNumberAlreadyExistException.getMessage());
+            }
+        } while (checkIdentityNumber == false);
 
         System.out.println("Enter a email");
-        String email = ValidateInputPerson.validateEmail();
+        String email = "";
+        boolean checkEmail = false;
+        do {
+            email = input.nextLine();
+            try {
+                checkEmail = ValidateInputPerson.validateEmail(email);
+            } catch (EmailAlreadyExistException emailAlreadyExistException) {
+                System.out.println(emailAlreadyExistException.getMessage());
+            }
+        } while (checkEmail == false);
 
         String level = "";
         int choiceLevel = 0;
@@ -307,7 +400,7 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println("Wrong format. Re-enter,please.");
             }
         } while (salary <= 0);
-        Employee employee = new Employee(id, name, date, gender, phoneNumber, identityNumber, email, level, position, salary);
+        Employee employee = new Employee(id, nameUpdate, date, gender, phoneNumber, identityNumber, email, level, position, salary);
         employeeRepository.updateEmployee(id, employee);
         System.out.println("Successfully updated employee have id " + id);
         this.display();

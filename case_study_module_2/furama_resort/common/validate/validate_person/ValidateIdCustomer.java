@@ -13,43 +13,32 @@ public class ValidateIdCustomer {
     private static final String REGEX_ID_CUSTOMER = "^KH-[0-9]{4}";
     private static ICustomerRepository customerRepository = new CustomerRepository();
 
-    public static String validateIdCustomerToAdd() {
-        do {
-            try {
-                String id = input.nextLine();
-                if (id.matches(REGEX_ID_CUSTOMER)) {
-                    Customer customer = customerRepository.getCustomerById(id);
-                    if (customer == null) {
-                        return id;
-                    } else {
-                        throw new IdAlreadyExistsException("Id already exist.Re-enter id, please");
-                    }
-                } else {
-                    System.out.println("Wrong format. Re-enter id,please.");
-                }
-            } catch (IdAlreadyExistsException idAlreadyExistsException) {
-                System.out.println(idAlreadyExistsException.getMessage());
+    public static boolean validateIdCustomerToAdd(String id) throws IdAlreadyExistsException {
+        if (id.matches(REGEX_ID_CUSTOMER)) {
+            Customer customer = customerRepository.getCustomerById(id);
+            if (customer == null) {
+                return true;
+            } else {
+                throw new IdAlreadyExistsException("Id already exist.Re-enter id, please");
             }
-        } while (true);
+        } else {
+            System.out.println("Wrong format, Re-enter id, please.");
+            return false;
+        }
     }
 
-    public static String validateIdCustomerToRemoveOrUpdate() {
-        do {
-            try {
-                String id = input.nextLine();
-                if (id.matches(REGEX_ID_CUSTOMER)) {
-                    Customer customer = customerRepository.getCustomerById(id);
-                    if (customer == null) {
-                        throw new IdNotFoundException("Id not found.Re-enter id, please");
-                    } else {
-                        return id;
-                    }
-                } else {
-                    System.out.println("Wrong format. Re-enter id,please.");
-                }
-            } catch (IdNotFoundException idNotFoundException) {
-                System.out.println(idNotFoundException.getMessage());
+    public static boolean validateIdCustomerToRemoveOrUpdate(String id) throws IdNotFoundException {
+        if (id.matches(REGEX_ID_CUSTOMER)) {
+            Customer customer = customerRepository.getCustomerById(id);
+            if (customer == null) {
+                throw new IdNotFoundException("Id not found.Re-enter id, please");
+            } else {
+                return true;
             }
-        } while (true);
+        } else {
+            System.out.println("Wrong format, Re-enter id, please.");
+            return false;
+        }
     }
 }
+

@@ -35,6 +35,11 @@ public class FacilityRepository implements IFacilityRepository {
 
     @Override
     public Facility getFacilityById(String id) {
+        for (Facility facility: facilityList.keySet()){
+            if(facility.getId().equals(id)){
+                return facility;
+            }
+        }
         return null;
     }
 }

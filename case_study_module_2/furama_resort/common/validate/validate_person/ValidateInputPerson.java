@@ -20,18 +20,16 @@ public class ValidateInputPerson {
     private static final String REGEX_IDENTITY_NUMBER = "^\\d{9}$|^\\d{12}$";
     private static final String REGEX_PHONE_NUMBER = "^0\\d{9}$";
     private static final String REGEX_EMAIL = "^[a-zA-Z0-9]\\w{5,31}@[a-z]{1,11}\\.[a-z]{1,11}(\\.[a-z]{1,11})?$";
-   private static ICustomerRepository customerRepository = new CustomerRepository();
-   private static IEmployeeRepository employeeRepository = new EmployeeRepository();
+    private static ICustomerRepository customerRepository = new CustomerRepository();
+    private static IEmployeeRepository employeeRepository = new EmployeeRepository();
 
-    public static String validateName() {
-        do {
-            String name = input.nextLine();
-            if (name.matches(REGEX_NAME)) {
-                return name;
-            } else {
-                System.out.println("First letter of last name, middle name, first name must be capitalized. Do not include special characters, numbers. Re-enter name,please.");
-            }
-        } while (true);
+    public static boolean validateName(String name) {
+        if (name.matches(REGEX_NAME)) {
+            return true;
+        } else {
+            System.out.println("First letter of last name, middle name, first name must be capitalized. Do not include special characters, numbers. Re-enter name,please.");
+            return false;
+        }
     }
 
     public static String validateDate() {
@@ -66,66 +64,52 @@ public class ValidateInputPerson {
         } while (true);
     }
 
-    public static String validateIdentityNumber() {
-        do {
-            try {
-                String identityNumber = input.nextLine();
-                if (identityNumber.matches(REGEX_IDENTITY_NUMBER)) {
-                    Customer customer = customerRepository.getCustomerByIdentityNumber(identityNumber);
-                    Employee employee = employeeRepository.getEmployeeByIdentityNumber(identityNumber);
-                    if (customer == null && employee == null) {
-                        return identityNumber;
-                    }else {
-                        throw new IdentityNumberAlreadyExistException("Identity number already exist. Re-enter identity number,please");
-                    }
-                } else {
-                    System.out.println("Wrong format. Re-enter identity number,please.");
-                }
-            } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
-                System.out.println(identityNumberAlreadyExistException.getMessage());
+    public static boolean validateIdentityNumber(String identityNumber) throws IdentityNumberAlreadyExistException {
+        if (identityNumber.matches(REGEX_IDENTITY_NUMBER)) {
+            Customer customer = customerRepository.getCustomerByIdentityNumber(identityNumber);
+            Employee employee = employeeRepository.getEmployeeByIdentityNumber(identityNumber);
+            if (customer == null && employee == null) {
+                return true;
+            } else {
+                throw new IdentityNumberAlreadyExistException("Identity number already exist. Re-enter identity number,please");
             }
-        } while (true);
+        } else {
+            System.out.println("Wrong format. Re-enter identity number,please.");
+            return false;
+        }
     }
 
-    public static String validatePhoneNumber() {
-        do {
-            try {
-                String phoneNumber = input.nextLine();
-                if (phoneNumber.matches(REGEX_PHONE_NUMBER)) {
-                    Employee employee = employeeRepository.getEmployeeByPhoneNumber(phoneNumber);
-                    Customer customer = customerRepository.getCustomerByPhoneNumber(phoneNumber);
-                    if (employee == null && customer == null) {
-                        return phoneNumber;
-                    } else {
-                        throw new PhoneNumberAlreadyExistException("Phone number already exist. Re-enter phone number,please.");
-                    }
-                } else {
-                    System.out.println("Wrong format.Re-enter phone number,please.");
-                }
-            }catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException){
-                System.out.println(phoneNumberAlreadyExistException.getMessage());
+
+    public static boolean validatePhoneNumber(String phoneNumber) throws PhoneNumberAlreadyExistException {
+        if (phoneNumber.matches(REGEX_PHONE_NUMBER)) {
+            Employee employee = employeeRepository.getEmployeeByPhoneNumber(phoneNumber);
+            Customer customer = customerRepository.getCustomerByPhoneNumber(phoneNumber);
+            if (employee == null && customer == null) {
+                return true;
+            } else {
+                throw new PhoneNumberAlreadyExistException("Phone number already exist. Re-enter phone number,please.");
             }
-        } while (true);
-    }
-    public static String validateEmail() {
-        do {
-            try {
-                String email = input.nextLine();
-                if (email.matches(REGEX_EMAIL)) {
-                    Employee employee = employeeRepository.getEmployeeByEmail(email);
-                    Customer customer = customerRepository.getCustomerByEmail(email);
-                    if (employee == null && customer == null) {
-                        return email;
-                    } else {
-                        throw new EmailAlreadyExistException("Email already exits. Re-enter email,please.");
-                    }
-                } else {
-                    System.out.println("Wrong format. Re-enter email, please.");
-                }
-            } catch (EmailAlreadyExistException emailAlreadyExistException) {
-                System.out.println(emailAlreadyExistException.getMessage());
-            }
+        } else {
+            System.out.println("Wrong format.Re-enter phone number,please.");
+            return false;
         }
-        while (true);
     }
+
+
+    public static boolean validateEmail(String email) throws EmailAlreadyExistException {
+        if (email.matches(REGEX_EMAIL)) {
+            Employee employee = employeeRepository.getEmployeeByEmail(email);
+            Customer customer = customerRepository.getCustomerByEmail(email);
+            if (employee == null && customer == null) {
+                return true;
+            } else {
+                throw new EmailAlreadyExistException("Email already exits. Re-enter email,please.");
+            }
+        } else {
+            System.out.println("Wrong format. Re-enter email, please.");
+            return false;
+        }
+    }
+
 }
+

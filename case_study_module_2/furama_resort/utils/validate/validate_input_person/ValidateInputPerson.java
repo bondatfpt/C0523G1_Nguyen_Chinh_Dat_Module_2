@@ -52,7 +52,7 @@ public class ValidateInputPerson {
             if (localDate.getYear() - Integer.parseInt(dateArray[0]) == 18) {
                 if (Integer.parseInt(dateArray[1]) - localDate.getMonthValue() > 0) {
                     System.out.println("Under 18 years old. Re-enter,please.");
-                } else if (Integer.parseInt(dateArray[2]) - localDate.getDayOfMonth() <= 0) {
+                } else if (Integer.parseInt(dateArray[2]) - localDate.getDayOfMonth() < 0) {
                     System.out.println("Under 18 years old. Re-enter,please.");
                 } else {
                     return date;

@@ -16,7 +16,6 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void add() {
         System.out.println("Fill in the following information to add a new employee");
-
         System.out.println("Enter an id");
         String id = ValidateIdEmployee.validateIdEmployeeToAdd();
 

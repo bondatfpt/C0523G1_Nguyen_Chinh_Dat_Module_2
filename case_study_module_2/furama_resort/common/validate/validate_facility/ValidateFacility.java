@@ -9,28 +9,49 @@ import case_study_module_2.furama_resort.utils.exceptions.IdAlreadyExistsExcepti
 import java.util.Scanner;
 
 public class ValidateFacility {
-    private static final String REGEX_ID_VILLA = "^SVVL-[0-9]{4}$";
-    private static final String REGEX_ID_HOUSE = "^SVHO-[0-9]{4}$";
-    private static final String REGEX_ID_ROOM = "^SVRO-[0-9]{4}$";
+
     private static Scanner input = new Scanner(System.in);
     private static IFacilityRepository facilityRepository = new FacilityRepository();
+    private static final String REGEX_NAME = "^[A-Z][a-z]+\\s[A-Z][a-z]+$";
 
-    public static boolean validateIdFacility(Facility facility, String id) throws IdAlreadyExistsException {
-        boolean flag = false;
-        do {
-            if (facility == new Villa(id)) {
-                if (id.matches(REGEX_ID_VILLA)) {
-                    Facility facility1 = facilityRepository.getFacilityById(id);
-                    if (facility1 == null) {
-                        return false;
-                    } else {
-                        throw new IdAlreadyExistsException("Id already exits. Re-enter id, please.");
-                    }
-                } else {
-                        flag = false;
-                }
-            }
-        }while (flag);
-        return false;
+    public static boolean validateNameService (String name){
+        if(name.matches(REGEX_NAME)){
+            return true;
+        }
+        else {
+            System.out.println("Service name,rental type, room standard must capitalize the first character, the following characters are normal characters.");
+            return false;
+        }
     }
+
+    public static boolean validateUsableArea (double usableArea){
+        if(usableArea <= 30 ){
+            System.out.println("Usable area and pool area must be real numbers greater than 30m2");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public static boolean validateRentalCost (double rentalCost){
+        if(rentalCost <= 0 ){
+            System.out.println("Rental cost must be real numbers greater than 0");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public static boolean validateCapacity (int capacity){
+        if(capacity <= 0 || capacity > 20){
+            System.out.println("The maximum number of people must be greater than 0 and less than 20");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+
 }
+

@@ -43,16 +43,12 @@ public class Villa extends Facility {
     public void setNumberFloors(int numberFloors) {
         this.numberFloors = numberFloors;
     }
-    public String getInforToCsv (){
-        return this.getId() + "," + this.getName() + "," + this.getUsableArea() + "," + this.getRentalCost() + "," + this.getCapacity() + "," + this.getRentalType() + "," + roomStandard + "," + poolArea + "," + numberFloors;
-    }
 
     @Override
     public String toString() {
-        return  super.toString() + "Villa{" +
+        return   "Villa: " + super.toString()+
                 "roomStandard='" + roomStandard + '\'' +
                 ", poolArea=" + poolArea +
-                ", numberFloors=" + numberFloors +
-                "} ";
+                ", numberFloors=" + numberFloors + "---";
     }
 }

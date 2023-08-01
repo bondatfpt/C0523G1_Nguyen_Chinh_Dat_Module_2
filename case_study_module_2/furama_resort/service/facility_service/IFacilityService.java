@@ -4,4 +4,5 @@ public interface IFacilityService {
     void display();
     void add();
     void delete();
+    void displayFacilityNeedMaintenance();
 }

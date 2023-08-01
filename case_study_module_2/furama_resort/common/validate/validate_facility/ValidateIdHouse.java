@@ -26,18 +26,4 @@ public class ValidateIdHouse {
         }
     }
 
-    public static boolean validateIdHouseToRemove (String id) throws IdNotFoundException {
-        Facility house = new House(id);
-        if(id.matches(REGEX_ID_HOUSE)){
-            house = facilityRepository.getFacilityById(id);
-            if(house != null){
-                return true;
-            }else {
-                throw new IdNotFoundException("Id not found. Re-enter id, please.");
-            }
-        }else {
-            System.out.println("Wrong format. Re-enter id, please.");
-            return false;
-        }
-    }
 }

@@ -33,15 +33,11 @@ public class House extends Facility {
     public void setNumberFloor(int numberFloor) {
         this.numberFloor = numberFloor;
     }
-    public String getInorToCsv(){
-        return this.getId() + "," + this.getName() + "," + this.getUsableArea() + "," + this.getRentalCost() + "," + this.getCapacity() + "," + this.getRentalType() + "," + roomStandard + "," + numberFloor;
-    }
 
     @Override
     public String toString() {
-        return super.toString() + "House{" +
-                "roomStandard='" + roomStandard + '\'' +
-                ", numberFloor=" + numberFloor +
-                "} ";
+        return "House: " + super.toString()+
+                ", roomStandard='" + roomStandard + '\'' +
+                ", numberFloor=" + numberFloor + "---";
     }
 }

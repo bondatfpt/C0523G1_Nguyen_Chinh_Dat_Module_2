@@ -28,20 +28,4 @@ public class ValidateIdRoom {
         }
     }
 
-    public static boolean validateIDRoomToRemove (String id) throws IdNotFoundException{
-        Facility room = new Room(id);
-        if(id.matches(REGEX_ID_ROOM)){
-            room = facilityRepository.getFacilityById(id);
-            if(room != null){
-                return true;
-            }
-            else {
-                throw  new IdNotFoundException("Id not found. Re-enter id, please.");
-            }
-        }
-        else {
-            System.out.println("Wrong format. Re-enter id, please.");
-            return false;
-        }
-    }
 }

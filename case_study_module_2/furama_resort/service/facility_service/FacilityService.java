@@ -11,6 +11,7 @@ import case_study_module_2.furama_resort.model.facility.Villa;
 import case_study_module_2.furama_resort.repository.facility_repository.FacilityRepository;
 import case_study_module_2.furama_resort.repository.facility_repository.IFacilityRepository;
 import case_study_module_2.furama_resort.utils.exceptions.IdAlreadyExistsException;
+import case_study_module_2.furama_resort.utils.exceptions.IdNotFoundException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,7 +25,9 @@ public class FacilityService implements IFacilityService {
     public void display() {
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
         facilityIntegerMap = facilityRepository.getAllFacility();
-        System.out.println(facilityIntegerMap);
+        for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+            System.out.println(entry.getKey() + "," + " Number of bookings = " + entry.getValue());
+        }
     }
 
     @Override
@@ -68,7 +71,7 @@ public class FacilityService implements IFacilityService {
                             try {
                                 usableAreaVilla = Double.parseDouble(input.nextLine());
                                 checkUsableAreaVilla = ValidateFacility.validateUsableArea(usableAreaVilla);
-                            }catch (NumberFormatException numberFormatException){
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("The usable area must be a real number");
                             }
                         } while (!checkUsableAreaVilla);
@@ -78,24 +81,24 @@ public class FacilityService implements IFacilityService {
                         boolean checkRentalCostVilla = false;
                         do {
                             try {
-                            rentalCostVilla = Double.parseDouble(input.nextLine());
-                            checkRentalCostVilla = ValidateFacility.validateRentalCost(rentalCostVilla);
-                            }catch (NumberFormatException numberFormatException){
+                                rentalCostVilla = Double.parseDouble(input.nextLine());
+                                checkRentalCostVilla = ValidateFacility.validateRentalCost(rentalCostVilla);
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("The rental cost must be a real number");
                             }
-                        }while (!checkRentalCostVilla);
+                        } while (!checkRentalCostVilla);
 
                         System.out.println("Enter capacity");
                         int capacityVilla = 0;
                         boolean checkCapacityVilla = false;
                         do {
                             try {
-                            capacityVilla = Integer.parseInt(input.nextLine());
-                            checkCapacityVilla = ValidateFacility.validateCapacity(capacityVilla);
-                            }catch (NumberFormatException numberFormatException){
+                                capacityVilla = Integer.parseInt(input.nextLine());
+                                checkCapacityVilla = ValidateFacility.validateCapacity(capacityVilla);
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("The capacity must be a integer");
                             }
-                        }while (!checkCapacityVilla);
+                        } while (!checkCapacityVilla);
 
                         System.out.println("Enter rental type");
                         String rentalTypeVilla = "";
@@ -103,7 +106,7 @@ public class FacilityService implements IFacilityService {
                         do {
                             rentalTypeVilla = input.nextLine();
                             checkRentalTypeVilla = ValidateFacility.validateNameService(rentalTypeVilla);
-                        }while (!checkRentalTypeVilla);
+                        } while (!checkRentalTypeVilla);
 
                         System.out.println("Enter room standard");
                         String roomStandardVilla = "";
@@ -111,34 +114,34 @@ public class FacilityService implements IFacilityService {
                         do {
                             roomStandardVilla = input.nextLine();
                             checkRoomStandardVilla = ValidateFacility.validateNameService(roomStandardVilla);
-                        }while (!checkRoomStandardVilla);
+                        } while (!checkRoomStandardVilla);
 
                         System.out.println("Enter pool area");
                         double poolAreaVilla = 0;
                         boolean checkPoolAreaVilla = false;
                         do {
                             try {
-                            poolAreaVilla = Double.parseDouble(input.nextLine());
-                            checkPoolAreaVilla = ValidateFacility.validateUsableArea(poolAreaVilla);
-                            }catch (NumberFormatException numberFormatException){
+                                poolAreaVilla = Double.parseDouble(input.nextLine());
+                                checkPoolAreaVilla = ValidateFacility.validateUsableArea(poolAreaVilla);
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Pool area must be a integer");
                             }
-                        }while (!checkPoolAreaVilla);
+                        } while (!checkPoolAreaVilla);
 
                         System.out.println("Enter number floors");
                         int numberFloorVilla = 0;
                         do {
                             try {
-                            numberFloorVilla = Integer.parseInt(input.nextLine());
-                            }catch (NumberFormatException numberFormatException){
+                                numberFloorVilla = Integer.parseInt(input.nextLine());
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Number floor must be a integer.");
                             }
-                            if(numberFloorVilla <= 0){
+                            if (numberFloorVilla <= 0) {
                                 System.out.println("Number floor must be greater than 0");
                             }
-                        }while (numberFloorVilla <=0);
+                        } while (numberFloorVilla <= 0);
 
-                        villa = new Villa(idVilla,nameVilla,usableAreaVilla,rentalCostVilla,capacityVilla,rentalTypeVilla,roomStandardVilla,poolAreaVilla,numberFloorVilla);
+                        villa = new Villa(idVilla, nameVilla, usableAreaVilla, rentalCostVilla, capacityVilla, rentalTypeVilla, roomStandardVilla, poolAreaVilla, numberFloorVilla);
                         facilityRepository.add(villa);
                         break;
                     case 2:
@@ -153,7 +156,7 @@ public class FacilityService implements IFacilityService {
                             } catch (IdAlreadyExistsException idAlreadyExistsException) {
                                 System.out.println(idAlreadyExistsException.getMessage());
                             }
-                        }while (!checkIdHouse);
+                        } while (!checkIdHouse);
 
                         System.out.println("Enter a name");
                         String nameHouse = "";
@@ -161,7 +164,7 @@ public class FacilityService implements IFacilityService {
                         do {
                             nameHouse = input.nextLine();
                             checkNameHouse = ValidateFacility.validateNameService(nameHouse);
-                        }while (!checkNameHouse );
+                        } while (!checkNameHouse);
 
                         System.out.println("Enter usable are");
                         double usableAreHouse = 0;
@@ -170,34 +173,34 @@ public class FacilityService implements IFacilityService {
                             try {
                                 usableAreHouse = Double.parseDouble(input.nextLine());
                                 checkUsableAreHouse = ValidateFacility.validateUsableArea(usableAreHouse);
-                            }catch (NumberFormatException numberFormatException){
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Usable Are must be a real number");
                             }
-                        }while (!checkUsableAreHouse);
+                        } while (!checkUsableAreHouse);
 
                         System.out.println("Enter rental cost");
-                        int rentalCostHouse = 0 ;
+                        int rentalCostHouse = 0;
                         boolean checkRentalCostHouse = false;
                         do {
                             try {
                                 rentalCostHouse = Integer.parseInt(input.nextLine());
                                 checkRentalCostHouse = ValidateFacility.validateRentalCost(rentalCostHouse);
-                            }catch (NumberFormatException numberFormatException){
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Rental cost must be a integer.");
                             }
-                        }while (!checkRentalCostHouse);
+                        } while (!checkRentalCostHouse);
 
                         System.out.println("Enter capacity");
                         int capacityHouse = 0;
                         boolean checkCapacityHouse = false;
                         do {
                             try {
-                            capacityHouse = Integer.parseInt(input.nextLine());
-                            checkCapacityHouse = ValidateFacility.validateCapacity(capacityHouse);
-                            }catch (NumberFormatException numberFormatException){
+                                capacityHouse = Integer.parseInt(input.nextLine());
+                                checkCapacityHouse = ValidateFacility.validateCapacity(capacityHouse);
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Capacity must be a integer");
                             }
-                        }while (!checkCapacityHouse);
+                        } while (!checkCapacityHouse);
 
                         System.out.println("Enter rental type");
                         String rentalTypeHouse = "";
@@ -205,7 +208,7 @@ public class FacilityService implements IFacilityService {
                         do {
                             rentalTypeHouse = input.nextLine();
                             checkRentalTypeHouse = ValidateFacility.validateNameService(rentalTypeHouse);
-                        }while (!checkRentalTypeHouse);
+                        } while (!checkRentalTypeHouse);
 
                         System.out.println("Enter room standard");
                         String roomStandardHouse = "";
@@ -213,23 +216,23 @@ public class FacilityService implements IFacilityService {
                         do {
                             roomStandardHouse = input.nextLine();
                             checkRoomStandardHouse = ValidateFacility.validateNameService(roomStandardHouse);
-                        }while (!checkRoomStandardHouse);
+                        } while (!checkRoomStandardHouse);
 
                         System.out.println("Enter number floor");
                         int numberFloorHouse = 0;
                         do {
                             try {
-                            numberFloorHouse = Integer.parseInt(input.nextLine());
-                            }catch (NumberFormatException numberFormatException){
+                                numberFloorHouse = Integer.parseInt(input.nextLine());
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Number floor must be a integer");
                             }
-                        }while (numberFloorHouse <= 0);
-                        house = new House(idHouse,nameHouse,usableAreHouse,rentalCostHouse,capacityHouse,rentalTypeHouse,roomStandardHouse,numberFloorHouse);
+                        } while (numberFloorHouse <= 0);
+                        house = new House(idHouse, nameHouse, usableAreHouse, rentalCostHouse, capacityHouse, rentalTypeHouse, roomStandardHouse, numberFloorHouse);
                         facilityRepository.add(house);
                         break;
                     case 3:
-                        System.out.println("Enter an id");
-                        String idRoom ="";
+                        System.out.println("Enter an id in the format SVRO-XXXX(X is number 0-9)");
+                        String idRoom = "";
                         Facility room = new Room(idRoom);
                         boolean checkIdRoom = false;
                         do {
@@ -239,7 +242,7 @@ public class FacilityService implements IFacilityService {
                             } catch (IdAlreadyExistsException idAlreadyExistsException) {
                                 System.out.println(idAlreadyExistsException.getMessage());
                             }
-                        }while (!checkIdRoom);
+                        } while (!checkIdRoom);
 
                         System.out.println("Enter a name");
                         String nameRoom = "";
@@ -247,43 +250,43 @@ public class FacilityService implements IFacilityService {
                         do {
                             nameRoom = input.nextLine();
                             checkNameRoom = ValidateFacility.validateNameService(nameRoom);
-                        }while (!checkNameRoom );
+                        } while (!checkNameRoom);
 
                         System.out.println("Enter usable area");
                         double usableAreaRoom = 0;
                         boolean checkUsableAreaRoom = false;
                         do {
                             try {
-                            usableAreaRoom = Double.parseDouble(input.nextLine());
-                            checkUsableAreaRoom = ValidateFacility.validateUsableArea(usableAreaRoom);
-                            }catch (NumberFormatException numberFormatException){
+                                usableAreaRoom = Double.parseDouble(input.nextLine());
+                                checkUsableAreaRoom = ValidateFacility.validateUsableArea(usableAreaRoom);
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Usable area must be a real number");
                             }
-                        }while (!checkUsableAreaRoom);
+                        } while (!checkUsableAreaRoom);
 
                         System.out.println("Enter rental cost");
                         double rentalCostRoom = 0;
                         boolean checkRentalCostRoom = false;
                         do {
                             try {
-                            rentalCostRoom = Double.parseDouble(input.nextLine());
-                            checkRentalCostRoom = ValidateFacility.validateRentalCost(rentalCostRoom);
-                            }catch (NumberFormatException numberFormatException){
+                                rentalCostRoom = Double.parseDouble(input.nextLine());
+                                checkRentalCostRoom = ValidateFacility.validateRentalCost(rentalCostRoom);
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Rental cost must be a real number");
                             }
-                        }while (!checkRentalCostRoom);
+                        } while (!checkRentalCostRoom);
 
                         System.out.println("Enter capacity");
                         int capacityRoom = 0;
                         boolean checkCapacityRoom = false;
                         do {
                             try {
-                            capacityRoom = Integer.parseInt(input.nextLine());
-                            checkCapacityRoom = ValidateFacility.validateCapacity(capacityRoom);
-                            }catch (NumberFormatException numberFormatException){
+                                capacityRoom = Integer.parseInt(input.nextLine());
+                                checkCapacityRoom = ValidateFacility.validateCapacity(capacityRoom);
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Capacity must be a integer");
                             }
-                        }while (!checkCapacityRoom);
+                        } while (!checkCapacityRoom);
 
                         System.out.println("Enter rental type");
                         String rentalTypeRoom = "";
@@ -291,12 +294,12 @@ public class FacilityService implements IFacilityService {
                         do {
                             rentalTypeRoom = input.nextLine();
                             checkRentalTypeRoom = ValidateFacility.validateNameService(rentalTypeRoom);
-                        }while (!checkRentalTypeRoom);
+                        } while (!checkRentalTypeRoom);
 
                         System.out.println("Enter free service");
                         String freeService = input.nextLine();
 
-                        room = new Room(idRoom,nameRoom,usableAreaRoom,rentalCostRoom,capacityRoom,rentalTypeRoom,freeService);
+                        room = new Room(idRoom, nameRoom, usableAreaRoom, rentalCostRoom, capacityRoom, rentalTypeRoom, freeService);
                         facilityRepository.add(room);
                         break;
                     case 4:
@@ -307,9 +310,32 @@ public class FacilityService implements IFacilityService {
             }
         } while (choice != 4);
     }
+
     @Override
     public void delete() {
-
-
+        System.out.println("Enter an id");
+        boolean checkId = false;
+        do {
+            try {
+                String id = input.nextLine();
+                Facility facility = facilityRepository.getFacilityById(id);
+                checkId = ValidateFacility.validateIdToRemove(id);
+                if (checkId) {
+                    facilityRepository.delete(facility);
+                    System.out.println("Successful delete facility have name: " + facility.getName());
+                    display();
+                }
+            } catch (IdNotFoundException idNotFoundException) {
+                System.out.println(idNotFoundException.getMessage());
+            }
+        } while (!checkId);
     }
+
+    public void displayFacilityNeedMaintenance(){
+        for (Map.Entry <Facility,Integer> entry :facilityRepository.getFacilityNeedMaintenance().entrySet()) {
+            System.out.println(entry.getKey() +" number of bookings: " +entry.getValue());
+        }
+    }
+
+
 }

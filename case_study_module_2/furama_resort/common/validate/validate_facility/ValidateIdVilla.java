@@ -25,21 +25,5 @@ public class ValidateIdVilla {
             return false;
         }
     }
-
-    public static boolean validateIdVillaToRemove(String id) throws IdNotFoundException {
-        Facility villa = new Villa(id);
-        if (id.matches(REGEX_ID_VILLA)) {
-            villa = facilityRepository.getFacilityById(id);
-            if (villa == null) {
-                throw new IdNotFoundException("Id not found. Re-enter id, please.");
-            } else {
-                return true;
-            }
-        } else {
-            System.out.println("Wrong format, Re-enter id, please.");
-            return false;
-        }
-    }
-
 }
 

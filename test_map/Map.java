@@ -15,8 +15,7 @@ public class Map {
         students.put(student,1);
         students.put(student1,1);
         students.put(student2,1);
-        Set<Student> studentSet = students.keySet();
-        System.out.println(studentSet);
+
 
     }
 }

@@ -9,5 +9,7 @@ public interface IFacilityRepository {
     void add(Facility facility);
     void delete(Facility facility);
     Facility getFacilityById(String id);
+    public Map<Facility,Integer> getFacilityNeedMaintenance();
+
 
 }

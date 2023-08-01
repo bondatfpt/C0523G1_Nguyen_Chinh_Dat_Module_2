@@ -120,8 +120,10 @@ public class Controller {
                                         facilityService.add();
                                         break;
                                     case 3:
+                                        facilityService.displayFacilityNeedMaintenance();
                                         break;
                                     case 4:
+                                        facilityService.delete();
                                         break;
                                     case 5:
                                         break;

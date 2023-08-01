@@ -15,20 +15,16 @@ public class Room extends Facility {
         super(id, name, usableArea, rentalCost, capacity, rentalType);
         this.freeService = freeService;
     }
-
     public String getFreeService() {
         return freeService;
     }
     public void setFreeService(String freeService) {
         this.freeService = freeService;
     }
-    public String getInforToCsv (){
-        return this.getId() + "," + this.getName() + "," + this.getUsableArea() + "," + this.getRentalCost() + "," + this.getCapacity() + "," + this.getRentalType() + "," + freeService;
-    }
     @Override
     public String toString() {
-        return super.toString()+"Room{" +
-                "freeService='" + freeService + '\'' +
-                "} ";
+        return "Room : " + super.toString() +
+                "freeService='" + freeService + '\'' +"---"
+                ;
     }
 }

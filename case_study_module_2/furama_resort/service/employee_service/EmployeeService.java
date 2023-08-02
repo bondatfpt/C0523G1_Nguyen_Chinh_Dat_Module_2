@@ -197,7 +197,7 @@ public class EmployeeService implements IEmployeeService {
                     System.out.println(employee.getInforToCsv());
                 }
             }
-        } catch (RuntimeException e) {
+        } catch (RuntimeException runtimeException) {
             System.out.println("List is empty !");
         }
     }

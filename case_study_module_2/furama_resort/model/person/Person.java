@@ -13,7 +13,9 @@ public abstract class Person {
         this.id = id;
     }
 
-    public Person(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
+    public Person(String id, String name, String date, String gender,
+                  String phoneNumber, String identityNumber, String email)
+    {
         this.id = id;
         this.name = name;
         this.date = date;

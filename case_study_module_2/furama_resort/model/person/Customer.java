@@ -8,15 +8,15 @@ public class Customer extends Person {
         super(id);
     }
 
-    public Customer(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
-        super(id, name, date, gender, phoneNumber, identityNumber, email);
-    }
+    public Customer(String id, String name, String date, String gender,
+                    String phoneNumber, String identityNumber, String email)
+    {super(id, name, date, gender, phoneNumber, identityNumber, email);}
 
-    public Customer(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email, String type, String address) {
-        super(id, name, date, gender, phoneNumber, identityNumber, email);
+    public Customer(String id, String name, String date, String gender, String phoneNumber,
+                    String identityNumber, String email, String type, String address)
+    {super(id, name, date, gender, phoneNumber, identityNumber, email);
         this.type = type;
-        this.address = address;
-    }
+        this.address = address;}
 
     public String getType() {
         return type;
@@ -35,7 +35,11 @@ public class Customer extends Person {
     }
 
     public String getInforToCsv(){
-        return this.getId() + "," + this.getName() +"," + this.getDate() +"," + this.getGender() + "," + this.getPhoneNumber()+"," + this.getIdentityNumber() + "," + this.getEmail() + "," + this.getType() +","+ this.getAddress();
+        return  "Id: "+this.getId()+ " " + ","+"Name: " + this.getName() +","+ " " + "Date: " + this.getDate() +"," +" "+
+               "Gender: " +this.getGender() + ","+"Phone number: " + this.getPhoneNumber()+"\n " +"Identity number: "+
+                this.getIdentityNumber() +","+" "+"Email: " + this.getEmail() + ","+ " " + "Type: "+
+                this.getType() +"," + " "+ "Address: "+ this.getAddress() +"\n"
+                +"--------------------------------------------------------------------------------------------------------";
     }
     @Override
     public String toString() {

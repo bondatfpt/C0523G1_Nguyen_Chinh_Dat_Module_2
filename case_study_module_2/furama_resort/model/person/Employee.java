@@ -9,15 +9,15 @@ public class Employee extends Person {
         super(id);
     }
 
-    public Employee(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
-        super(id, name, date, gender, phoneNumber, identityNumber, email);
-    }
-    public Employee(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email, String level, String position, double salary) {
-        super(id, name, date, gender, phoneNumber, identityNumber, email);
+    public Employee(String id, String name, String date, String gender,
+                    String phoneNumber, String identityNumber, String email)
+    {super(id, name, date, gender, phoneNumber, identityNumber, email);}
+    public Employee(String id, String name, String date, String gender, String phoneNumber,
+                    String identityNumber, String email, String level, String position, double salary)
+    {super(id, name, date, gender, phoneNumber, identityNumber, email);
         this.level = level;
         this.position = position;
-        this.salary = salary;
-    }
+        this.salary = salary;}
     public String getLevel() {
         return level;
     }
@@ -37,7 +37,11 @@ public class Employee extends Person {
         this.salary = salary;
     }
     public String getInforToCsv(){
-        return this.getId() + "," + this.getName() + "," + this.getDate() + "," + this.getGender() + "," + this.getPhoneNumber() + "," + this.getIdentityNumber() + "," + this.getEmail() +"," + this.level + "," + this.position + "," + this.salary;
+        return "Id: " + this.getId() + ","+" " + "Name: " +  this.getName() + ","+" " + "Date of birth: " + this.getDate()
+                + "," +" "+ "Gender: " + this.getGender() + ","+ " " + "Phone number: " + this.getPhoneNumber() + "\n" +
+                "Identity number: "+ this.getIdentityNumber() + "," +" " + "Email: " + this.getEmail() +","+" "
+                +"Level: " +this.level + ","+ " " + "Position: " + this.position + ","+" " + "Salary: " + this.salary +"\n"
+                +"--------------------------------------------------------------------------------------------------------";
     }
     @Override
     public String toString() {

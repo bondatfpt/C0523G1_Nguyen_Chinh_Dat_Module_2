@@ -179,7 +179,8 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (salary <= 0);
 
-        employeeRepository.add(new Employee(id, nameAdd, date, gender, phoneNumber, identityNumber, email, level, position, salary));
+        employeeRepository.add(new Employee(id, nameAdd, date, gender, phoneNumber,
+                                            identityNumber, email, level, position, salary));
         System.out.println("Successfully added employee have id " + id);
         this.display();
     }
@@ -214,9 +215,26 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println(idNotFoundException.getMessage());
             }
         } while (checkIdRemove == false);
-        employeeRepository.delete(id);
-        System.out.println("Successfully deleted employee have id " + id);
-        this.display();
+        int choiceDelete = 0;
+        do {
+            System.out.println("Do you really want to delete this employee?");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+            try {
+                choiceDelete = Integer.parseInt(input.nextLine());
+                switch (choiceDelete) {
+                    case 1:
+                        employeeRepository.delete(id);
+                        System.out.println("Successfully deleted customer have id " + id);
+                        this.display();
+                        break;
+                    case 2:
+                        break;
+                }
+            } catch (NumberFormatException numberFormatException) {
+                System.out.println("Enter a number to choice");
+            }
+        } while (choiceDelete != 1 && choiceDelete != 2);
     }
 
     @Override
@@ -400,7 +418,8 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println("Wrong format. Re-enter,please.");
             }
         } while (salary <= 0);
-        Employee employee = new Employee(id, nameUpdate, date, gender, phoneNumber, identityNumber, email, level, position, salary);
+        Employee employee = new Employee(id, nameUpdate, date, gender, phoneNumber,
+                                    identityNumber, email, level, position, salary);
         employeeRepository.updateEmployee(id, employee);
         System.out.println("Successfully updated employee have id " + id);
         this.display();

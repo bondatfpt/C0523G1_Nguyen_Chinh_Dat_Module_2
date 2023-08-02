@@ -56,7 +56,7 @@ public class FacilityService implements IFacilityService {
 
                         } while (!checkIdVilla);
 
-                        System.out.println("Enter a name");
+                        System.out.println("Enter a name of villa");
                         String nameVilla = "";
                         boolean checkNameVilla = false;
                         do {
@@ -180,8 +180,11 @@ public class FacilityService implements IFacilityService {
                             }
                         } while (numberFloorVilla <= 0);
 
-                        villa = new Villa(idVilla, nameVilla, usableAreaVilla, rentalCostVilla, capacityVilla, rentalTypeVilla, roomStandardVilla, poolAreaVilla, numberFloorVilla);
+                        villa = new Villa(idVilla, nameVilla, usableAreaVilla, rentalCostVilla,
+                                capacityVilla, rentalTypeVilla, roomStandardVilla, poolAreaVilla, numberFloorVilla);
                         facilityRepository.add(villa);
+                        System.out.println("Successfully added a new villa have id : " + idVilla );
+                        this.display();
                         break;
                     case 2:
                         System.out.println("Enter an id in the format SVHO-XXXX(X is number 0-9)");
@@ -304,8 +307,11 @@ public class FacilityService implements IFacilityService {
                                 System.out.println("Number floor must be a integer");
                             }
                         } while (numberFloorHouse <= 0);
-                        house = new House(idHouse, nameHouse, usableAreHouse, rentalCostHouse, capacityHouse, rentalTypeHouse, roomStandardHouse, numberFloorHouse);
+                        house = new House(idHouse, nameHouse, usableAreHouse, rentalCostHouse,
+                                capacityHouse, rentalTypeHouse, roomStandardHouse, numberFloorHouse);
                         facilityRepository.add(house);
+                        System.out.println("Successfully added a new house have id : " + idHouse );
+                        this.display();
                         break;
                     case 3:
                         System.out.println("Enter an id in the format SVRO-XXXX(X is number 0-9)");
@@ -398,7 +404,7 @@ public class FacilityService implements IFacilityService {
                         System.out.println("Choose free service");
                         System.out.println("1. Massage Thai");
                         System.out.println("2. Take A Hot Bath");
-                        System.out.println("1. Eat Seafood");
+                        System.out.println("3. Eat Seafood");
                         String freeService = "";
                         int choiceFreeService = 0;
                         do {
@@ -419,8 +425,11 @@ public class FacilityService implements IFacilityService {
                             }
                         }while (freeService.equals(""));
 
-                        room = new Room(idRoom, nameRoom, usableAreaRoom, rentalCostRoom, capacityRoom, rentalTypeRoom, freeService);
+                        room = new Room(idRoom, nameRoom, usableAreaRoom, rentalCostRoom,
+                                capacityRoom, rentalTypeRoom, freeService);
                         facilityRepository.add(room);
+                        System.out.println("Successfully added a new room have id : " + idRoom );
+                        this.display();
                         break;
                     case 4:
                         break;

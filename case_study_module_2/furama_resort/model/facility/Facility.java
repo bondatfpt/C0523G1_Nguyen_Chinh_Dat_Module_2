@@ -71,8 +71,7 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return
-                "id = " + id +
+        return "id = " + id +
                 ", name = " + name +
                 ", usable area = " + usableArea +
                 ", rental cost = " + rentalCost +

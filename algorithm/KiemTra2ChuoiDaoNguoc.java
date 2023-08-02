@@ -5,17 +5,19 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class KiemTra2ChuoiDaoNguoc {
-    public boolean kiemTra2ChuoiDaoNguoc (String str1, String str2){
-        Stack <String> myStack = new Stack<>();
-        Queue <String> myQueue = new ArrayDeque<>();
-        String [] strings1 = str1.trim().split("");
-        String [] strings2 = str2.trim().split("");
-        for (int i = 0; i < strings1.length ; i++) {
-                myStack.push(strings1[i]);
+    public  static  boolean kiemTra2ChuoiDaoNguoc (String str1, String str2){
+        if(str1 == null || str2 == null){
+            return false;
         }
-        for (int i = 0; i < strings2.length; i++) {
-            myQueue.offer(strings2[i]);
+        if(str1.length() != str2.length()){
+            return false;
         }
-    return false;
+        for (int i = 0; i < str1.length(); i++) {
+            if(str1.charAt(i) == str2.charAt(str1.length() - i - 1)){
+                return true;
+            }
+        }
+        return false;
     }
+
 }

@@ -5,6 +5,10 @@ public class Employee extends Person {
     private String position;
     private double salary;
 
+    public Employee(String id) {
+        super(id);
+    }
+
     public Employee(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
         super(id, name, date, gender, phoneNumber, identityNumber, email);
     }

@@ -123,19 +123,27 @@ public class CustomerService implements ICustomerService {
         int choiceType = 0;
         do {
             System.out.println("Select type");
-            System.out.println("1.Sliver");
-            System.out.println("2.Gold");
-            System.out.println("3.Diamond");
+            System.out.println("1.Member");
+            System.out.println("2.Sliver");
+            System.out.println("3.Gold");
+            System.out.println("4.Plantium");
+            System.out.println("5.Diamond");
             try {
                 choiceType = Integer.parseInt(input.nextLine());
                 switch (choiceType) {
                     case 1:
-                        type = "Sliver";
+                        type = "Member";
                         break;
                     case 2:
-                        type = "Gold";
+                        type = "Sliver";
                         break;
                     case 3:
+                        type = "Gold";
+                        break;
+                    case 4:
+                        type = "Plantium";
+                        break;
+                    case 5:
                         type = "Diamond";
                         break;
                 }
@@ -174,7 +182,8 @@ public class CustomerService implements ICustomerService {
                 System.out.println("Enter a number to choice");
             }
         } while (address.equals(""));
-        Customer customer = new Customer(id, nameAdd, date, gender, phoneNumber, identityNumber, email, type, address);
+        Customer customer = new Customer(id, nameAdd, date, gender, phoneNumber,
+                        identityNumber, email, type, address);
         customerRepository.add(customer);
         System.out.println("Successfully added customer have id " + id);
         this.display();
@@ -192,16 +201,33 @@ public class CustomerService implements ICustomerService {
             } catch (IdNotFoundException idNotFoundException) {
                 System.out.println(idNotFoundException.getMessage());
             }
-        } while (checkIdRemove == false);
-        customerRepository.delete(id);
-        System.out.println("Successfully deleted customer have id " + id);
-        this.display();
+        } while (!checkIdRemove);
+        int choiceDelete = 0;
+        do {
+            System.out.println("Do you really want to delete this employee?");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+            try {
+                choiceDelete = Integer.parseInt(input.nextLine());
+                switch (choiceDelete) {
+                    case 1:
+                        customerRepository.delete(id);
+                        System.out.println("Successfully deleted customer have id " + id);
+                        this.display();
+                        break;
+                    case 2:
+                        break;
+                }
+            } catch (NumberFormatException numberFormatException) {
+                System.out.println("Enter a number to choice");
+            }
+        } while (choiceDelete != 1 && choiceDelete != 2);
     }
 
     @Override
     public void update() {
 
-        System.out.println("Enter an id of employee you want to update");
+        System.out.println("Enter an id of customer you want to update");
         String id;
         boolean checkIdUpdate = false;
         do {
@@ -214,7 +240,7 @@ public class CustomerService implements ICustomerService {
 
         } while (checkIdUpdate == false);
 
-        System.out.println("Fill in the following information to update a new employee");
+        System.out.println("Fill in the following information to update a customer:");
         System.out.println("Enter a new name");
         String nameUpdate = "";
         boolean checkNameUpdate = false;
@@ -289,23 +315,32 @@ public class CustomerService implements ICustomerService {
         String type = "";
         int choiceType = 0;
         do {
-            System.out.println("Select new type");
-            System.out.println("1.Sliver");
-            System.out.println("2.Gold");
-            System.out.println("3.Diamond");
+            System.out.println("Select type");
+            System.out.println("1.Member");
+            System.out.println("2.Sliver");
+            System.out.println("3.Gold");
+            System.out.println("4.Plantium");
+            System.out.println("5.Diamond");
             try {
                 choiceType = Integer.parseInt(input.nextLine());
                 switch (choiceType) {
                     case 1:
-                        type = "Sliver";
+                        type = "Member";
                         break;
                     case 2:
-                        type = "Gold";
+                        type = "Sliver";
                         break;
                     case 3:
+                        type = "Gold";
+                        break;
+                    case 4:
+                        type = "Plantium";
+                        break;
+                    case 5:
                         type = "Diamond";
                         break;
                 }
+
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice");
             }
@@ -341,7 +376,8 @@ public class CustomerService implements ICustomerService {
             }
         } while (address.equals(""));
 
-        Customer customer = new Customer(id, nameUpdate, date, gender, phoneNumber, identityNumber, email, type, address);
+        Customer customer = new Customer(id, nameUpdate, date, gender, phoneNumber,
+                                            identityNumber, email, type, address);
         customerRepository.updateCustomer(id, customer);
         System.out.println("Successfully updated customer have id " + id);
         this.display();

@@ -3,6 +3,11 @@ package case_study_module_2.furama_resort.model.person;
 public class Customer extends Person {
     private String type;
     private String address;
+
+    public Customer(String id) {
+        super(id);
+    }
+
     public Customer(String id, String name, String date, String gender, String phoneNumber, String identityNumber, String email) {
         super(id, name, date, gender, phoneNumber, identityNumber, email);
     }

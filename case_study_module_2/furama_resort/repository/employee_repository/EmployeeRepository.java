@@ -62,15 +62,7 @@ public class EmployeeRepository implements IEmployeeRepository {
         List <Employee> employeeList = getAllEmployee();
         for (int i = 0; i < employeeList.size(); i++) {
             if(employeeList.get(i).getId().equals(employee.getId())){
-               employeeList.set(i,employee).setName(employeeList.get(i).getName());
-               employeeList.set(i,employee).setDate(employeeList.get(i).getDate());
-               employeeList.set(i,employee).setGender(employeeList.get(i).getGender());
-               employeeList.set(i,employee).setPhoneNumber(employeeList.get(i).getPhoneNumber());
-               employeeList.set(i,employee).setIdentityNumber(employeeList.get(i).getIdentityNumber());
-               employeeList.set(i,employee).setEmail(employeeList.get(i).getEmail());
-               employeeList.set(i,employee).setLevel(employeeList.get(i).getLevel());
-               employeeList.set(i,employee).setPosition(employeeList.get(i).getPosition());
-               employeeList.set(i,employee).setLevel(employeeList.get(i).getLevel());
+             employeeList.set(i,employee);
             }
         }
         List <String> stringList = new ArrayList<>();

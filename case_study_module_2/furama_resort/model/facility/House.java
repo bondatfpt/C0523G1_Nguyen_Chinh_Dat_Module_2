@@ -12,7 +12,8 @@ public class House extends Facility {
         super(id, name, usableArea, rentalCost, capacity, rentalType);
     }
 
-    public House(String id, String name, double usableArea, double rentalCost, int capacity, String rentalType, String roomStandard, int numberFloor) {
+    public House(String id, String name, double usableArea, double rentalCost, int capacity, String rentalType,
+                 String roomStandard, int numberFloor) {
         super(id, name, usableArea, rentalCost, capacity, rentalType);
         this.roomStandard = roomStandard;
         this.numberFloor = numberFloor;
@@ -38,6 +39,6 @@ public class House extends Facility {
     public String toString() {
         return "House: " + super.toString()+
                 ", room standard = " + roomStandard +
-                ", number floor = " + numberFloor + "---";
+                ", number floor = " + numberFloor  ;
     }
 }

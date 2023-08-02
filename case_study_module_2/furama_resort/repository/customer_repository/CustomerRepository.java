@@ -69,14 +69,7 @@ public class CustomerRepository implements ICustomerRepository {
         List<Customer> customers = getAllCustomer();
         for (int i = 0; i < customers.size(); i++) {
             if(customers.get(i).getId().equals(id)){
-                customers.set(i,customer).setName(customer.getName());
-                customers.set(i,customer).setDate(customer.getDate());
-                customers.set(i,customer).setGender(customer.getGender());
-                customers.set(i,customer).setPhoneNumber(customer.getPhoneNumber());
-                customers.set(i,customer).setIdentityNumber(customer.getIdentityNumber());
-                customers.set(i,customer).setEmail(customer.getEmail());
-                customers.set(i,customer).setType(customer.getType());
-                customers.set(i,customer).setAddress(customer.getAddress());
+                customers.set(i,customer);
             }
         }
         List<String> stringList = new ArrayList<>();

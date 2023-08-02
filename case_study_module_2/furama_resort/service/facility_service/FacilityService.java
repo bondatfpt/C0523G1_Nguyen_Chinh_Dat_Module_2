@@ -26,7 +26,9 @@ public class FacilityService implements IFacilityService {
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
         facilityIntegerMap = facilityRepository.getAllFacility();
         for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
-            System.out.println(entry.getKey() + "," + "\n " + "Number of bookings = " + entry.getValue());
+            System.out.println(entry.getKey() + "\n " + "---------------------------------------------------------" +
+                    "Number of bookings: "
+                    + entry.getValue() + "----------------------------------------------------------");
         }
     }
 
@@ -183,7 +185,7 @@ public class FacilityService implements IFacilityService {
                         villa = new Villa(idVilla, nameVilla, usableAreaVilla, rentalCostVilla,
                                 capacityVilla, rentalTypeVilla, roomStandardVilla, poolAreaVilla, numberFloorVilla);
                         facilityRepository.add(villa);
-                        System.out.println("Successfully added a new villa have id : " + idVilla );
+                        System.out.println("Successfully added a new villa have id : " + idVilla);
                         this.display();
                         break;
                     case 2:
@@ -310,7 +312,7 @@ public class FacilityService implements IFacilityService {
                         house = new House(idHouse, nameHouse, usableAreHouse, rentalCostHouse,
                                 capacityHouse, rentalTypeHouse, roomStandardHouse, numberFloorHouse);
                         facilityRepository.add(house);
-                        System.out.println("Successfully added a new house have id : " + idHouse );
+                        System.out.println("Successfully added a new house have id : " + idHouse);
                         this.display();
                         break;
                     case 3:
@@ -409,26 +411,27 @@ public class FacilityService implements IFacilityService {
                         int choiceFreeService = 0;
                         do {
                             try {
-                            choiceFreeService = Integer.parseInt(input.nextLine());
-                            switch (choiceFreeService){
-                                case 1:
-                                    freeService = "Massage Thai";
-                                    break;
-                                case 2:
-                                    freeService = "Take A Hot Bath";
-                                    break;
-                                case 3:
-                                    freeService = "Eat Seafood";
-                                    break;
-                            }}catch (NumberFormatException numberFormatException){
+                                choiceFreeService = Integer.parseInt(input.nextLine());
+                                switch (choiceFreeService) {
+                                    case 1:
+                                        freeService = "Massage Thai";
+                                        break;
+                                    case 2:
+                                        freeService = "Take A Hot Bath";
+                                        break;
+                                    case 3:
+                                        freeService = "Eat Seafood";
+                                        break;
+                                }
+                            } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
                             }
-                        }while (freeService.equals(""));
+                        } while (freeService.equals(""));
 
                         room = new Room(idRoom, nameRoom, usableAreaRoom, rentalCostRoom,
                                 capacityRoom, rentalTypeRoom, freeService);
                         facilityRepository.add(room);
-                        System.out.println("Successfully added a new room have id : " + idRoom );
+                        System.out.println("Successfully added a new room have id : " + idRoom);
                         this.display();
                         break;
                     case 4:
@@ -442,7 +445,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void delete() {
-        System.out.println("Enter an id");
+        System.out.println("Enter an id in the format SV(VL|RO|HO)-XXXX(X is number 0-9)");
         boolean checkId = false;
         do {
             try {
@@ -450,9 +453,26 @@ public class FacilityService implements IFacilityService {
                 Facility facility = facilityRepository.getFacilityById(id);
                 checkId = ValidateFacility.validateIdToRemove(id);
                 if (checkId) {
-                    facilityRepository.delete(facility);
-                    System.out.println("Successful delete facility have name: " + facility.getName());
-                    display();
+                    int choiceDelete = 0;
+                    do {
+                        System.out.println("Do you really want to delete this facility?");
+                        System.out.println("1.Yes");
+                        System.out.println("2.No");
+                        try {
+                            choiceDelete = Integer.parseInt(input.nextLine());
+                            switch (choiceDelete) {
+                                case 1:
+                                    facilityRepository.delete(facility);
+                                    System.out.println("Successful delete facility have name: " + facility.getName());
+                                    display();
+                                    break;
+                                case 2:
+                                    break;
+                            }
+                        } catch (NumberFormatException numberFormatException) {
+                            System.out.println("Enter a number to choice");
+                        }
+                    } while (choiceDelete != 1 && choiceDelete != 2);
                 }
             } catch (IdNotFoundException idNotFoundException) {
                 System.out.println(idNotFoundException.getMessage());
@@ -462,7 +482,9 @@ public class FacilityService implements IFacilityService {
 
     public void displayFacilityNeedMaintenance() {
         for (Map.Entry<Facility, Integer> entry : facilityRepository.getFacilityNeedMaintenance().entrySet()) {
-            System.out.println(entry.getKey() + " number of bookings: " + entry.getValue());
+            System.out.println(entry.getKey() + "\n"+ "--------------------------------------------------------- " +
+                    "Number of bookings: "
+                    + entry.getValue() + "----------------------------------------------------------");
         }
     }
 }

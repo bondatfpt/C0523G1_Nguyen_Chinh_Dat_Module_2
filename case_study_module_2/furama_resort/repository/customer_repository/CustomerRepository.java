@@ -82,10 +82,11 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public List<Customer> searchByName(String name) {
+        name = name.trim().toLowerCase();
         List <Customer> customerList = getAllCustomer();
         List<Customer> customerSearch = new ArrayList<>();
         for (int i = 0; i < customerList.size(); i++) {
-            if(customerList.get(i).getName().contains(name)){
+            if(customerList.get(i).getName().toLowerCase().contains(name)){
             customerSearch.add(customerList.get(i));
             }
         }

@@ -37,11 +37,11 @@ public class FacilityRepository implements IFacilityRepository {
 
     public Map<Facility, Integer> getFacilityNeedMaintenance() {
         Map<Facility, Integer> facilityNeedMaintenance = new LinkedHashMap<>();
-            for (Map.Entry<Facility,Integer> entry : facilityList.entrySet()){
-                if (entry.getValue() >= 5) {
-                    facilityNeedMaintenance.put(entry.getKey(),entry.getValue());
+            facilityList.forEach((Facility,Integer) ->{
+                if (Integer >= 5 ){
+                    facilityNeedMaintenance.put(Facility,Integer);
                 }
-            }
+            });
         return facilityNeedMaintenance;
     }
 

@@ -23,8 +23,8 @@ public class Room extends Facility {
     }
     @Override
     public String toString() {
-        return "Room : " + super.toString() +
-                "freeService='" + freeService + '\'' +"---"
+        return "Room: " + super.toString() +
+                "free service= " + freeService  +"---"
                 ;
     }
 }

@@ -26,7 +26,7 @@ public class FacilityService implements IFacilityService {
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
         facilityIntegerMap = facilityRepository.getAllFacility();
         for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
-            System.out.println(entry.getKey() + "," + " Number of bookings = " + entry.getValue());
+            System.out.println(entry.getKey() + "," + "\n " + "Number of bookings = " + entry.getValue());
         }
     }
 
@@ -64,7 +64,7 @@ public class FacilityService implements IFacilityService {
                             checkNameVilla = ValidateFacility.validateNameService(nameVilla);
                         } while (!checkNameVilla);
 
-                        System.out.println("Enter usable are");
+                        System.out.println("Enter usable area");
                         double usableAreaVilla = 0;
                         boolean checkUsableAreaVilla = false;
                         do {
@@ -100,21 +100,60 @@ public class FacilityService implements IFacilityService {
                             }
                         } while (!checkCapacityVilla);
 
-                        System.out.println("Enter rental type");
+                        System.out.println("Choose rental type Villa:");
+                        System.out.println("1.Day");
+                        System.out.println("2.Week");
+                        System.out.println("3.Month");
+                        System.out.println("4.Year");
                         String rentalTypeVilla = "";
-                        boolean checkRentalTypeVilla = false;
+                        int choiceRentalTypeVilla = 0;
                         do {
-                            rentalTypeVilla = input.nextLine();
-                            checkRentalTypeVilla = ValidateFacility.validateNameService(rentalTypeVilla);
-                        } while (!checkRentalTypeVilla);
+                            try {
+                                choiceRentalTypeVilla = Integer.parseInt(input.nextLine());
+                                switch (choiceRentalTypeVilla) {
+                                    case 1:
+                                        rentalTypeVilla = "Day";
+                                        break;
+                                    case 2:
+                                        rentalTypeVilla = "Week";
+                                        break;
+                                    case 3:
+                                        rentalTypeVilla = "Month";
+                                        break;
+                                    case 4:
+                                        rentalTypeVilla = "Year";
+                                        break;
+                                }
+                            } catch (NumberFormatException numberFormatException) {
+                                System.out.println("Enter a number to choice");
+                            }
+                        } while (rentalTypeVilla.equals(""));
 
-                        System.out.println("Enter room standard");
+                        System.out.println("Choose standard room villa:");
+                        System.out.println("1.Super Vip");
+                        System.out.println("2.Vip");
+                        System.out.println("3.Normal");
                         String roomStandardVilla = "";
-                        boolean checkRoomStandardVilla = false;
+                        int choiceRoomStandardVilla = 0;
                         do {
-                            roomStandardVilla = input.nextLine();
-                            checkRoomStandardVilla = ValidateFacility.validateNameService(roomStandardVilla);
-                        } while (!checkRoomStandardVilla);
+                            try {
+                                choiceRoomStandardVilla = Integer.parseInt(input.nextLine());
+                                switch (choiceRoomStandardVilla) {
+                                    case 1:
+                                        roomStandardVilla = "Super Vip";
+                                        break;
+                                    case 2:
+                                        roomStandardVilla = "Vip";
+                                        break;
+                                    case 3:
+                                        roomStandardVilla = "Normal";
+                                        break;
+                                }
+                            } catch (NumberFormatException numberFormatException) {
+                                System.out.println("Enter a number to choice");
+                            }
+                        } while (roomStandardVilla.equals(""));
+
 
                         System.out.println("Enter pool area");
                         double poolAreaVilla = 0;
@@ -202,21 +241,59 @@ public class FacilityService implements IFacilityService {
                             }
                         } while (!checkCapacityHouse);
 
-                        System.out.println("Enter rental type");
+                        System.out.println("Choose rental type house");
+                        System.out.println("1.Day");
+                        System.out.println("2.Week");
+                        System.out.println("3.Month");
+                        System.out.println("4.Year");
                         String rentalTypeHouse = "";
-                        boolean checkRentalTypeHouse = false;
+                        int choiceRentalTypeHouse = 0;
                         do {
-                            rentalTypeHouse = input.nextLine();
-                            checkRentalTypeHouse = ValidateFacility.validateNameService(rentalTypeHouse);
-                        } while (!checkRentalTypeHouse);
+                            try {
+                                choiceRentalTypeHouse = Integer.parseInt(input.nextLine());
+                                switch (choiceRentalTypeHouse) {
+                                    case 1:
+                                        rentalTypeHouse = "Day";
+                                        break;
+                                    case 2:
+                                        rentalTypeHouse = "Week";
+                                        break;
+                                    case 3:
+                                        rentalTypeHouse = "Month";
+                                        break;
+                                    case 4:
+                                        rentalTypeHouse = "Year";
+                                        break;
+                                }
+                            } catch (NumberFormatException numberFormatException) {
+                                System.out.println("Enter a number to choice");
+                            }
+                        } while (rentalTypeHouse.equals(""));
 
-                        System.out.println("Enter room standard");
+                        System.out.println("Choose room standard house");
+                        System.out.println("1.Super Vip");
+                        System.out.println("2.Vip");
+                        System.out.println("3.Normal");
                         String roomStandardHouse = "";
-                        boolean checkRoomStandardHouse = false;
+                        int choiceRoomStandardHouse = 0;
                         do {
-                            roomStandardHouse = input.nextLine();
-                            checkRoomStandardHouse = ValidateFacility.validateNameService(roomStandardHouse);
-                        } while (!checkRoomStandardHouse);
+                            try {
+                                choiceRoomStandardHouse = Integer.parseInt(input.nextLine());
+                                switch (choiceRoomStandardHouse) {
+                                    case 1:
+                                        roomStandardHouse = "Super Vip";
+                                        break;
+                                    case 2:
+                                        roomStandardHouse = "Vip";
+                                        break;
+                                    case 3:
+                                        roomStandardHouse = "Normal";
+                                        break;
+                                }
+                            } catch (NumberFormatException numberFormatException) {
+                                System.out.println("Enter a number to choice");
+                            }
+                        } while (roomStandardHouse.equals(""));
 
                         System.out.println("Enter number floor");
                         int numberFloorHouse = 0;
@@ -289,15 +366,58 @@ public class FacilityService implements IFacilityService {
                         } while (!checkCapacityRoom);
 
                         System.out.println("Enter rental type");
+                        System.out.println("1.Day");
+                        System.out.println("2.Week");
+                        System.out.println("3.Month");
+                        System.out.println("4.Year");
                         String rentalTypeRoom = "";
-                        boolean checkRentalTypeRoom = false;
+                        int choiceRentalTypeRoom = 0;
                         do {
-                            rentalTypeRoom = input.nextLine();
-                            checkRentalTypeRoom = ValidateFacility.validateNameService(rentalTypeRoom);
-                        } while (!checkRentalTypeRoom);
+                            try {
+                                choiceRentalTypeRoom = Integer.parseInt(input.nextLine());
+                                switch (choiceRentalTypeRoom) {
+                                    case 1:
+                                        rentalTypeRoom = "Day";
+                                        break;
+                                    case 2:
+                                        rentalTypeRoom = "Week";
+                                        break;
+                                    case 3:
+                                        rentalTypeRoom = "Month";
+                                        break;
+                                    case 4:
+                                        rentalTypeRoom = "Year";
+                                        break;
+                                }
+                            } catch (NumberFormatException numberFormatException) {
+                                System.out.println("Enter a number to choice");
+                            }
 
-                        System.out.println("Enter free service");
-                        String freeService = input.nextLine();
+                        } while (rentalTypeRoom.equals(""));
+
+                        System.out.println("Choose free service");
+                        System.out.println("1. Massage Thai");
+                        System.out.println("2. Take A Hot Bath");
+                        System.out.println("1. Eat Seafood");
+                        String freeService = "";
+                        int choiceFreeService = 0;
+                        do {
+                            try {
+                            choiceFreeService = Integer.parseInt(input.nextLine());
+                            switch (choiceFreeService){
+                                case 1:
+                                    freeService = "Massage Thai";
+                                    break;
+                                case 2:
+                                    freeService = "Take A Hot Bath";
+                                    break;
+                                case 3:
+                                    freeService = "Eat Seafood";
+                                    break;
+                            }}catch (NumberFormatException numberFormatException){
+                                System.out.println("Enter a number to choice");
+                            }
+                        }while (freeService.equals(""));
 
                         room = new Room(idRoom, nameRoom, usableAreaRoom, rentalCostRoom, capacityRoom, rentalTypeRoom, freeService);
                         facilityRepository.add(room);
@@ -331,11 +451,9 @@ public class FacilityService implements IFacilityService {
         } while (!checkId);
     }
 
-    public void displayFacilityNeedMaintenance(){
-        for (Map.Entry <Facility,Integer> entry :facilityRepository.getFacilityNeedMaintenance().entrySet()) {
-            System.out.println(entry.getKey() +" number of bookings: " +entry.getValue());
+    public void displayFacilityNeedMaintenance() {
+        for (Map.Entry<Facility, Integer> entry : facilityRepository.getFacilityNeedMaintenance().entrySet()) {
+            System.out.println(entry.getKey() + " number of bookings: " + entry.getValue());
         }
     }
-
-
 }

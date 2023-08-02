@@ -150,24 +150,24 @@ public class CustomerService implements ICustomerService {
         int choiceAddress = 0;
         do {
             System.out.println("Choice address:");
-            System.out.println("1.Hà Nội");
-            System.out.println("2.Quảng Trị");
-            System.out.println("3.Đà Nẵng");
-            System.out.println("4.Sài Gòn");
+            System.out.println("1.Ha Noi");
+            System.out.println("2.Quang Tri");
+            System.out.println("3.Da Nang");
+            System.out.println("4.Sai Gon");
             try {
                 choiceAddress = Integer.parseInt(input.nextLine());
                 switch (choiceAddress) {
                     case 1:
-                        address = "Hà Nội";
+                        address = "Ha Noi";
                         break;
                     case 2:
-                        address = "Quảng Trị";
+                        address = "Quang Tri";
                         break;
                     case 3:
-                        address = "Đà Nẵng";
+                        address = "Da Nang";
                         break;
                     case 4:
-                        address = "Sài Gòn";
+                        address = "Sai Gon";
                         break;
                 }
             } catch (NumberFormatException numberFormatException) {
@@ -316,24 +316,24 @@ public class CustomerService implements ICustomerService {
         int choiceAddress = 0;
         do {
             System.out.println("Choice address:");
-            System.out.println("1.Hà Nội");
-            System.out.println("2.Quảng Trị");
-            System.out.println("3.Đà Nẵng");
-            System.out.println("4.Sài Gòn");
+            System.out.println("1.Ha Noi");
+            System.out.println("2.Quang Tri");
+            System.out.println("3.Da Nang");
+            System.out.println("4.Sai Gon");
             try {
                 choiceAddress = Integer.parseInt(input.nextLine());
                 switch (choiceAddress) {
                     case 1:
-                        address = "Hà Nội";
+                        address = "Ha Noi";
                         break;
                     case 2:
-                        address = "Quảng Trị";
+                        address = "Quang Tri";
                         break;
                     case 3:
-                        address = "Đà Nẵng";
+                        address = "Da Nang";
                         break;
                     case 4:
-                        address = "Sài Gòn";
+                        address = "Sai Gon";
                         break;
                 }
             } catch (NumberFormatException numberFormatException) {

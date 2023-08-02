@@ -23,12 +23,11 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void display() {
-        Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
-        facilityIntegerMap = facilityRepository.getAllFacility();
+        Map<Facility, Integer> facilityIntegerMap = facilityRepository.getAllFacility();
         for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
-            System.out.println(entry.getKey() + "\n " + "---------------------------------------------------------" +
+            System.out.println(entry.getKey() + "\n " + " ---------------------------------------------------------" +
                     "Number of bookings: "
-                    + entry.getValue() + "----------------------------------------------------------");
+                    + entry.getValue() + " ----------------------------------------------------------");
         }
     }
 

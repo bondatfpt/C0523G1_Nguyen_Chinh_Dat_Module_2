@@ -37,8 +37,8 @@ public class House extends Facility {
 
     @Override
     public String toString() {
-        return "Id: " + this.getId() +", "+ "Name: " +this.getName() +", "+"Usable Area: " + this.getUsableArea()+", "
-                +"Rental Cost: " + this.getRentalCost() +", " + "Capacity: " + this.getCapacity()+", " +"Rental Type: " +
+        return "Id: " + this.getId() +", "+ "Name: " +this.getName() +", "+"Usable Area: " + this.getUsableArea()+"m²"+", "
+                +"Rental Cost: " + this.getRentalCost()+"$" +", " + "Capacity: " + this.getCapacity()+" people"+", " +"Rental Type: " +
                 this.getRentalType() +", " + "Room Standard: " + this.getRoomStandard() + ", " + " Number floor: " + this.getNumberFloor();
     }
 }

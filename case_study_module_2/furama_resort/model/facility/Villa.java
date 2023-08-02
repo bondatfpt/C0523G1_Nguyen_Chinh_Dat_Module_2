@@ -47,8 +47,8 @@ public class Villa extends Facility {
 
     @Override
     public String toString() {
-        return  "Id: " + this.getId() +", "+ "Name: " +this.getName() +", "+"Usable Area: " + this.getUsableArea()+", "
-                +"Rental Cost: " + this.getRentalCost() +", " + "Capacity: " + this.getCapacity()+", " +"Rental Type: " +
-                this.getRentalType() +", " + "Room Standard: " + this.getRoomStandard() + ", "+"Pool Area: " + poolArea +", "+ " Number floor: " + numberFloors;
+        return  "Id: " + this.getId() +", "+ "Name: " +this.getName() +", "+"Usable Area: " + this.getUsableArea()+"m²"+", "
+                +"Rental Cost: " + this.getRentalCost() +"$"+", " + "Capacity: " + this.getCapacity()+" people"+", " +"Rental Type: " +
+                this.getRentalType() +", " + "Room Standard: " + this.getRoomStandard() + ", "+"Pool Area: " + poolArea +"m²"+", "+ " Number floor: " + numberFloors;
     }
 }

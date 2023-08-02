@@ -12,9 +12,9 @@ public class FacilityRepository implements IFacilityRepository {
     private static Map<Facility, Integer> facilityList = new LinkedHashMap<>();
 
     static {
-        House house = new House("SVHO-0001", "family", 100, 1000, 10, "day", "VIP", 1);
-        Room room = new Room("SVRO-0001", "single", 50, 500, 4, "hour", "soft drink");
-        Villa villa = new Villa("SVVL-0001", "DatVilla", 1000, 5000, 10, "month", "VIP", 100, 3);
+        House house = new House("SVHO-0001", "White House", 100, 1000, 10, "Day", "Vip", 1);
+        Room room = new Room("SVRO-0001", "Single Room", 50, 500, 4, "Week", "Massage Thai");
+        Villa villa = new Villa("SVVL-0001", "Dat Villa", 1000, 5000, 10, "Month", "Vip", 50, 3);
         facilityList.put(house, 1);
         facilityList.put(room, 6);
         facilityList.put(villa, 1);

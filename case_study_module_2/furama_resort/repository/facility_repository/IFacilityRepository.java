@@ -10,6 +10,5 @@ public interface IFacilityRepository {
     void delete(Facility facility);
     Facility getFacilityById(String id);
     public Map<Facility,Integer> getFacilityNeedMaintenance();
-
-
+    
 }

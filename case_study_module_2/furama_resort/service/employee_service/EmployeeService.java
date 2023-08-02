@@ -16,8 +16,8 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void add() {
-        System.out.println("Fill in the following information to add a new employee");
-        System.out.println("Enter an id");
+        System.out.println("-------Fill in the following information to add a new employee------");
+        System.out.println("Step 1. Enter an id in the following format NV-XXXX(X is number 0- 9)");
         String id = "";
         boolean checkIdAdd = false;
         do {
@@ -29,7 +29,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (checkIdAdd == false);
 
-        System.out.println("Enter a name");
+        System.out.println("Step 2. Enter a name");
         String nameAdd = "";
         boolean checkNameAdd = false;
         do {
@@ -37,13 +37,13 @@ public class EmployeeService implements IEmployeeService {
             checkNameAdd = ValidateInputPerson.validateName(nameAdd);
         } while (checkNameAdd == false);
 
-        System.out.println("Enter date of birth in format yyyy/mm/dd");
+        System.out.println("Step 3. Enter date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
 
         String gender = "";
         int choiceGender = 0;
         do {
-            System.out.println("Select gender");
+            System.out.println("Step 4. Select gender");
             System.out.println("1.Male");
             System.out.println("2.Female");
             System.out.println("3.Other");
@@ -65,7 +65,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (gender.equals(""));
 
-        System.out.println("Enter a phone number");
+        System.out.println("Step 5. Enter a phone number");
         String phoneNumber = "";
         boolean checkPhoneNumber = false;
         do {
@@ -77,7 +77,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (checkPhoneNumber == false);
 
-        System.out.println("Enter an identity number");
+        System.out.println("6. Enter an identity number");
         String identityNumber = "";
         boolean checkIdentityNumber = false;
         do {
@@ -89,7 +89,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (checkIdentityNumber == false);
 
-        System.out.println("Enter an email");
+        System.out.println("Step 7. Enter an email");
         String email = "";
         boolean checkEmail = false;
         do {
@@ -104,7 +104,7 @@ public class EmployeeService implements IEmployeeService {
         String level = "";
         int choiceLevel = 0;
         do {
-            System.out.println("Choose level");
+            System.out.println("Step 8. Choose level");
             System.out.println("1.Intermediate");
             System.out.println("2.College");
             System.out.println("3.University");
@@ -132,7 +132,7 @@ public class EmployeeService implements IEmployeeService {
         String position = "";
         int choicePosition = 0;
         do {
-            System.out.println("Choose position");
+            System.out.println("Step 9. Choose position");
             System.out.println("1.Receptionist");
             System.out.println("2.Serve");
             System.out.println("3.Expert");
@@ -168,7 +168,7 @@ public class EmployeeService implements IEmployeeService {
 
         double salary = 0;
         do {
-            System.out.println("Enter salary");
+            System.out.println("Step 10. Enter salary");
             try {
                 salary = Double.parseDouble(input.nextLine());
                 if (salary <= 0) {
@@ -180,8 +180,8 @@ public class EmployeeService implements IEmployeeService {
         } while (salary <= 0);
 
         employeeRepository.add(new Employee(id, nameAdd, date, gender, phoneNumber,
-                                            identityNumber, email, level, position, salary));
-        System.out.println("Successfully added employee have id " + id);
+                identityNumber, email, level, position, salary));
+        System.out.println("------Successfully added employee have id " + id+ "------");
         this.display();
     }
 
@@ -194,17 +194,17 @@ public class EmployeeService implements IEmployeeService {
                 throw new RuntimeException();
             } else {
                 for (Employee employee : employeeList) {
-                    System.out.println(employee.getInforToCsv());
+                    System.out.println(employee.getInforToDisplay());
                 }
             }
         } catch (RuntimeException runtimeException) {
-            System.out.println("List is empty !");
+            System.out.println("------List is empty!------");
         }
     }
 
     @Override
     public void delete() {
-        System.out.println("Enter an id of employee you want to delete.");
+        System.out.println("------Enter an id (NV-XXXX) of employee you want to delete------");
         String id = "";
         boolean checkIdRemove = false;
         do {
@@ -225,7 +225,7 @@ public class EmployeeService implements IEmployeeService {
                 switch (choiceDelete) {
                     case 1:
                         employeeRepository.delete(id);
-                        System.out.println("Successfully deleted customer have id " + id);
+                        System.out.println("------Successfully deleted customer have id " + id+"------");
                         this.display();
                         break;
                     case 2:
@@ -240,7 +240,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void searchByName() {
         List<Employee> employeeList = null;
-        System.out.println("Enter a name of employee you want to search");
+        System.out.println("------Enter a name of employee you want to search------");
         do {
             String nameSearch = input.nextLine();
             employeeList = employeeRepository.searchByName(nameSearch);
@@ -256,7 +256,7 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void update() {
-        System.out.println("Enter an id of employee you want to update");
+        System.out.println("------Enter an id (NV-XXXX) of employee you want to update------");
         String id = "";
         boolean checkIdUpdate = false;
         do {
@@ -268,8 +268,8 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (checkIdUpdate == false);
 
-        System.out.println("Fill in the following information to update a new employee");
-        System.out.println("Enter a name");
+        System.out.println("------Fill in the following information to update a new employee------");
+        System.out.println("Step 1. Enter a new name");
         String nameUpdate = "";
         boolean checkNameUpdate = false;
         do {
@@ -277,13 +277,13 @@ public class EmployeeService implements IEmployeeService {
             checkNameUpdate = ValidateInputPerson.validateName(nameUpdate);
         } while (checkNameUpdate == false);
 
-        System.out.println("Enter date of birth in format yyyy/mm/dd");
+        System.out.println("Step 2. Enter date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
 
         String gender = "";
         int choiceGender = 0;
         do {
-            System.out.println("Select gender");
+            System.out.println("Step 3. Select new gender");
             System.out.println("1.Male");
             System.out.println("2.Female");
             System.out.println("3.Other");
@@ -305,7 +305,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (gender.equals(""));
 
-        System.out.println("Enter a phone number");
+        System.out.println("Step 4. Enter a new phone number");
         String phoneNumber = "";
         boolean checkPhoneNumber = false;
         do {
@@ -317,7 +317,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (checkPhoneNumber == false);
 
-        System.out.println("Enter an identity number");
+        System.out.println("Step 5. Enter an new identity number");
         String identityNumber = "";
         boolean checkIdentityNumber = false;
         do {
@@ -329,7 +329,7 @@ public class EmployeeService implements IEmployeeService {
             }
         } while (checkIdentityNumber == false);
 
-        System.out.println("Enter a email");
+        System.out.println("Step 6. Enter an new email");
         String email = "";
         boolean checkEmail = false;
         do {
@@ -344,7 +344,7 @@ public class EmployeeService implements IEmployeeService {
         String level = "";
         int choiceLevel = 0;
         do {
-            System.out.println("Choose level");
+            System.out.println("Step 7. Choose new level");
             System.out.println("1.Intermediate");
             System.out.println("2.College");
             System.out.println("3.University");
@@ -372,7 +372,7 @@ public class EmployeeService implements IEmployeeService {
         String position = "";
         int choicePosition = 0;
         do {
-            System.out.println("Choose position");
+            System.out.println("Step 8. Choose new position");
             System.out.println("1.Receptionist");
             System.out.println("2.Serve");
             System.out.println("3.Expert");
@@ -408,7 +408,7 @@ public class EmployeeService implements IEmployeeService {
 
         double salary = 0;
         do {
-            System.out.println("Enter salary");
+            System.out.println("Step 9. Enter new salary");
             try {
                 salary = Double.parseDouble(input.nextLine());
                 if (salary <= 0) {
@@ -421,7 +421,7 @@ public class EmployeeService implements IEmployeeService {
         Employee employee = new Employee(id, nameUpdate, date, gender, phoneNumber,
                                     identityNumber, email, level, position, salary);
         employeeRepository.updateEmployee(id, employee);
-        System.out.println("Successfully updated employee have id " + id);
+        System.out.println("------Successfully updated employee have id" + id + "------");
         this.display();
     }
 }

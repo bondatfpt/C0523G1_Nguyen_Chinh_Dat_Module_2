@@ -36,12 +36,16 @@ public class Employee extends Person {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    public String getInforToCsv(){
+    public String getInforToDisplay(){
         return "Id: " + this.getId() + ","+" " + "Name: " +  this.getName() + ","+" " + "Date of birth: " + this.getDate()
                 + "," +" "+ "Gender: " + this.getGender() + ","+ " " + "Phone number: " + this.getPhoneNumber() + "\n" +
                 "Identity number: "+ this.getIdentityNumber() + "," +" " + "Email: " + this.getEmail() +","+" "
-                +"Level: " +this.level + ","+ " " + "Position: " + this.position + ","+" " + "Salary: " + this.salary +"\n"
+                +"Level: " +this.level + ","+ " " + "Position: " + this.position + ","+" " + "Salary: " + this.salary +"$"+"\n"
                 +"--------------------------------------------------------------------------------------------------------";
+    }
+    public String getInforToCsv (){
+        return this.getId()+","+this.getName()+","+this.getDate()+","+this.getGender()+","+this.getPhoneNumber()
+                +","+this.getIdentityNumber()+","+this.getEmail()+","+this.getLevel()+","+this.getPosition()+","+this.getSalary();
     }
     @Override
     public String toString() {

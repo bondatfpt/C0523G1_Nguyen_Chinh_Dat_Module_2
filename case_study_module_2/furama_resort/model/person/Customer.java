@@ -34,12 +34,16 @@ public class Customer extends Person {
         this.address = address;
     }
 
-    public String getInforToCsv(){
+    public String getInforToDisplay(){
         return  "Id: "+this.getId()+ " " + ","+"Name: " + this.getName() +","+ " " + "Date: " + this.getDate() +"," +" "+
                "Gender: " +this.getGender() + ","+"Phone number: " + this.getPhoneNumber()+"\n " +"Identity number: "+
                 this.getIdentityNumber() +","+" "+"Email: " + this.getEmail() + ","+ " " + "Type: "+
                 this.getType() +"," + " "+ "Address: "+ this.getAddress() +"\n"
                 +"--------------------------------------------------------------------------------------------------------";
+    }
+    public String getInforToCsv (){
+        return this.getId()+","+this.getName()+","+this.getDate()+","+this.getGender()+","+this.getPhoneNumber()
+                +","+this.getIdentityNumber()+","+this.getEmail()+","+this.getType()+","+this.getAddress();
     }
     @Override
     public String toString() {

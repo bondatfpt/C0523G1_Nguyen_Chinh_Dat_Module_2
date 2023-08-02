@@ -24,7 +24,7 @@ public class CustomerService implements ICustomerService {
                 throw new RuntimeException();
             } else {
                 for (Customer customer : customers) {
-                    System.out.println(customer.getInforToCsv());
+                    System.out.println(customer.getInforToDisplay());
                 }
             }
         } catch (RuntimeException runtimeException) {
@@ -34,10 +34,10 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void add() {
-        System.out.println("Fill in the following information to add a new employee");
+        System.out.println("------Fill in the following information to add a new customer-----");
         boolean checkIdAdd = false;
         String id;
-        System.out.println("Enter an id");
+        System.out.println("Enter an id in the following format KH-XXXX (X is number 0-9)");
         do {
             id = input.nextLine();
             try {
@@ -47,7 +47,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (checkIdAdd == false);
 
-        System.out.println("Enter a name");
+        System.out.println("Step 1: Enter a name");
         String nameAdd = "";
         boolean checkNameAdd = false;
         do {
@@ -55,13 +55,13 @@ public class CustomerService implements ICustomerService {
             checkNameAdd = ValidateInputPerson.validateName(nameAdd);
         } while (checkNameAdd == false);
 
-        System.out.println("Enter date of birth in format yyyy/mm/dd");
+        System.out.println("Step 2: Enter date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
 
         String gender = "";
         int choiceGender = 0;
         do {
-            System.out.println("Select gender");
+            System.out.println("Step 3: Select gender");
             System.out.println("1.Male");
             System.out.println("2.Female");
             System.out.println("3.Other");
@@ -83,7 +83,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (gender.equals(""));
 
-        System.out.println("Enter phone number");
+        System.out.println("Step 4: Enter phone number");
         String phoneNumber = "";
         boolean checkPhoneNumber = false;
         do {
@@ -95,7 +95,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (checkPhoneNumber == false);
 
-        System.out.println("Enter identity number");
+        System.out.println("Step 5: Enter identity number");
         String identityNumber = "";
         boolean checkIdentityNumber = false;
         do {
@@ -107,7 +107,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (checkIdentityNumber == false);
 
-        System.out.println("Enter email");
+        System.out.println("Step 6: Enter email");
         String email = "";
         boolean checkEmail = false;
         do {
@@ -122,7 +122,7 @@ public class CustomerService implements ICustomerService {
         String type = "";
         int choiceType = 0;
         do {
-            System.out.println("Select type");
+            System.out.println("Step 7: Select type customer");
             System.out.println("1.Member");
             System.out.println("2.Sliver");
             System.out.println("3.Gold");
@@ -157,7 +157,7 @@ public class CustomerService implements ICustomerService {
         String address = "";
         int choiceAddress = 0;
         do {
-            System.out.println("Choice address:");
+            System.out.println("Step 8: Choice address:");
             System.out.println("1.Ha Noi");
             System.out.println("2.Quang Tri");
             System.out.println("3.Da Nang");
@@ -185,13 +185,13 @@ public class CustomerService implements ICustomerService {
         Customer customer = new Customer(id, nameAdd, date, gender, phoneNumber,
                         identityNumber, email, type, address);
         customerRepository.add(customer);
-        System.out.println("Successfully added customer have id " + id);
+        System.out.println("------Successfully added customer have id " + id +"------");
         this.display();
     }
 
     @Override
     public void delete() {
-        System.out.println("Enter an id of customer you want to delete.");
+        System.out.println("------Enter an id (KH-XXXX) of customer you want to delete------");
         String id = "";
         boolean checkIdRemove = false;
         do {
@@ -212,7 +212,7 @@ public class CustomerService implements ICustomerService {
                 switch (choiceDelete) {
                     case 1:
                         customerRepository.delete(id);
-                        System.out.println("Successfully deleted customer have id " + id);
+                        System.out.println("------Successfully deleted customer have id " + id +"------");
                         this.display();
                         break;
                     case 2:
@@ -227,7 +227,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public void update() {
 
-        System.out.println("Enter an id of customer you want to update");
+        System.out.println("-----Enter an id (KH-XXXX) of customer you want to update------");
         String id;
         boolean checkIdUpdate = false;
         do {
@@ -240,21 +240,21 @@ public class CustomerService implements ICustomerService {
 
         } while (checkIdUpdate == false);
 
-        System.out.println("Fill in the following information to update a customer:");
-        System.out.println("Enter a new name");
+        System.out.println("------Fill in the following information to update a customer------");
+        System.out.println("Step 1: Enter a new name");
         String nameUpdate = "";
         boolean checkNameUpdate = false;
         do {
             nameUpdate = input.nextLine();
             checkNameUpdate = ValidateInputPerson.validateName(nameUpdate);
         } while (checkNameUpdate == false);
-        System.out.println("Enter new date of birth in format yyyy/mm/dd");
+        System.out.println("Step 2: Enter new date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
 
         String gender = "";
         int choiceGender = 0;
         do {
-            System.out.println("Select new gender");
+            System.out.println("Step 3: Select new gender");
             System.out.println("1.Male");
             System.out.println("2.Female");
             System.out.println("3.Other");
@@ -276,7 +276,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (gender.equals(""));
 
-        System.out.println("Enter new phone number");
+        System.out.println("Step 4: Enter new phone number");
         String phoneNumber = "";
         boolean checkPhoneNumber = false;
         do {
@@ -288,7 +288,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (checkPhoneNumber == false);
 
-        System.out.println("Enter new identity number");
+        System.out.println("Step 5: Enter new identity number");
         String identityNumber = "";
         boolean checkIdentityNumber = false;
         do {
@@ -300,7 +300,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (checkIdentityNumber == false);
 
-        System.out.println("Enter new email");
+        System.out.println("Step 6: Enter new email");
         String email = "";
         boolean checkEmail = false;
         do {
@@ -315,7 +315,7 @@ public class CustomerService implements ICustomerService {
         String type = "";
         int choiceType = 0;
         do {
-            System.out.println("Select type");
+            System.out.println("Step 7: Select type customer");
             System.out.println("1.Member");
             System.out.println("2.Sliver");
             System.out.println("3.Gold");
@@ -350,7 +350,7 @@ public class CustomerService implements ICustomerService {
         String address = "";
         int choiceAddress = 0;
         do {
-            System.out.println("Choice address:");
+            System.out.println("Step 8: Choice address:");
             System.out.println("1.Ha Noi");
             System.out.println("2.Quang Tri");
             System.out.println("3.Da Nang");
@@ -379,14 +379,14 @@ public class CustomerService implements ICustomerService {
         Customer customer = new Customer(id, nameUpdate, date, gender, phoneNumber,
                                             identityNumber, email, type, address);
         customerRepository.updateCustomer(id, customer);
-        System.out.println("Successfully updated customer have id " + id);
+        System.out.println("------Successfully updated customer have id " + id+"------");
         this.display();
     }
 
     @Override
     public void searchByName() {
         List<Customer> customerList = null;
-        System.out.println("Enter a name of customer you want to search");
+        System.out.println("------Enter a name of customer you want to search------");
         do {
             String name = input.nextLine();
             customerList = customerRepository.searchByName(name);

@@ -11,4 +11,5 @@ public interface IFacilityRepository {
     Facility getFacilityById(String id);
     public Map<Facility,Integer> getFacilityNeedMaintenance();
 
+    Facility getFacilityByName(String name);
 }

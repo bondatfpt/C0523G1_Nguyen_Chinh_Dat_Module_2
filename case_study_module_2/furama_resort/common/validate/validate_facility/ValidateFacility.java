@@ -5,6 +5,7 @@ import case_study_module_2.furama_resort.model.facility.Villa;
 import case_study_module_2.furama_resort.repository.facility_repository.FacilityRepository;
 import case_study_module_2.furama_resort.repository.facility_repository.IFacilityRepository;
 import case_study_module_2.furama_resort.utils.exceptions.IdNotFoundException;
+import case_study_module_2.furama_resort.utils.exceptions.NameFacilityAlreadyExistException;
 
 import java.util.Scanner;
 
@@ -16,9 +17,15 @@ public class ValidateFacility {
     private static final String REGEX_ID_TO_REMOVE = "^SV(VL|RO|HO)-\\d{4}$";
 
 
-    public static boolean validateNameService (String name){
+    public static boolean validateNameService (String name) throws NameFacilityAlreadyExistException{
         if(name.matches(REGEX_NAME)){
-            return true;
+            Facility facility = facilityRepository.getFacilityByName(name);
+            if(facility == null){
+                return true;
+            }
+            else {
+                throw  new NameFacilityAlreadyExistException("Name facility already exist. Re-enter please");
+            }
         }
         else {
             System.out.println("Service name,rental type, room standard must capitalize the first character, the following characters are normal characters.");

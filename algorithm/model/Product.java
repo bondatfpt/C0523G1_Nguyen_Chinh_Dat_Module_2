@@ -1,23 +1,23 @@
-package algorithm;
+package algorithm.model;
 
 public class Product {
-    private int id;
+    private String id;
     private String name;
     private double price;
     private String place;
 
-    public Product(int id, String name, double price, String place) {
+    public Product(String id, String name, double price, String place) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.place = place;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

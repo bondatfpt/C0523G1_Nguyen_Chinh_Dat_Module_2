@@ -1,4 +1,6 @@
-package algorithm;
+package algorithm.common;
+
+import algorithm.model.Product;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Write {
-    private static final String FILE_PATH = "D:\\C0523G1_Nguyen_Chinh_Dat_Module_2\\algorithm\\product.csv";
+    private static final String FILE_PATH = "D:\\C0523G1_Nguyen_Chinh_Dat_Module_2\\algorithm\\data\\product.csv";
     public static void writeData (List <String> strings, String filePath, boolean append){
         File file = new File(FILE_PATH);
         try {
@@ -25,17 +27,4 @@ public class Write {
         }
     }
 
-    public static void main(String[] args) {
-        List<Product> productList = new ArrayList<>();
-        productList.add(new Product(1,"Dell1",5000,"Da nang"));
-        productList.add(new Product(2,"Dell2",5000,"Da nang"));
-        productList.add(new Product(3,"Dell3",5000,"Da nang"));
-        productList.add(new Product(4,"Dell4",5000,"Da nang"));
-        List <String> strings = new ArrayList<>();
-        for (Product product:productList) {
-            strings.add(product.getInforToCsv());
-        }
-        writeData(strings,FILE_PATH,false);
-
-    }
 }

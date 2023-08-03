@@ -20,7 +20,7 @@ public class CustomerRepository implements ICustomerRepository {
     public List<Customer> getAllCustomer() {
         List <String> stringList = ReadAndWriteData.readFromCSV(FILE_PATH_CUSTOMER);
         List <Customer> customerList = new ArrayList<>();
-        String array [] = null;
+        String array [];
         for (String string : stringList ) {
             array = string.split(",");
             Customer customer = new Customer(array[0],array[1],array[2],array[3],

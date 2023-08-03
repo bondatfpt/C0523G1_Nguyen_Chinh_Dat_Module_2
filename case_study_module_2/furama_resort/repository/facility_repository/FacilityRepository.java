@@ -54,4 +54,13 @@ public class FacilityRepository implements IFacilityRepository {
         }
         return null;
     }
+
+    public Facility getFacilityByName(String name){
+        for (Facility facility: facilityList.keySet()) {
+            if(facility.getName().equals(name)){
+                return  facility;
+            }
+        }
+        return null;
+    }
 }

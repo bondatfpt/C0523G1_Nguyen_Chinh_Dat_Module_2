@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CustomerService implements ICustomerService {
-    private static Scanner input = new Scanner(System.in);
+    private final static Scanner input = new Scanner(System.in);
     ICustomerRepository customerRepository = new CustomerRepository();
 
     @Override
@@ -45,21 +45,21 @@ public class CustomerService implements ICustomerService {
             } catch (IdAlreadyExistsException idAlreadyExistsException) {
                 System.out.println(idAlreadyExistsException.getMessage());
             }
-        } while (checkIdAdd == false);
+        } while (!checkIdAdd);
 
         System.out.println("Step 1: Enter a name");
-        String nameAdd = "";
-        boolean checkNameAdd = false;
+        String nameAdd ;
+        boolean checkNameAdd;
         do {
             nameAdd = input.nextLine();
             checkNameAdd = ValidateInputPerson.validateName(nameAdd);
-        } while (checkNameAdd == false);
+        } while (!checkNameAdd);
 
         System.out.println("Step 2: Enter date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
 
         String gender = "";
-        int choiceGender = 0;
+        int choiceGender;
         do {
             System.out.println("Step 3: Select gender");
             System.out.println("1.Male");
@@ -68,15 +68,9 @@ public class CustomerService implements ICustomerService {
             try {
                 choiceGender = Integer.parseInt(input.nextLine());
                 switch (choiceGender) {
-                    case 1:
-                        gender = "Male";
-                        break;
-                    case 2:
-                        gender = "Female";
-                        break;
-                    case 3:
-                        gender = "Other";
-                        break;
+                    case 1 -> gender = "Male";
+                    case 2 -> gender = "Female";
+                    case 3 -> gender = "Other";
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice.");
@@ -84,7 +78,7 @@ public class CustomerService implements ICustomerService {
         } while (gender.equals(""));
 
         System.out.println("Step 4: Enter phone number");
-        String phoneNumber = "";
+        String phoneNumber;
         boolean checkPhoneNumber = false;
         do {
             phoneNumber = input.nextLine();
@@ -93,10 +87,10 @@ public class CustomerService implements ICustomerService {
             } catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException) {
                 System.out.println(phoneNumberAlreadyExistException.getMessage());
             }
-        } while (checkPhoneNumber == false);
+        } while (!checkPhoneNumber);
 
         System.out.println("Step 5: Enter identity number");
-        String identityNumber = "";
+        String identityNumber;
         boolean checkIdentityNumber = false;
         do {
             identityNumber = input.nextLine();
@@ -105,10 +99,10 @@ public class CustomerService implements ICustomerService {
             } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
                 System.out.println(identityNumberAlreadyExistException.getMessage());
             }
-        } while (checkIdentityNumber == false);
+        } while (!checkIdentityNumber);
 
         System.out.println("Step 6: Enter email");
-        String email = "";
+        String email;
         boolean checkEmail = false;
         do {
             email = input.nextLine();
@@ -117,10 +111,10 @@ public class CustomerService implements ICustomerService {
             } catch (EmailAlreadyExistException emailAlreadyExistException) {
                 System.out.println(emailAlreadyExistException.getMessage());
             }
-        } while (checkEmail == false);
+        } while (!checkEmail);
 
         String type = "";
-        int choiceType = 0;
+        int choiceType;
         do {
             System.out.println("Step 7: Select type customer");
             System.out.println("1.Member");
@@ -131,21 +125,11 @@ public class CustomerService implements ICustomerService {
             try {
                 choiceType = Integer.parseInt(input.nextLine());
                 switch (choiceType) {
-                    case 1:
-                        type = "Member";
-                        break;
-                    case 2:
-                        type = "Sliver";
-                        break;
-                    case 3:
-                        type = "Gold";
-                        break;
-                    case 4:
-                        type = "Plantium";
-                        break;
-                    case 5:
-                        type = "Diamond";
-                        break;
+                    case 1 -> type = "Member";
+                    case 2 -> type = "Sliver";
+                    case 3 -> type = "Gold";
+                    case 4 -> type = "Plantium";
+                    case 5 -> type = "Diamond";
                 }
 
             } catch (NumberFormatException numberFormatException) {
@@ -155,7 +139,7 @@ public class CustomerService implements ICustomerService {
         while (type.equals(""));
 
         String address = "";
-        int choiceAddress = 0;
+        int choiceAddress;
         do {
             System.out.println("Step 8: Choice address:");
             System.out.println("1.Ha Noi");
@@ -165,18 +149,10 @@ public class CustomerService implements ICustomerService {
             try {
                 choiceAddress = Integer.parseInt(input.nextLine());
                 switch (choiceAddress) {
-                    case 1:
-                        address = "Ha Noi";
-                        break;
-                    case 2:
-                        address = "Quang Tri";
-                        break;
-                    case 3:
-                        address = "Da Nang";
-                        break;
-                    case 4:
-                        address = "Sai Gon";
-                        break;
+                    case 1 -> address = "Ha Noi";
+                    case 2 -> address = "Quang Tri";
+                    case 3 -> address = "Da Nang";
+                    case 4 -> address = "Sai Gon";
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice");
@@ -192,7 +168,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public void delete() {
         System.out.println("------Enter an id (KH-XXXX) of customer you want to delete------");
-        String id = "";
+        String id;
         boolean checkIdRemove = false;
         do {
             id = input.nextLine();
@@ -238,21 +214,21 @@ public class CustomerService implements ICustomerService {
                 System.out.println(idNotFoundException.getMessage());
             }
 
-        } while (checkIdUpdate == false);
+        } while (!checkIdUpdate);
 
         System.out.println("------Fill in the following information to update a customer------");
         System.out.println("Step 1: Enter a new name");
-        String nameUpdate = "";
-        boolean checkNameUpdate = false;
+        String nameUpdate;
+        boolean checkNameUpdate;
         do {
             nameUpdate = input.nextLine();
             checkNameUpdate = ValidateInputPerson.validateName(nameUpdate);
-        } while (checkNameUpdate == false);
+        } while (!checkNameUpdate);
         System.out.println("Step 2: Enter new date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
 
         String gender = "";
-        int choiceGender = 0;
+        int choiceGender;
         do {
             System.out.println("Step 3: Select new gender");
             System.out.println("1.Male");
@@ -261,15 +237,9 @@ public class CustomerService implements ICustomerService {
             try {
                 choiceGender = Integer.parseInt(input.nextLine());
                 switch (choiceGender) {
-                    case 1:
-                        gender = "Male";
-                        break;
-                    case 2:
-                        gender = "Female";
-                        break;
-                    case 3:
-                        gender = "Other";
-                        break;
+                    case 1 -> gender = "Male";
+                    case 2 -> gender = "Female";
+                    case 3 -> gender = "Other";
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice.");
@@ -277,7 +247,7 @@ public class CustomerService implements ICustomerService {
         } while (gender.equals(""));
 
         System.out.println("Step 4: Enter new phone number");
-        String phoneNumber = "";
+        String phoneNumber;
         boolean checkPhoneNumber = false;
         do {
             phoneNumber = input.nextLine();
@@ -286,10 +256,10 @@ public class CustomerService implements ICustomerService {
             } catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException) {
                 System.out.println(phoneNumberAlreadyExistException.getMessage());
             }
-        } while (checkPhoneNumber == false);
+        } while (!checkPhoneNumber);
 
         System.out.println("Step 5: Enter new identity number");
-        String identityNumber = "";
+        String identityNumber;
         boolean checkIdentityNumber = false;
         do {
             identityNumber = input.nextLine();
@@ -298,10 +268,10 @@ public class CustomerService implements ICustomerService {
             } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
                 System.out.println(identityNumberAlreadyExistException.getMessage());
             }
-        } while (checkIdentityNumber == false);
+        } while (!checkIdentityNumber);
 
         System.out.println("Step 6: Enter new email");
-        String email = "";
+        String email;
         boolean checkEmail = false;
         do {
             email = input.nextLine();
@@ -310,10 +280,10 @@ public class CustomerService implements ICustomerService {
             } catch (EmailAlreadyExistException emailAlreadyExistException) {
                 System.out.println(emailAlreadyExistException.getMessage());
             }
-        } while (checkEmail == false);
+        } while (!checkEmail);
 
         String type = "";
-        int choiceType = 0;
+        int choiceType;
         do {
             System.out.println("Step 7: Select type customer");
             System.out.println("1.Member");
@@ -324,21 +294,11 @@ public class CustomerService implements ICustomerService {
             try {
                 choiceType = Integer.parseInt(input.nextLine());
                 switch (choiceType) {
-                    case 1:
-                        type = "Member";
-                        break;
-                    case 2:
-                        type = "Sliver";
-                        break;
-                    case 3:
-                        type = "Gold";
-                        break;
-                    case 4:
-                        type = "Plantium";
-                        break;
-                    case 5:
-                        type = "Diamond";
-                        break;
+                    case 1 -> type = "Member";
+                    case 2 -> type = "Sliver";
+                    case 3 -> type = "Gold";
+                    case 4 -> type = "Plantium";
+                    case 5 -> type = "Diamond";
                 }
 
             } catch (NumberFormatException numberFormatException) {
@@ -348,7 +308,7 @@ public class CustomerService implements ICustomerService {
         while (type.equals(""));
 
         String address = "";
-        int choiceAddress = 0;
+        int choiceAddress;
         do {
             System.out.println("Step 8: Choice address:");
             System.out.println("1.Ha Noi");
@@ -358,18 +318,10 @@ public class CustomerService implements ICustomerService {
             try {
                 choiceAddress = Integer.parseInt(input.nextLine());
                 switch (choiceAddress) {
-                    case 1:
-                        address = "Ha Noi";
-                        break;
-                    case 2:
-                        address = "Quang Tri";
-                        break;
-                    case 3:
-                        address = "Da Nang";
-                        break;
-                    case 4:
-                        address = "Sai Gon";
-                        break;
+                    case 1 -> address = "Ha Noi";
+                    case 2 -> address = "Quang Tri";
+                    case 3 -> address = "Da Nang";
+                    case 4 -> address = "Sai Gon";
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice");
@@ -385,7 +337,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void searchByName() {
-        List<Customer> customerList = null;
+        List<Customer> customerList;
         System.out.println("------Enter a name of customer you want to search------");
         do {
             String name = input.nextLine();

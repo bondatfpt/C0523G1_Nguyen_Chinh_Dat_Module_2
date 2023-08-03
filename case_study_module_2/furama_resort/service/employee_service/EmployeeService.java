@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
-    private IEmployeeRepository employeeRepository = new EmployeeRepository();
+    private final IEmployeeRepository employeeRepository = new EmployeeRepository();
     Scanner input = new Scanner(System.in);
 
     @Override
     public void add() {
         System.out.println("-------Fill in the following information to add a new employee------");
         System.out.println("Step 1. Enter an id in the following format NV-XXXX(X is number 0- 9)");
-        String id = "";
+        String id;
         boolean checkIdAdd = false;
         do {
             id = input.nextLine();
@@ -27,21 +27,21 @@ public class EmployeeService implements IEmployeeService {
             } catch (IdAlreadyExistsException idAlreadyExistsException) {
                 System.out.println(idAlreadyExistsException.getMessage());
             }
-        } while (checkIdAdd == false);
+        } while (!checkIdAdd);
 
         System.out.println("Step 2. Enter a name");
-        String nameAdd = "";
-        boolean checkNameAdd = false;
+        String nameAdd;
+        boolean checkNameAdd;
         do {
             nameAdd = input.nextLine();
             checkNameAdd = ValidateInputPerson.validateName(nameAdd);
-        } while (checkNameAdd == false);
+        } while (!checkNameAdd);
 
         System.out.println("Step 3. Enter date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
 
         String gender = "";
-        int choiceGender = 0;
+        int choiceGender;
         do {
             System.out.println("Step 4. Select gender");
             System.out.println("1.Male");
@@ -50,15 +50,9 @@ public class EmployeeService implements IEmployeeService {
             try {
                 choiceGender = Integer.parseInt(input.nextLine());
                 switch (choiceGender) {
-                    case 1:
-                        gender = "Male";
-                        break;
-                    case 2:
-                        gender = "Female";
-                        break;
-                    case 3:
-                        gender = "Other";
-                        break;
+                    case 1 -> gender = "Male";
+                    case 2 -> gender = "Female";
+                    case 3 -> gender = "Other";
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Enter a number to choice");
@@ -66,7 +60,7 @@ public class EmployeeService implements IEmployeeService {
         } while (gender.equals(""));
 
         System.out.println("Step 5. Enter a phone number");
-        String phoneNumber = "";
+        String phoneNumber;
         boolean checkPhoneNumber = false;
         do {
             phoneNumber = input.nextLine();
@@ -75,10 +69,10 @@ public class EmployeeService implements IEmployeeService {
             } catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException) {
                 System.out.println(phoneNumberAlreadyExistException.getMessage());
             }
-        } while (checkPhoneNumber == false);
+        } while (!checkPhoneNumber);
 
         System.out.println("6. Enter an identity number");
-        String identityNumber = "";
+        String identityNumber;
         boolean checkIdentityNumber = false;
         do {
             identityNumber = input.nextLine();
@@ -87,10 +81,10 @@ public class EmployeeService implements IEmployeeService {
             } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
                 System.out.println(identityNumberAlreadyExistException.getMessage());
             }
-        } while (checkIdentityNumber == false);
+        } while (!checkIdentityNumber);
 
         System.out.println("Step 7. Enter an email");
-        String email = "";
+        String email;
         boolean checkEmail = false;
         do {
             email = input.nextLine();
@@ -99,10 +93,10 @@ public class EmployeeService implements IEmployeeService {
             } catch (EmailAlreadyExistException emailAlreadyExistException) {
                 System.out.println(emailAlreadyExistException.getMessage());
             }
-        } while (checkEmail == false);
+        } while (!checkEmail);
 
         String level = "";
-        int choiceLevel = 0;
+        int choiceLevel;
         do {
             System.out.println("Step 8. Choose level");
             System.out.println("1.Intermediate");
@@ -112,17 +106,10 @@ public class EmployeeService implements IEmployeeService {
             try {
                 choiceLevel = Integer.parseInt(input.nextLine());
                 switch (choiceLevel) {
-                    case 1:
-                        level = "Intermediate";
-                        break;
-                    case 2:
-                        level = "College";
-                        break;
-                    case 3:
-                        level = "University";
-                        break;
-                    case 4:
-                        level = "After university";
+                    case 1 -> level = "Intermediate";
+                    case 2 -> level = "College";
+                    case 3 -> level = "University";
+                    case 4 -> level = "After university";
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice");
@@ -130,7 +117,7 @@ public class EmployeeService implements IEmployeeService {
         } while (level.equals(""));
 
         String position = "";
-        int choicePosition = 0;
+        int choicePosition;
         do {
             System.out.println("Step 9. Choose position");
             System.out.println("1.Receptionist");
@@ -142,24 +129,12 @@ public class EmployeeService implements IEmployeeService {
             try {
                 choicePosition = Integer.parseInt(input.nextLine());
                 switch (choicePosition) {
-                    case 1:
-                        position = "Receptionist";
-                        break;
-                    case 2:
-                        position = "Serve";
-                        break;
-                    case 3:
-                        position = "Expert";
-                        break;
-                    case 4:
-                        position = "Monitor";
-                        break;
-                    case 5:
-                        position = "Manage";
-                        break;
-                    case 6:
-                        position = "Manager";
-                        break;
+                    case 1 -> position = "Receptionist";
+                    case 2 -> position = "Serve";
+                    case 3 -> position = "Expert";
+                    case 4 -> position = "Monitor";
+                    case 5 -> position = "Manage";
+                    case 6 -> position = "Manager";
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice");
@@ -205,7 +180,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void delete() {
         System.out.println("------Enter an id (NV-XXXX) of employee you want to delete------");
-        String id = "";
+        String id;
         boolean checkIdRemove = false;
         do {
             id = input.nextLine();
@@ -214,7 +189,7 @@ public class EmployeeService implements IEmployeeService {
             } catch (IdNotFoundException idNotFoundException) {
                 System.out.println(idNotFoundException.getMessage());
             }
-        } while (checkIdRemove == false);
+        } while (!checkIdRemove);
         int choiceDelete = 0;
         do {
             System.out.println("Do you really want to delete this employee?");
@@ -239,7 +214,7 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void searchByName() {
-        List<Employee> employeeList = null;
+        List<Employee> employeeList;
         System.out.println("------Enter a name of employee you want to search------");
         do {
             String nameSearch = input.nextLine();
@@ -257,7 +232,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void update() {
         System.out.println("------Enter an id (NV-XXXX) of employee you want to update------");
-        String id = "";
+        String id;
         boolean checkIdUpdate = false;
         do {
             id = input.nextLine();
@@ -266,22 +241,22 @@ public class EmployeeService implements IEmployeeService {
             } catch (IdNotFoundException idNotFoundException) {
                 System.out.println(idNotFoundException.getMessage());
             }
-        } while (checkIdUpdate == false);
+        } while (!checkIdUpdate);
 
         System.out.println("------Fill in the following information to update a new employee------");
         System.out.println("Step 1. Enter a new name");
-        String nameUpdate = "";
-        boolean checkNameUpdate = false;
+        String nameUpdate;
+        boolean checkNameUpdate;
         do {
             nameUpdate = input.nextLine();
             checkNameUpdate = ValidateInputPerson.validateName(nameUpdate);
-        } while (checkNameUpdate == false);
+        } while (!checkNameUpdate);
 
         System.out.println("Step 2. Enter date of birth in format yyyy/mm/dd");
         String date = ValidateInputPerson.validateDate();
 
         String gender = "";
-        int choiceGender = 0;
+        int choiceGender ;
         do {
             System.out.println("Step 3. Select new gender");
             System.out.println("1.Male");
@@ -290,15 +265,9 @@ public class EmployeeService implements IEmployeeService {
             try {
                 choiceGender = Integer.parseInt(input.nextLine());
                 switch (choiceGender) {
-                    case 1:
-                        gender = "Male";
-                        break;
-                    case 2:
-                        gender = "Female";
-                        break;
-                    case 3:
-                        gender = "Other";
-                        break;
+                    case 1 -> gender = "Male";
+                    case 2 -> gender = "Female";
+                    case 3 -> gender = "Other";
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Enter a number to choice");
@@ -306,7 +275,7 @@ public class EmployeeService implements IEmployeeService {
         } while (gender.equals(""));
 
         System.out.println("Step 4. Enter a new phone number");
-        String phoneNumber = "";
+        String phoneNumber;
         boolean checkPhoneNumber = false;
         do {
             phoneNumber = input.nextLine();
@@ -315,10 +284,10 @@ public class EmployeeService implements IEmployeeService {
             } catch (PhoneNumberAlreadyExistException phoneNumberAlreadyExistException) {
                 System.out.println(phoneNumberAlreadyExistException.getMessage());
             }
-        } while (checkPhoneNumber == false);
+        } while (!checkPhoneNumber);
 
         System.out.println("Step 5. Enter an new identity number");
-        String identityNumber = "";
+        String identityNumber;
         boolean checkIdentityNumber = false;
         do {
             identityNumber = input.nextLine();
@@ -327,10 +296,10 @@ public class EmployeeService implements IEmployeeService {
             } catch (IdentityNumberAlreadyExistException identityNumberAlreadyExistException) {
                 System.out.println(identityNumberAlreadyExistException.getMessage());
             }
-        } while (checkIdentityNumber == false);
+        } while (!checkIdentityNumber);
 
         System.out.println("Step 6. Enter an new email");
-        String email = "";
+        String email;
         boolean checkEmail = false;
         do {
             email = input.nextLine();
@@ -339,10 +308,10 @@ public class EmployeeService implements IEmployeeService {
             } catch (EmailAlreadyExistException emailAlreadyExistException) {
                 System.out.println(emailAlreadyExistException.getMessage());
             }
-        } while (checkEmail == false);
+        } while (!checkEmail);
 
         String level = "";
-        int choiceLevel = 0;
+        int choiceLevel;
         do {
             System.out.println("Step 7. Choose new level");
             System.out.println("1.Intermediate");
@@ -352,17 +321,10 @@ public class EmployeeService implements IEmployeeService {
             try {
                 choiceLevel = Integer.parseInt(input.nextLine());
                 switch (choiceLevel) {
-                    case 1:
-                        level = "Intermediate";
-                        break;
-                    case 2:
-                        level = "College";
-                        break;
-                    case 3:
-                        level = "University";
-                        break;
-                    case 4:
-                        level = "After university";
+                    case 1 -> level = "Intermediate";
+                    case 2 -> level = "College";
+                    case 3 -> level = "University";
+                    case 4 -> level = "After university";
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice");
@@ -370,7 +332,7 @@ public class EmployeeService implements IEmployeeService {
         } while (level.equals(""));
 
         String position = "";
-        int choicePosition = 0;
+        int choicePosition;
         do {
             System.out.println("Step 8. Choose new position");
             System.out.println("1.Receptionist");
@@ -382,24 +344,12 @@ public class EmployeeService implements IEmployeeService {
             try {
                 choicePosition = Integer.parseInt(input.nextLine());
                 switch (choicePosition) {
-                    case 1:
-                        position = "Receptionist";
-                        break;
-                    case 2:
-                        position = "Serve";
-                        break;
-                    case 3:
-                        position = "Expert";
-                        break;
-                    case 4:
-                        position = "Monitor";
-                        break;
-                    case 5:
-                        position = "Manage";
-                        break;
-                    case 6:
-                        position = "Manager";
-                        break;
+                    case 1 -> position = "Receptionist";
+                    case 2 -> position = "Serve";
+                    case 3 -> position = "Expert";
+                    case 4 -> position = "Monitor";
+                    case 5 -> position = "Manage";
+                    case 6 -> position = "Manager";
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.out.println("Enter a number to choice");
@@ -421,7 +371,7 @@ public class EmployeeService implements IEmployeeService {
         Employee employee = new Employee(id, nameUpdate, date, gender, phoneNumber,
                                     identityNumber, email, level, position, salary);
         employeeRepository.updateEmployee(id, employee);
-        System.out.println("------Successfully updated employee have id" + id + "------");
+        System.out.println("------Successfully updated employee have id " + id + "------");
         this.display();
     }
 }

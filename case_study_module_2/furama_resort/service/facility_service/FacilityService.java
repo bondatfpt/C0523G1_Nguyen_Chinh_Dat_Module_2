@@ -12,13 +12,14 @@ import case_study_module_2.furama_resort.repository.facility_repository.Facility
 import case_study_module_2.furama_resort.repository.facility_repository.IFacilityRepository;
 import case_study_module_2.furama_resort.utils.exceptions.IdAlreadyExistsException;
 import case_study_module_2.furama_resort.utils.exceptions.IdNotFoundException;
+import case_study_module_2.furama_resort.utils.exceptions.NameFacilityAlreadyExistException;
 
-import java.util.LinkedHashMap;
+
 import java.util.Map;
 import java.util.Scanner;
 
 public class FacilityService implements IFacilityService {
-    private static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
     IFacilityRepository facilityRepository = new FacilityRepository();
 
     @Override
@@ -44,8 +45,8 @@ public class FacilityService implements IFacilityService {
                 switch (choice) {
                     case 1:
                         System.out.println("Enter an id in the format SVVL-XXXX(X is number 0-9)");
-                        String idVilla = "";
-                        Facility villa = new Villa(idVilla);
+                        String idVilla;
+                        Facility villa;
                         boolean checkIdVilla = false;
                         do {
                             idVilla = input.nextLine();
@@ -58,11 +59,15 @@ public class FacilityService implements IFacilityService {
                         } while (!checkIdVilla);
 
                         System.out.println("Enter a name of villa");
-                        String nameVilla = "";
+                        String nameVilla;
                         boolean checkNameVilla = false;
                         do {
                             nameVilla = input.nextLine();
-                            checkNameVilla = ValidateFacility.validateNameService(nameVilla);
+                            try {
+                                checkNameVilla = ValidateFacility.validateNameService(nameVilla);
+                            } catch (NameFacilityAlreadyExistException nameFacilityAlreadyExistException) {
+                                System.out.println(nameFacilityAlreadyExistException.getMessage());
+                            }
                         } while (!checkNameVilla);
 
                         System.out.println("Enter usable area");
@@ -107,23 +112,15 @@ public class FacilityService implements IFacilityService {
                         System.out.println("3.Month");
                         System.out.println("4.Year");
                         String rentalTypeVilla = "";
-                        int choiceRentalTypeVilla = 0;
+                        int choiceRentalTypeVilla;
                         do {
                             try {
                                 choiceRentalTypeVilla = Integer.parseInt(input.nextLine());
                                 switch (choiceRentalTypeVilla) {
-                                    case 1:
-                                        rentalTypeVilla = "Day";
-                                        break;
-                                    case 2:
-                                        rentalTypeVilla = "Week";
-                                        break;
-                                    case 3:
-                                        rentalTypeVilla = "Month";
-                                        break;
-                                    case 4:
-                                        rentalTypeVilla = "Year";
-                                        break;
+                                    case 1 -> rentalTypeVilla = "Day";
+                                    case 2 -> rentalTypeVilla = "Week";
+                                    case 3 -> rentalTypeVilla = "Month";
+                                    case 4 -> rentalTypeVilla = "Year";
                                 }
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
@@ -135,20 +132,14 @@ public class FacilityService implements IFacilityService {
                         System.out.println("2.Vip");
                         System.out.println("3.Normal");
                         String roomStandardVilla = "";
-                        int choiceRoomStandardVilla = 0;
+                        int choiceRoomStandardVilla;
                         do {
                             try {
                                 choiceRoomStandardVilla = Integer.parseInt(input.nextLine());
                                 switch (choiceRoomStandardVilla) {
-                                    case 1:
-                                        roomStandardVilla = "Super Vip";
-                                        break;
-                                    case 2:
-                                        roomStandardVilla = "Vip";
-                                        break;
-                                    case 3:
-                                        roomStandardVilla = "Normal";
-                                        break;
+                                    case 1 -> roomStandardVilla = "Super Vip";
+                                    case 2 -> roomStandardVilla = "Vip";
+                                    case 3 -> roomStandardVilla = "Normal";
                                 }
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
@@ -189,8 +180,8 @@ public class FacilityService implements IFacilityService {
                         break;
                     case 2:
                         System.out.println("Enter an id in the format SVHO-XXXX(X is number 0-9)");
-                        String idHouse = "";
-                        Facility house = new House(idHouse);
+                        String idHouse ;
+                        Facility house ;
                         boolean checkIdHouse = false;
                         do {
                             idHouse = input.nextLine();
@@ -202,11 +193,15 @@ public class FacilityService implements IFacilityService {
                         } while (!checkIdHouse);
 
                         System.out.println("Enter a name");
-                        String nameHouse = "";
+                        String nameHouse ;
                         boolean checkNameHouse = false;
                         do {
                             nameHouse = input.nextLine();
-                            checkNameHouse = ValidateFacility.validateNameService(nameHouse);
+                            try {
+                                checkNameHouse = ValidateFacility.validateNameService(nameHouse);
+                            } catch (NameFacilityAlreadyExistException nameFacilityAlreadyExistException) {
+                                System.out.println(nameFacilityAlreadyExistException.getMessage());
+                            }
                         } while (!checkNameHouse);
 
                         System.out.println("Enter usable are");
@@ -251,23 +246,15 @@ public class FacilityService implements IFacilityService {
                         System.out.println("3.Month");
                         System.out.println("4.Year");
                         String rentalTypeHouse = "";
-                        int choiceRentalTypeHouse = 0;
+                        int choiceRentalTypeHouse;
                         do {
                             try {
                                 choiceRentalTypeHouse = Integer.parseInt(input.nextLine());
                                 switch (choiceRentalTypeHouse) {
-                                    case 1:
-                                        rentalTypeHouse = "Day";
-                                        break;
-                                    case 2:
-                                        rentalTypeHouse = "Week";
-                                        break;
-                                    case 3:
-                                        rentalTypeHouse = "Month";
-                                        break;
-                                    case 4:
-                                        rentalTypeHouse = "Year";
-                                        break;
+                                    case 1 -> rentalTypeHouse = "Day";
+                                    case 2 -> rentalTypeHouse = "Week";
+                                    case 3 -> rentalTypeHouse = "Month";
+                                    case 4 -> rentalTypeHouse = "Year";
                                 }
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
@@ -279,20 +266,14 @@ public class FacilityService implements IFacilityService {
                         System.out.println("2.Vip");
                         System.out.println("3.Normal");
                         String roomStandardHouse = "";
-                        int choiceRoomStandardHouse = 0;
+                        int choiceRoomStandardHouse;
                         do {
                             try {
                                 choiceRoomStandardHouse = Integer.parseInt(input.nextLine());
                                 switch (choiceRoomStandardHouse) {
-                                    case 1:
-                                        roomStandardHouse = "Super Vip";
-                                        break;
-                                    case 2:
-                                        roomStandardHouse = "Vip";
-                                        break;
-                                    case 3:
-                                        roomStandardHouse = "Normal";
-                                        break;
+                                    case 1 -> roomStandardHouse = "Super Vip";
+                                    case 2 -> roomStandardHouse = "Vip";
+                                    case 3 -> roomStandardHouse = "Normal";
                                 }
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
@@ -316,8 +297,8 @@ public class FacilityService implements IFacilityService {
                         break;
                     case 3:
                         System.out.println("Enter an id in the format SVRO-XXXX(X is number 0-9)");
-                        String idRoom = "";
-                        Facility room = new Room(idRoom);
+                        String idRoom;
+                        Facility room;
                         boolean checkIdRoom = false;
                         do {
                             idRoom = input.nextLine();
@@ -329,11 +310,15 @@ public class FacilityService implements IFacilityService {
                         } while (!checkIdRoom);
 
                         System.out.println("Enter a name");
-                        String nameRoom = "";
+                        String nameRoom;
                         boolean checkNameRoom = false;
                         do {
                             nameRoom = input.nextLine();
-                            checkNameRoom = ValidateFacility.validateNameService(nameRoom);
+                            try {
+                                checkNameRoom = ValidateFacility.validateNameService(nameRoom);
+                            } catch (NameFacilityAlreadyExistException nameFacilityAlreadyExistException) {
+                                System.out.println(nameFacilityAlreadyExistException.getMessage());
+                            }
                         } while (!checkNameRoom);
 
                         System.out.println("Enter usable area");
@@ -378,23 +363,15 @@ public class FacilityService implements IFacilityService {
                         System.out.println("3.Month");
                         System.out.println("4.Year");
                         String rentalTypeRoom = "";
-                        int choiceRentalTypeRoom = 0;
+                        int choiceRentalTypeRoom;
                         do {
                             try {
                                 choiceRentalTypeRoom = Integer.parseInt(input.nextLine());
                                 switch (choiceRentalTypeRoom) {
-                                    case 1:
-                                        rentalTypeRoom = "Day";
-                                        break;
-                                    case 2:
-                                        rentalTypeRoom = "Week";
-                                        break;
-                                    case 3:
-                                        rentalTypeRoom = "Month";
-                                        break;
-                                    case 4:
-                                        rentalTypeRoom = "Year";
-                                        break;
+                                    case 1 -> rentalTypeRoom = "Day";
+                                    case 2 -> rentalTypeRoom = "Week";
+                                    case 3 -> rentalTypeRoom = "Month";
+                                    case 4 -> rentalTypeRoom = "Year";
                                 }
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
@@ -407,20 +384,14 @@ public class FacilityService implements IFacilityService {
                         System.out.println("2. Take A Hot Bath");
                         System.out.println("3. Eat Seafood");
                         String freeService = "";
-                        int choiceFreeService = 0;
+                        int choiceFreeService;
                         do {
                             try {
                                 choiceFreeService = Integer.parseInt(input.nextLine());
                                 switch (choiceFreeService) {
-                                    case 1:
-                                        freeService = "Massage Thai";
-                                        break;
-                                    case 2:
-                                        freeService = "Take A Hot Bath";
-                                        break;
-                                    case 3:
-                                        freeService = "Eat Seafood";
-                                        break;
+                                    case 1 -> freeService = "Massage Thai";
+                                    case 2 -> freeService = "Take A Hot Bath";
+                                    case 3 -> freeService = "Eat Seafood";
                                 }
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");

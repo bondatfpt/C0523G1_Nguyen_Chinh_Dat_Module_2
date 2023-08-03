@@ -21,7 +21,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     public List<Employee> getAllEmployee() {
         List<Employee> employeeList = new ArrayList<>();
         List<String> stringList = ReadAndWriteData.readFromCSV(FILE_PATH_EMPLOYEE);
-        String[] array = null;
+        String[] array;
         for (String string : stringList) {
             array = string.split(",");
             Employee employee = new Employee(array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], Double.parseDouble(array[9]));

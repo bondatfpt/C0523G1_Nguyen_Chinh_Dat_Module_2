@@ -29,27 +29,6 @@ public class CustomerRepository implements ICustomerRepository {
         }
         return customerList;
     }
-
-    @Override
-    public Customer getCustomerById(String id) {
-        List <Customer> customers = getAllCustomer();
-        for (Customer customer: customers) {
-            if(customer.getId().equals(id)){
-                return customer;
-            }
-        }
-        return null;
-    }
-    public Customer getCustomerByEmail(String email){
-        List <Customer> customers = getAllCustomer();
-        for (Customer customer:customers) {
-            if(customer.getEmail().equals(email)){
-                return customer;
-            }
-        }
-        return null;
-    }
-
     @Override
     public void delete(String id) {
         List<Customer> customerList = getAllCustomer();
@@ -109,6 +88,25 @@ public class CustomerRepository implements ICustomerRepository {
         List <Customer> customers = getAllCustomer();
         for (Customer customer:customers) {
             if(customer.getIdentityNumber().equals(identityNumber)){
+                return customer;
+            }
+        }
+        return null;
+    }
+    @Override
+    public Customer getCustomerById(String id) {
+        List <Customer> customers = getAllCustomer();
+        for (Customer customer: customers) {
+            if(customer.getId().equals(id)){
+                return customer;
+            }
+        }
+        return null;
+    }
+    public Customer getCustomerByEmail(String email){
+        List <Customer> customers = getAllCustomer();
+        for (Customer customer:customers) {
+            if(customer.getEmail().equals(email)){
                 return customer;
             }
         }

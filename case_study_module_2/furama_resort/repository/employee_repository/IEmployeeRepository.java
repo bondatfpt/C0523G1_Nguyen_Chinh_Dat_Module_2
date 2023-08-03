@@ -9,7 +9,7 @@ public interface IEmployeeRepository{
     List <Employee> getAllEmployee();
     void delete(String id);
     List<Employee> searchByName(String name);
-    void updateEmployee(String id,Employee employee);
+    void updateEmployee(String id, Employee employee);
     Employee getEmployeeById(String id);
     Employee getEmployeeByEmail(String email);
     Employee getEmployeeByPhoneNumber(String phoneNumber);

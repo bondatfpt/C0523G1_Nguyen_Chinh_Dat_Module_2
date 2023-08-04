@@ -1,9 +1,11 @@
 package case_study_module_2.furama_resort.repository.customer_repository;
 
+import case_study_module_2.furama_resort.common.comparator.SortCustomerByIdAscending;
 import case_study_module_2.furama_resort.common.read_and_write_data.ReadAndWriteData;
 import case_study_module_2.furama_resort.model.person.Customer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CustomerRepository implements ICustomerRepository {
@@ -27,6 +29,8 @@ public class CustomerRepository implements ICustomerRepository {
                                     array[4],array[5], array[6],array[7],array[8]);
             customerList.add(customer);
         }
+//        Collections.sort(customerList,new SortCustomerByIdAscending());
+        Collections.sort(customerList);
         return customerList;
     }
     @Override

@@ -10,7 +10,9 @@ import case_study_module_2.furama_resort.utils.exceptions.EmailAlreadyExistExcep
 import case_study_module_2.furama_resort.utils.exceptions.IdentityNumberAlreadyExistException;
 import case_study_module_2.furama_resort.utils.exceptions.PhoneNumberAlreadyExistException;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class ValidateInputPerson {
@@ -33,34 +35,30 @@ public class ValidateInputPerson {
     }
 
     public static String validateDate() {
-        String date;
+        String date = "";
         LocalDate localDate = LocalDate.now();
+        LocalDate is18yearOld = localDate.minusYears(18);
+        LocalDate dateOfBirth;
         do {
-            do {
-                date = input.nextLine();
-                if (date.matches(REGEX_DATE)) {
-                    break;
-                } else {
-                    System.out.println("Wrong format. Re-enter,please.");
-                }
-            } while (true);
-            String[] dateArray = new String[2];
-            for (int i = 0; i < date.length(); i++) {
-                dateArray = date.split("/");
-            }
-            if (localDate.getYear() - Integer.parseInt(dateArray[0]) == 18) {
-                if (Integer.parseInt(dateArray[1]) - localDate.getMonthValue() > 0) {
-                    System.out.println("Under 18 years old. Re-enter,please.");
-                } else if (Integer.parseInt(dateArray[2]) - localDate.getDayOfMonth() < 0) {
-                    System.out.println("Under 18 years old. Re-enter,please.");
-                } else {
-                    return date;
-                }
-            } else if (localDate.getYear() - Integer.parseInt(dateArray[0]) > 18) {
-                return date;
+            date = input.nextLine();
+            if (!date.matches(REGEX_DATE)) {
+                System.out.print("Wrong format. Re-enter date: ");
+
             } else {
-                System.out.println("Under 18 years old.Re-enter date of birth,please.");
+                String[] arrDate = date.split("/");
+                try {
+                    dateOfBirth = LocalDate.of(Integer.parseInt(arrDate[0]), Integer.parseInt(arrDate[1]), Integer.parseInt(arrDate[2]));
+                    if(dateOfBirth.isBefore(is18yearOld)){
+                        return date;
+                    }
+                    else {
+                        System.out.print("Under 18 years old. Re-enter date: ");
+                    }
+                }catch (DateTimeException dateTimeException){
+                    System.out.print("Invalid date! Re-enter date: ");
+                }
             }
+
         } while (true);
     }
 

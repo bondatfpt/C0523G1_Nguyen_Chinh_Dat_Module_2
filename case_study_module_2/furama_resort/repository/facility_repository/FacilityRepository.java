@@ -1,5 +1,6 @@
 package case_study_module_2.furama_resort.repository.facility_repository;
 
+import algorithm.Main;
 import case_study_module_2.furama_resort.model.facility.Facility;
 import case_study_module_2.furama_resort.model.facility.House;
 import case_study_module_2.furama_resort.model.facility.Room;
@@ -9,15 +10,15 @@ import java.util.*;
 
 public class FacilityRepository implements IFacilityRepository {
 
-    private static Map<Facility, Integer> facilityList = new LinkedHashMap<>();
+    private final static Map<Facility, Integer> facilityList = new TreeMap<>();
 
     static {
-        House house = new House("SVHO-0001", "White House", 100, 1000, 10, "Day", "Vip", 1);
-        Room room = new Room("SVRO-0001", "Single Room", 50, 500, 4, "Week", "Massage Thai");
-        Villa villa = new Villa("SVVL-0001", "Dat Villa", 1000, 5000, 10, "Month", "Vip", 50, 3);
-        facilityList.put(house, 1);
-        facilityList.put(room, 6);
-        facilityList.put(villa, 1);
+        Facility house = new House("SVHO-0001", "White House", 100, 1000, 10, "Day", "Vip", 1);
+        Facility room = new Room("SVRO-0001","Single Room",100,500,1,"Day","Eat Seafood");
+        Facility villa = new Villa("SVVL-0001","High Way",500,50000,20,"Year","Super Vip",100,5);
+        facilityList.put(house,1);
+        facilityList.put(room,2);
+        facilityList.put(villa,5);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class FacilityRepository implements IFacilityRepository {
     }
 
     public Map<Facility, Integer> getFacilityNeedMaintenance() {
-        Map<Facility, Integer> facilityNeedMaintenance = new LinkedHashMap<>();
+        Map<Facility, Integer> facilityNeedMaintenance = new TreeMap<>();
             facilityList.forEach((Facility,Integer) ->{
                 if (Integer >= 5 ){
                     facilityNeedMaintenance.put(Facility,Integer);
@@ -58,7 +59,7 @@ public class FacilityRepository implements IFacilityRepository {
     public Facility getFacilityByName(String name){
         for (Facility facility: facilityList.keySet()) {
             if(facility.getName().equals(name)){
-                return  facility;
+                return facility;
             }
         }
         return null;

@@ -1,6 +1,6 @@
 package case_study_module_2.furama_resort.model.facility;
 
-public class Villa extends Facility {
+public class Villa extends Facility{
     private String roomStandard;
     private double poolArea;
     private int numberFloors;

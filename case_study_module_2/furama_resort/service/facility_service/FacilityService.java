@@ -25,7 +25,7 @@ public class FacilityService implements IFacilityService {
     @Override
     public void display() {
         Map<Facility, Integer> facilityIntegerMap = facilityRepository.getAllFacility();
-        for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+        for (Map.Entry<Facility,Integer> entry:facilityIntegerMap.entrySet()) {
             System.out.println(entry.getKey() + "\n " + " ---------------------------------------------------------" +
                     "Number of bookings: "
                     + entry.getValue() + " ----------------------------------------------------------");
@@ -144,7 +144,7 @@ public class FacilityService implements IFacilityService {
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
                             }
-                        } while (roomStandardVilla.equals(""));
+                        } while (roomStandardVilla.isEmpty());
 
 
                         System.out.println("Enter pool area");
@@ -259,7 +259,7 @@ public class FacilityService implements IFacilityService {
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
                             }
-                        } while (rentalTypeHouse.equals(""));
+                        } while (rentalTypeHouse.isEmpty());
 
                         System.out.println("Choose room standard house");
                         System.out.println("1.Super Vip");
@@ -278,7 +278,7 @@ public class FacilityService implements IFacilityService {
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
                             }
-                        } while (roomStandardHouse.equals(""));
+                        } while (roomStandardHouse.isEmpty());
 
                         System.out.println("Enter number floor");
                         int numberFloorHouse = 0;
@@ -377,7 +377,7 @@ public class FacilityService implements IFacilityService {
                                 System.out.println("Enter a number to choice");
                             }
 
-                        } while (rentalTypeRoom.equals(""));
+                        } while (rentalTypeRoom.isEmpty());
 
                         System.out.println("Choose free service");
                         System.out.println("1. Massage Thai");
@@ -396,7 +396,7 @@ public class FacilityService implements IFacilityService {
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
                             }
-                        } while (freeService.equals(""));
+                        } while (freeService.isEmpty());
 
                         room = new Room(idRoom, nameRoom, usableAreaRoom, rentalCostRoom,
                                 capacityRoom, rentalTypeRoom, freeService);

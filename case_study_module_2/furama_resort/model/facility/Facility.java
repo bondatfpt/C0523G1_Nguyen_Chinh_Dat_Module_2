@@ -1,6 +1,6 @@
 package case_study_module_2.furama_resort.model.facility;
 
-public abstract class Facility {
+public  class Facility implements Comparable <Facility>{
     private String id;
     private String name;
     private double usableArea;
@@ -76,6 +76,11 @@ public abstract class Facility {
                 ", usable area = " + usableArea +
                 ", rental cost = " + rentalCost +
                 ", capacity = " + capacity +
-                ", rental type = " + rentalType ;
+                ", rental type = " + rentalType;
+    }
+
+    @Override
+    public int compareTo(Facility o) {
+        return this.id.compareTo(o.id);
     }
 }

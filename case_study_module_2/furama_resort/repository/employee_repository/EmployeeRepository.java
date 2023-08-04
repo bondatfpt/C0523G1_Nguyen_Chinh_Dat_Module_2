@@ -1,10 +1,12 @@
 package case_study_module_2.furama_resort.repository.employee_repository;
 
+import case_study_module_2.furama_resort.common.comparator.SortEmployeeByIdAscending;
 import case_study_module_2.furama_resort.common.read_and_write_data.ReadAndWriteData;
 import case_study_module_2.furama_resort.model.person.Employee;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EmployeeRepository implements IEmployeeRepository {
@@ -27,6 +29,7 @@ public class EmployeeRepository implements IEmployeeRepository {
             Employee employee = new Employee(array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], Double.parseDouble(array[9]));
             employeeList.add(employee);
         }
+        Collections.sort(employeeList,new SortEmployeeByIdAscending());
         return employeeList;
     }
 

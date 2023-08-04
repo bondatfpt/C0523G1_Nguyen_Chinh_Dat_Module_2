@@ -7,6 +7,7 @@ import case_study_module_2.furama_resort.common.validate.validate_person.Validat
 import case_study_module_2.furama_resort.common.validate.validate_person.ValidateIdEmployee;
 import case_study_module_2.furama_resort.utils.exceptions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -162,12 +163,12 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void display() {
-        List<Employee> employeeList;
+        List<Employee> employeeList = new ArrayList<>();
         try {
             employeeList = employeeRepository.getAllEmployee();
             if (employeeList.isEmpty()) {
-                throw new RuntimeException();
             } else {
+
                 for (Employee employee : employeeList) {
                     System.out.println(employee.getInforToDisplay());
                 }

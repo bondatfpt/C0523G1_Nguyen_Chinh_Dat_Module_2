@@ -1,6 +1,6 @@
 package case_study_module_2.furama_resort.model.person;
 
-public class Customer extends Person {
+public class Customer extends Person implements Comparable<Customer> {
     private String type;
     private String address;
 
@@ -51,5 +51,20 @@ public class Customer extends Person {
                 "type='" + type + '\'' +
                 ", address='" + address + '\'' +
                 "} ";
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        String id1 = this.getId().substring(3, this.getId().length());
+        String id2 = o.getId().substring(3, o.getId().length());
+        int idSub1 = Integer.valueOf(id1);
+        int idSub2 = Integer.valueOf(id2);
+        if (idSub1 > idSub2) {
+            return 1;
+        } else if (idSub1 == idSub2) {
+            return 0;
+        } else {
+            return -1;
+        }
     }
 }

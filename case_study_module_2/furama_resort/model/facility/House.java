@@ -41,4 +41,6 @@ public class House extends Facility {
                 +"Rental Cost: " + this.getRentalCost()+"$" +", " + "Capacity: " + this.getCapacity()+" people"+", " +"Rental Type: " +
                 this.getRentalType() +", " + "Room Standard: " + this.getRoomStandard() + ", " + " Number floor: " + this.getNumberFloor();
     }
+
+
 }

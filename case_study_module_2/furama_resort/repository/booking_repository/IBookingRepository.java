@@ -12,4 +12,6 @@ public interface IBookingRepository {
     Booking getBookingByIdBooking(String bookingId);
     Booking getBookingByIdCustomer(String customerId);
     Booking getBookingByIdFacility (String facilityId);
+
+    void editBooking(Booking booking,String id);
 }

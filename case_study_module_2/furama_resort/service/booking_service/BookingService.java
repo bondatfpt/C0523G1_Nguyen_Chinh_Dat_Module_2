@@ -115,4 +115,60 @@ public class BookingService implements IBookingService {
         System.out.println("Successfully delete booking have id: " + bookingId);
         displayBooking();
     }
+
+    @Override
+    public void updateBooking() {
+        System.out.println("Enter a booking id you want to edit");
+        String bookingId;
+        boolean checkId = false;
+        do {
+            bookingId = input.nextLine();
+            try {
+                checkId = ValidateBooking.validateBookingIdToUpdateOrRemove(bookingId);
+            } catch (IdNotFoundException idNotFoundException) {
+                System.out.println(idNotFoundException.getMessage());
+            }
+        }while (!checkId);
+
+        customerService.display();
+        System.out.println("Enter a customer id");
+        String customerId;
+        boolean checkCustomerId ;
+        do {
+            customerId = input.nextLine();
+            checkCustomerId = ValidateBooking.validateIdCustomerToAdd(customerId);
+        } while (!checkCustomerId);
+
+        facilityService.display();
+        System.out.println("Enter a facility id");
+        String facilityId;
+        boolean checkFacilityId;
+        do {
+            facilityId = input.nextLine();
+            checkFacilityId = ValidateBooking.validateIdFacilityToAdd(facilityId);
+        } while (!checkFacilityId);
+
+        System.out.println("Enter start day in the format (YYYY-MM-DD)");
+        String date1;
+        boolean checkDate;
+        do {
+            date1 = input.nextLine();
+            checkDate = ValidateBooking.validateDate(date1);
+        }while (!checkDate);
+        LocalDate startDate = LocalDate.parse(date1);
+
+        System.out.println("Enter end day in the format (YYYY-MM-DD)");
+        String date2;
+        boolean checkDate2;
+        do {
+            date2 = input.nextLine();
+            checkDate2 = ValidateBooking.validateDate(date2);
+        }while (!checkDate2);
+        LocalDate endDate = LocalDate.parse(date2);
+
+        Booking booking = new Booking(bookingId,customerId,facilityId,startDate,endDate);
+        bookingRepository.editBooking(booking,bookingId);
+        System.out.println("Successfully updated booking have id: " + bookingId);
+        displayBooking();
+    }
 }

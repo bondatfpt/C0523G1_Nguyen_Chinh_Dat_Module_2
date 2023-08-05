@@ -142,9 +142,8 @@ public class Controller {
                             System.out.println("1.\tAdd new booking");
                             System.out.println("2.\tDisplay list booking");
                             System.out.println("3.\tDelete booking");
-                            System.out.println("4.\tDisplay list contracts");
-                            System.out.println("5.\tEdit contracts");
-                            System.out.println("6.\tReturn main menu");
+                            System.out.println("4.\tEdit booking");
+                            System.out.println("5.\tReturn main menu");
                             System.out.println("Enter your choice");
                             try {
                                 choiceBooking = Integer.parseInt(input.nextLine());
@@ -159,16 +158,15 @@ public class Controller {
                                         bookingService.deleteBooking();
                                         break;
                                     case 4:
+                                        bookingService.updateBooking();
                                         break;
                                     case 5:
-                                        break;
-                                    case 6:
                                         break;
                                 }
                             } catch (NumberFormatException numberFormatException) {
                                 System.out.println("Enter a number to choice");
                             }
-                        } while (choiceBooking != 6);
+                        } while (choiceBooking != 5);
                         break;
                     case 5:
                         int choicePromotion = 0;

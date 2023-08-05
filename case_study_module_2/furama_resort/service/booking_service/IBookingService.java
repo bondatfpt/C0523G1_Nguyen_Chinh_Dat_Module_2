@@ -5,4 +5,5 @@ public interface IBookingService {
     void displayBooking();
     void addBooking();
     void deleteBooking();
+    void updateBooking ();
 }

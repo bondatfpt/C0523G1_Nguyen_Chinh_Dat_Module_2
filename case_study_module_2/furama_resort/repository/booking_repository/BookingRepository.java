@@ -3,6 +3,8 @@ package case_study_module_2.furama_resort.repository.booking_repository;
 import case_study_module_2.furama_resort.model.booking.Booking;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -71,5 +73,22 @@ public class BookingRepository implements IBookingRepository {
             }
         }
         return null;
+    }
+
+    @Override
+    public void editBooking(Booking booking, String id) {
+        List <Booking> bookingList = new ArrayList<>();
+        for (Booking booking1:bookingSet) {
+            bookingList.add(booking1);
+        }
+        bookingSet.clear();
+        for (int i = 0; i < bookingList.size(); i++) {
+            if(bookingList.get(i).getBookingId().equals(id)){
+                bookingList.set(i,booking);
+            }
+        }
+        for (Booking booking2: bookingList) {
+            bookingSet.add(booking2);
+        }
     }
 }

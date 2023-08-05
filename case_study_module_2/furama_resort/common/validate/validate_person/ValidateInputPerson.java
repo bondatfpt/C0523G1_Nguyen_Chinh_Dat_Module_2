@@ -35,7 +35,7 @@ public class ValidateInputPerson {
     }
 
     public static String validateDate() {
-        String date = "";
+        String date;
         LocalDate localDate = LocalDate.now();
         LocalDate is18yearOld = localDate.minusYears(18);
         LocalDate dateOfBirth;

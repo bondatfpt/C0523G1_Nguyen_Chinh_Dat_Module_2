@@ -1,5 +1,7 @@
 package case_study_module_2.furama_resort.controller;
 
+import case_study_module_2.furama_resort.service.booking_service.BookingService;
+import case_study_module_2.furama_resort.service.booking_service.IBookingService;
 import case_study_module_2.furama_resort.service.customer_service.CustomerService;
 import case_study_module_2.furama_resort.service.customer_service.ICustomerService;
 import case_study_module_2.furama_resort.service.employee_service.IEmployeeService;
@@ -13,6 +15,7 @@ public class Controller {
     private static IEmployeeService employeeService = new EmployeeService();
     private static ICustomerService customerService = new CustomerService();
     private static IFacilityService facilityService = new FacilityService();
+    private static IBookingService bookingService = new BookingService();
 
     public static void showMenu() {
         int select = 0;
@@ -138,7 +141,7 @@ public class Controller {
                         do {
                             System.out.println("1.\tAdd new booking");
                             System.out.println("2.\tDisplay list booking");
-                            System.out.println("3.\tCreate new contracts");
+                            System.out.println("3.\tDelete booking");
                             System.out.println("4.\tDisplay list contracts");
                             System.out.println("5.\tEdit contracts");
                             System.out.println("6.\tReturn main menu");
@@ -147,10 +150,13 @@ public class Controller {
                                 choiceBooking = Integer.parseInt(input.nextLine());
                                 switch (choiceBooking) {
                                     case 1:
+                                        bookingService.addBooking();
                                         break;
                                     case 2:
+                                        bookingService.displayBooking();
                                         break;
                                     case 3:
+                                        bookingService.deleteBooking();
                                         break;
                                     case 4:
                                         break;

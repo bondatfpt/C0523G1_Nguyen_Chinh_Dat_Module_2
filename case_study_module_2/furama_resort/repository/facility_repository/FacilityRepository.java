@@ -10,7 +10,7 @@ import java.util.*;
 
 public class FacilityRepository implements IFacilityRepository {
 
-    private final static Map<Facility, Integer> facilityList = new TreeMap<>();
+    private static Map<Facility, Integer> facilityList = new TreeMap<>();
 
     static {
         Facility house = new House("SVHO-0001", "White House", 100, 1000, 10, "Day", "Vip", 1);

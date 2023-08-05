@@ -14,7 +14,6 @@ import case_study_module_2.furama_resort.service.customer_service.ICustomerServi
 import case_study_module_2.furama_resort.service.facility_service.FacilityService;
 import case_study_module_2.furama_resort.service.facility_service.IFacilityService;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Scanner;
@@ -131,7 +130,7 @@ public class BookingService implements IBookingService {
         }while (!checkId);
 
         customerService.display();
-        System.out.println("Enter a customer id");
+        System.out.println("Enter a new customer id");
         String customerId;
         boolean checkCustomerId ;
         do {
@@ -140,7 +139,7 @@ public class BookingService implements IBookingService {
         } while (!checkCustomerId);
 
         facilityService.display();
-        System.out.println("Enter a facility id");
+        System.out.println("Enter a new facility id");
         String facilityId;
         boolean checkFacilityId;
         do {
